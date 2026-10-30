@@ -154,7 +154,7 @@ Every vector visual asset maintains a standardized 1200px width coordinate syste
 | **Featured Projects** | `assets/projects.svg` | 1200 | 580 | **2.069** | `viewBox="0 0 1200 580"` |
 | **Engineering Footer** | `assets/footer.svg` | 1200 | 220 | **5.455** | `viewBox="0 0 1200 220"` |
 | **Telemetry Divider** | `assets/divider.svg` | 1200 | 24 | **50.000** | `viewBox="0 0 1200 24"` |
-| **Analytics Fallback** | `assets/analytics-fallback.svg` | 1200 | 360 | **3.333** | `viewBox="0 0 1200 360"` |
+| **Analytics Fallback** | `assets/analytics-fallback.svg` | 1200 | 280 | **4.286** | `viewBox="0 0 1200 280"` |
 
 ---
 

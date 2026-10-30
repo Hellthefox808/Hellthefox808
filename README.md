@@ -330,6 +330,16 @@ CLOUD/DEVOPS  ::  AWS  •  Docker  •  GitHub Actions (CI/CD)  •  Linux SysA
 TOOLING       ::  Git  •  Vitest  •  Jest  •  VS Code  •  Postman  •  pnpm  •  Bun  •  Prisma ORM
 ```
 
+| Discipline / Domain | Core Frameworks &amp; Runtimes | Architectural Capabilities &amp; Standards |
+|---|---|---|
+| **Core Languages** | Python 3.12, TypeScript 5, Modern JavaScript (ES2024), SQL, C++ | Strong static typing, async event loops, zero memory leaks |
+| **Frontend Systems** | React 19, Next.js 15 (App Router, RSC), Tailwind CSS | Server-side rendering, sub-50ms TTFB, accessible WCAG UI |
+| **Backend &amp; Microservices** | FastAPI (Python), Node.js, Express.js, NestJS, REST, SSE | Asynchronous non-blocking I/O, idempotent routes, token rate-limiting |
+| **AI &amp; Agentic Systems** | Autonomous Agent Swarms, pgvector RAG, Model Context Protocol (MCP) | Deterministic guardrails, tool sandboxing, zero-hallucination pipelines |
+| **Data &amp; Multi-Tier Storage** | PostgreSQL, Redis (L1 Bounded LRU + L2 Cluster), Supabase, SQLite | Cache stampede single-flight deduplication, ACID compliance, PII masking |
+| **Cloud &amp; Infrastructure** | AWS, Multi-Stage Docker, GitHub Actions CI/CD, Nginx | Automated regression test gates, reproducible container builds |
+| **Testing &amp; QA Engineering** | Vitest (471 passing assertions), Jest, Playwright | Comprehensive unit, property-based, and end-to-end integration gates |
+
 <div align="center">
   <h4>Core Technologies</h4>
   <img src="https://skillicons.dev/icons?i=python,ts,js,react,nextjs,tailwind,nodejs,nestjs,express,fastapi,postgres,redis,mongodb,sqlite,aws,docker,linux,githubactions,git,vscode&theme=dark" alt="Technical Stack Icons Overview" />

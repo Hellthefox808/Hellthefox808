@@ -31,17 +31,20 @@ ravi-github-profile/
 │   │   ├── hero-motion.svg
 │   │   ├── expertise-motion.svg
 │   │   ├── architecture-motion.svg
+│   │   ├── projects-motion.svg
 │   │   ├── particles-motion.svg
 │   │   └── footer-motion.svg
 │   ├── animated/                   # 18fps seamless loop animated GIFs
 │   │   ├── hero-motion.gif
 │   │   ├── expertise-motion.gif
 │   │   ├── architecture-motion.gif
+│   │   ├── projects-motion.gif
 │   │   └── footer-motion.gif
 │   └── static/                     # High-DPI 2x static PNG fallbacks & SVG stat cards
 │       ├── hero.png
 │       ├── expertise.png
 │       ├── architecture.png
+│       ├── projects.png
 │       ├── footer.png
 │       ├── github-stats.svg
 │       ├── top-langs.svg
@@ -53,9 +56,12 @@ ravi-github-profile/
 ├── motion-preview/
 │   ├── index.html                  # Standalone interactive preview stage
 │   ├── styles.css                  # Obsidian glassmorphic styling
-│   └── motion.js                   # Interactive particle constellation engine
+│   ├── motion.js                   # Interactive particle constellation engine
+│   └── assets/                     # Self-contained mirrored visual assets
 ├── scripts/
-│   └── verify.py                   # 4-tier automated verification harness
+│   ├── verify.py                   # 4-tier automated verification harness
+│   ├── render_gifs.py              # Automated Chrome headless GIF rendering engine
+│   └── render_static.py            # Static high-DPI PNG generation engine
 ├── README.md                       # Master 12-section GitHub Profile README
 ├── AGENTS.md                       # Multi-agent swarm architecture & governance
 └── SETUP.md                        # Developer setup, testing & deployment guide
