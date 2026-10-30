@@ -1,0 +1,14 @@
+# IDE and Tooling directories
+.deep-copilot/
+.kilo/
+.kilocode/
+.vscode/
+
+# Logs and environment
+*.log
+.env
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db

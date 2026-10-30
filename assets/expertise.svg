@@ -1,0 +1,331 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" aria-labelledby="expTitle expDesc">
+  <title id="expTitle">Areas of Engineering Expertise — Ravi Ranjan Singh</title>
+  <desc id="expDesc">Technical architecture diagram illustrating the relationships between AI and Agentic Systems, Full-Stack Engineering, Cloud and DevOps, Data Science, and Distributed Systems.</desc>
+
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="expBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080B" />
+      <stop offset="50%" stop-color="#081216" />
+      <stop offset="100%" stop-color="#05080B" />
+    </linearGradient>
+
+    <!-- Glowing Accent Gradients -->
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00DFA5" />
+    </linearGradient>
+
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00DFA5" />
+      <stop offset="100%" stop-color="#00D9FF" />
+    </linearGradient>
+
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D9FF" />
+      <stop offset="100%" stop-color="#9875FF" />
+    </linearGradient>
+
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFB84D" />
+      <stop offset="100%" stop-color="#00DFA5" />
+    </linearGradient>
+
+    <!-- Card Backgrounds -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B171D" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#071015" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="hubBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09201C" />
+      <stop offset="50%" stop-color="#0B2328" />
+      <stop offset="100%" stop-color="#14182E" />
+    </linearGradient>
+
+    <!-- Technical Grid Pattern -->
+    <pattern id="gridExp" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#00FF88" stroke-width="0.6" stroke-opacity="0.05" />
+      <circle cx="0" cy="0" r="0.8" fill="#00FF88" fill-opacity="0.15" />
+    </pattern>
+
+    <!-- Glow Filter -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="1200" height="540" rx="16" fill="url(#expBg)" />
+  <rect width="1200" height="540" rx="16" fill="url(#gridExp)" />
+  <rect x="2" y="2" width="1196" height="536" rx="15" fill="none" stroke="#00FF88" stroke-opacity="0.2" stroke-width="1.5" />
+
+  <!-- Corner Brackets -->
+  <path d="M 20 40 L 20 20 Q 20 18 22 18 L 42 18" fill="none" stroke="#00FF88" stroke-width="2" />
+  <path d="M 1158 18 L 1178 18 Q 1180 18 1180 20 L 1180 40" fill="none" stroke="#00D9FF" stroke-width="2" />
+  <path d="M 20 500 L 20 520 Q 20 522 22 522 L 42 522" fill="none" stroke="#00DFA5" stroke-width="2" />
+  <path d="M 1158 522 L 1178 522 Q 1180 522 1180 520 L 1180 500" fill="none" stroke="#9875FF" stroke-width="2" />
+
+  <!-- Header Section -->
+  <g transform="translate(600, 36)" text-anchor="middle">
+    <text y="0" fill="#00FF88" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="11" font-weight="700" letter-spacing="2">
+      // SYSTEM ARCHITECTURE &amp; CAPABILITY TAXONOMY //
+    </text>
+    <text y="24" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1">
+      AREAS OF ENGINEERING EXPERTISE
+    </text>
+    <text y="42" fill="#7E92A2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" letter-spacing="0.5">
+      Grounded AI systems, resilient full-stack platforms, distributed caching, and observable cloud operations
+    </text>
+    <line x1="-380" y1="52" x2="380" y2="52" stroke="url(#gradCyan)" stroke-width="1.5" stroke-opacity="0.7" />
+  </g>
+
+  <!-- INTERCONNECT CONDUITS (BUS LINES & DATA PACKETS) -->
+  <!-- Hub to Top-Left (AI) -->
+  <path d="M 440 230 L 380 180" fill="none" stroke="#00FF88" stroke-width="2" stroke-opacity="0.6" stroke-dasharray="4 4" />
+  <circle cx="410" cy="205" r="3" fill="#00FF88" />
+
+  <!-- Hub to Top-Right (Full-Stack) -->
+  <path d="M 760 230 L 820 180" fill="none" stroke="#00D9FF" stroke-width="2" stroke-opacity="0.6" stroke-dasharray="4 4" />
+  <circle cx="790" cy="205" r="3" fill="#00D9FF" />
+
+  <!-- Hub to Bottom-Left (Cloud & DevOps) -->
+  <path d="M 440 270 L 380 370" fill="none" stroke="#9875FF" stroke-width="2" stroke-opacity="0.6" stroke-dasharray="4 4" />
+  <circle cx="410" cy="320" r="3" fill="#9875FF" />
+
+  <!-- Hub to Bottom-Right (Data Science) -->
+  <path d="M 760 270 L 820 370" fill="none" stroke="#00DFA5" stroke-width="2" stroke-opacity="0.6" stroke-dasharray="4 4" />
+  <circle cx="790" cy="320" r="3" fill="#00DFA5" />
+
+  <!-- Hub to Bottom-Center (Distributed Storage) -->
+  <path d="M 600 295 L 600 375" fill="none" stroke="#00FF88" stroke-width="2.5" stroke-opacity="0.8" />
+  <circle cx="600" cy="335" r="3.5" fill="#00FF88" />
+
+  <!-- Cross-Conduit: Top-Left (AI) to Bottom-Center (pgvector RAG) -->
+  <path d="M 215 245 C 215 320, 380 400, 440 410" fill="none" stroke="#00FF88" stroke-width="1" stroke-opacity="0.35" stroke-dasharray="6 4" />
+  <text x="310" y="325" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">pgvector RAG Search</text>
+
+  <!-- Cross-Conduit: Top-Right (Full-Stack) to Bottom-Left (Docker Cloud Deploy) -->
+  <path d="M 985 245 C 985 300, 780 330, 760 390" fill="none" stroke="#00D9FF" stroke-width="1" stroke-opacity="0.35" stroke-dasharray="6 4" />
+  <text x="825" y="315" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">Dockerized Microservices</text>
+
+  <!-- ========================================================================= -->
+  <!-- CENTRAL ARCHITECTURE HUB: SYSTEM ARCHITECTURE & CONTROL PLANE -->
+  <!-- ========================================================================= -->
+  <g transform="translate(440, 205)">
+    <rect width="320" height="90" rx="12" fill="url(#hubBg)" stroke="#00FF88" stroke-width="2" filter="url(#softGlow)" />
+    <!-- Header bar -->
+    <rect width="320" height="24" rx="12" fill="#061F1A" />
+    <circle cx="16" cy="12" r="4.5" fill="#00FF88" />
+    <text x="28" y="16" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" letter-spacing="1">
+      CENTRAL CONTROL PLANE &amp; ARCHITECTURE
+    </text>
+
+    <!-- Body content -->
+    <text x="160" y="46" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="800" text-anchor="middle">
+      High-Assurance Distributed System Design
+    </text>
+    <text x="160" y="64" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">
+      Zero-Trust • Bounded LRU Cache • Concurrency Control
+    </text>
+    <text x="160" y="80" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="9.5" text-anchor="middle">
+      Deterministic Fault Isolation &amp; Human-in-the-Loop Governance
+    </text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 1: AI & AGENTIC SYSTEMS (TOP-LEFT) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 100)">
+    <rect width="330" height="145" rx="12" fill="url(#cardBg)" stroke="#00FF88" stroke-width="1.4" />
+    <!-- Top banner indicator -->
+    <rect x="0" y="0" width="330" height="28" rx="12" fill="#07221A" />
+    <circle cx="18" cy="14" r="5" fill="#00FF88" />
+    <text x="32" y="18" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">
+      01 // AI &amp; AGENTIC SYSTEMS
+    </text>
+
+    <!-- Card Description -->
+    <text x="18" y="48" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13.5" font-weight="700">
+      Autonomous Swarms &amp; Grounded RAG
+    </text>
+    <text x="18" y="68" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5">
+      Multi-agent routing, Model Context Protocol (MCP), tool execution harnesses, prompt engineering, and offline-first edge models.
+    </text>
+
+    <!-- Key Tech Pills -->
+    <g transform="translate(18, 98)" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">
+      <rect x="0" y="0" width="80" height="20" rx="4" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+      <text x="40" y="14" fill="#00FF88" text-anchor="middle">LLMs / RAG</text>
+
+      <rect x="88" y="0" width="92" height="20" rx="4" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+      <text x="134" y="14" fill="#00FF88" text-anchor="middle">MCP PROTOCOL</text>
+
+      <rect x="188" y="0" width="102" height="20" rx="4" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+      <text x="239" y="14" fill="#00FF88" text-anchor="middle">MULTI-AGENT</text>
+    </g>
+    <text x="18" y="132" fill="#5A7A70" font-family="'JetBrains Mono', monospace" font-size="9">
+      EVAL: Ragas • Human Governance • Zero Hallucination
+    </text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 2: FULL-STACK ENGINEERING (TOP-RIGHT) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(820, 100)">
+    <rect width="330" height="145" rx="12" fill="url(#cardBg)" stroke="#00D9FF" stroke-width="1.4" />
+    <rect x="0" y="0" width="330" height="28" rx="12" fill="#08242E" />
+    <circle cx="18" cy="14" r="5" fill="#00D9FF" />
+    <text x="32" y="18" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">
+      02 // FULL-STACK PLATFORMS
+    </text>
+
+    <text x="18" y="48" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13.5" font-weight="700">
+      Modern Web Apps &amp; High-Throughput APIs
+    </text>
+    <text x="18" y="68" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5">
+      End-to-end architecture with React 19, Next.js App Router, strict TypeScript schemas, Node.js, NestJS, and FastAPI services.
+    </text>
+
+    <g transform="translate(18, 98)" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">
+      <rect x="0" y="0" width="62" height="20" rx="4" fill="#0A2C38" stroke="#00D9FF" stroke-width="0.8" />
+      <text x="31" y="14" fill="#00D9FF" text-anchor="middle">NEXT.JS</text>
+
+      <rect x="70" y="0" width="82" height="20" rx="4" fill="#0A2C38" stroke="#00D9FF" stroke-width="0.8" />
+      <text x="111" y="14" fill="#00D9FF" text-anchor="middle">TYPESCRIPT</text>
+
+      <rect x="160" y="0" width="65" height="20" rx="4" fill="#0A2C38" stroke="#00D9FF" stroke-width="0.8" />
+      <text x="192" y="14" fill="#00D9FF" text-anchor="middle">FASTAPI</text>
+
+      <rect x="233" y="0" width="60" height="20" rx="4" fill="#0A2C38" stroke="#00D9FF" stroke-width="0.8" />
+      <text x="263" y="14" fill="#00D9FF" text-anchor="middle">NESTJS</text>
+    </g>
+    <text x="18" y="132" fill="#587985" font-family="'JetBrains Mono', monospace" font-size="9">
+      STANDARDS: REST • SSE Streaming • Zod Type Validation
+    </text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 3: CLOUD & DEVOPS INFRASTRUCTURE (BOTTOM-LEFT) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 345)">
+    <rect width="330" height="145" rx="12" fill="url(#cardBg)" stroke="#9875FF" stroke-width="1.4" />
+    <rect x="0" y="0" width="330" height="28" rx="12" fill="#1C1736" />
+    <circle cx="18" cy="14" r="5" fill="#9875FF" />
+    <text x="32" y="18" fill="#C3B2FF" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">
+      03 // CLOUD &amp; INFRASTRUCTURE
+    </text>
+
+    <text x="18" y="48" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13.5" font-weight="700">
+      Containerized Deployment &amp; CI/CD
+    </text>
+    <text x="18" y="68" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5">
+      AWS infrastructure, multi-stage Docker containerization, automated GitHub Actions pipelines, Linux systems, and Cloudflare edge.
+    </text>
+
+    <g transform="translate(18, 98)" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">
+      <rect x="0" y="0" width="45" height="20" rx="4" fill="#251E46" stroke="#9875FF" stroke-width="0.8" />
+      <text x="22" y="14" fill="#C3B2FF" text-anchor="middle">AWS</text>
+
+      <rect x="53" y="0" width="62" height="20" rx="4" fill="#251E46" stroke="#9875FF" stroke-width="0.8" />
+      <text x="84" y="14" fill="#C3B2FF" text-anchor="middle">DOCKER</text>
+
+      <rect x="123" y="0" width="85" height="20" rx="4" fill="#251E46" stroke="#9875FF" stroke-width="0.8" />
+      <text x="165" y="14" fill="#C3B2FF" text-anchor="middle">GH ACTIONS</text>
+
+      <rect x="216" y="0" width="75" height="20" rx="4" fill="#251E46" stroke="#9875FF" stroke-width="0.8" />
+      <text x="253" y="14" fill="#C3B2FF" text-anchor="middle">TELEMETRY</text>
+    </g>
+    <text x="18" y="132" fill="#716792" font-family="'JetBrains Mono', monospace" font-size="9">
+      STANDARDS: Multi-Stage Builds • Zero-Downtime • Observability
+    </text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 4: DATA SCIENCE & MACHINE LEARNING (BOTTOM-RIGHT) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(820, 345)">
+    <rect width="330" height="145" rx="12" fill="url(#cardBg)" stroke="#00DFA5" stroke-width="1.4" />
+    <rect x="0" y="0" width="330" height="28" rx="12" fill="#082823" />
+    <circle cx="18" cy="14" r="5" fill="#00DFA5" />
+    <text x="32" y="18" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">
+      04 // DATA SCIENCE &amp; ML
+    </text>
+
+    <text x="18" y="48" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13.5" font-weight="700">
+      Predictive Analytics &amp; Feature Pipelines
+    </text>
+    <text x="18" y="68" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5">
+      Data wrangling with Pandas/NumPy, exploratory analysis, Scikit-learn statistical modeling, anomaly detection, and Jupyter research.
+    </text>
+
+    <g transform="translate(18, 98)" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">
+      <rect x="0" y="0" width="60" height="20" rx="4" fill="#0B2F2A" stroke="#00DFA5" stroke-width="0.8" />
+      <text x="30" y="14" fill="#00DFA5" text-anchor="middle">PYTHON</text>
+
+      <rect x="68" y="0" width="62" height="20" rx="4" fill="#0B2F2A" stroke="#00DFA5" stroke-width="0.8" />
+      <text x="99" y="14" fill="#00DFA5" text-anchor="middle">PANDAS</text>
+
+      <rect x="138" y="0" width="90" height="20" rx="4" fill="#0B2F2A" stroke="#00DFA5" stroke-width="0.8" />
+      <text x="183" y="14" fill="#00DFA5" text-anchor="middle">SCIKIT-LEARN</text>
+
+      <rect x="236" y="0" width="55" height="20" rx="4" fill="#0B2F2A" stroke="#00DFA5" stroke-width="0.8" />
+      <text x="263" y="14" fill="#00DFA5" text-anchor="middle">NUMPY</text>
+    </g>
+    <text x="18" y="132" fill="#5B7E75" font-family="'JetBrains Mono', monospace" font-size="9">
+      METHODS: Feature Engineering • Regression • Fraud Detection
+    </text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- CARD 5: DISTRIBUTED STORAGE & CACHING (BOTTOM-CENTER) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(430, 365)">
+    <rect width="340" height="135" rx="12" fill="url(#cardBg)" stroke="#00FF88" stroke-width="1.4" />
+    <rect x="0" y="0" width="340" height="26" rx="12" fill="#07221A" />
+    <circle cx="16" cy="13" r="4.5" fill="#00FF88" />
+    <text x="28" y="17" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700">
+      05 // STORAGE &amp; MULTI-TIER CACHING
+    </text>
+
+    <text x="16" y="45" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" font-weight="700">
+      PostgreSQL, pgvector &amp; Bounded Redis L2
+    </text>
+    <text x="16" y="63" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11">
+      5,000-item bounded LRU in-memory caches, single-flight stampede deduplication, Supabase, and SQLite offline mirrors.
+    </text>
+
+    <g transform="translate(16, 88)" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">
+      <rect x="0" y="0" width="88" height="18" rx="4" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+      <text x="44" y="13" fill="#00FF88" text-anchor="middle">POSTGRESQL</text>
+
+      <rect x="96" y="0" width="70" height="18" rx="4" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+      <text x="131" y="13" fill="#00FF88" text-anchor="middle">PGVECTOR</text>
+
+      <rect x="174" y="0" width="60" height="18" rx="4" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+      <text x="204" y="13" fill="#00FF88" text-anchor="middle">REDIS L2</text>
+
+      <rect x="242" y="0" width="55" height="18" rx="4" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+      <text x="269" y="13" fill="#00FF88" text-anchor="middle">SQLITE</text>
+    </g>
+    <text x="16" y="120" fill="#5A7A70" font-family="'JetBrains Mono', monospace" font-size="9">
+      GUARANTEES: ACID Compliance • In-Flight Deduplication • PII Masking
+    </text>
+  </g>
+
+  <!-- Bottom Telemetry Legend -->
+  <g transform="translate(600, 522)" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="9.5" fill="#7E92A2">
+    <text>
+      <tspan fill="#00FF88">●</tspan> ACTIVE INTERCONNECT
+      <tspan dx="15" fill="#00D9FF">■</tspan> CONTRACT GATES
+      <tspan dx="15" fill="#9875FF">▲</tspan> INFRASTRUCTURE MESH
+      <tspan dx="15" fill="#00DFA5">◆</tspan> DATA PIPELINES
+      <tspan dx="25" fill="#5A7184">|</tspan>
+      <tspan dx="25" fill="#AAB7C4">TOPOLOGY v2.4 COMPLIANT</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,257 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">Ravi Ranjan Singh — Software Engineer and AI Systems Builder</title>
+  <desc id="heroDesc">Cyber-engineering banner featuring autonomous agent orchestration, distributed systems topology, and full-stack technical competencies.</desc>
+
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080B" />
+      <stop offset="45%" stop-color="#081014" />
+      <stop offset="85%" stop-color="#0B1519" />
+      <stop offset="100%" stop-color="#05080B" />
+    </linearGradient>
+
+    <radialGradient id="cyberGlow" cx="75%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.18" />
+      <stop offset="45%" stop-color="#00D9FF" stop-opacity="0.08" />
+      <stop offset="80%" stop-color="#9875FF" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.4" />
+      <stop offset="60%" stop-color="#00D9FF" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#00D9FF" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Linear Accent Gradients -->
+    <linearGradient id="neonEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00DFA5" />
+    </linearGradient>
+
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="50%" stop-color="#00DFA5" />
+      <stop offset="100%" stop-color="#00D9FF" />
+    </linearGradient>
+
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D9FF" />
+      <stop offset="100%" stop-color="#9875FF" />
+    </linearGradient>
+
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.8" />
+      <stop offset="35%" stop-color="#00DFA5" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#00D9FF" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#9875FF" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Technical Grid Pattern -->
+    <pattern id="techGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#00FF88" stroke-width="0.75" stroke-opacity="0.06" />
+      <circle cx="0" cy="0" r="1" fill="#00FF88" fill-opacity="0.18" />
+    </pattern>
+
+    <!-- Glow Filters -->
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="380" rx="16" fill="url(#bgGrad)" />
+  <rect width="1200" height="380" rx="16" fill="url(#techGrid)" />
+  <rect width="1200" height="380" rx="16" fill="url(#cyberGlow)" />
+
+  <!-- Outer Cyber Border -->
+  <rect x="2" y="2" width="1196" height="376" rx="15" fill="none" stroke="url(#borderGrad)" stroke-width="1.5" />
+
+  <!-- Corner HUD Reticles -->
+  <!-- Top-Left -->
+  <path d="M 18 45 L 18 20 Q 18 18 20 18 L 45 18" fill="none" stroke="#00FF88" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="28" cy="28" r="2" fill="#00FF88" />
+  <!-- Top-Right -->
+  <path d="M 1155 18 L 1180 18 Q 1182 18 1182 20 L 1182 45" fill="none" stroke="#00D9FF" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="1172" cy="28" r="2" fill="#00D9FF" />
+  <!-- Bottom-Left -->
+  <path d="M 18 335 L 18 360 Q 18 362 20 362 L 45 362" fill="none" stroke="#00DFA5" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="28" cy="352" r="2" fill="#00DFA5" />
+  <!-- Bottom-Right -->
+  <path d="M 1155 362 L 1180 362 Q 1182 362 1182 360 L 1182 335" fill="none" stroke="#9875FF" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="1172" cy="352" r="2" fill="#9875FF" />
+
+  <!-- Top Telemetry Stream Bar -->
+  <g font-family="'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace" font-size="10.5" letter-spacing="1.2">
+    <text x="65" y="38" fill="#00FF88" font-weight="700">SYS_STATUS: OPERATIONAL</text>
+    <text x="250" y="38" fill="#5A7184">//</text>
+    <text x="275" y="38" fill="#AAB7C4">NODE_LOC: RANCHI_IN (SBU)</text>
+    <text x="475" y="38" fill="#5A7184">//</text>
+    <text x="500" y="38" fill="#00D9FF">SPEC: DATA_SCIENCE &amp; CLOUD</text>
+    <text x="730" y="38" fill="#5A7184">//</text>
+    <text x="755" y="38" fill="#9875FF">BATCH: 2023-2027</text>
+    <text x="1000" y="38" fill="#00FF88" font-weight="700">● LATENCY: 12ms</text>
+  </g>
+  <line x1="50" y1="48" x2="1150" y2="48" stroke="#00FF88" stroke-opacity="0.2" stroke-width="1" />
+
+  <!-- LEFT COLUMN: BRAND HERO NARRATIVE -->
+  <!-- Eyebrow Pill -->
+  <g transform="translate(65, 72)">
+    <rect width="320" height="26" rx="13" fill="#061A16" stroke="#00FF88" stroke-width="1" />
+    <circle cx="14" cy="13" r="4.5" fill="#00FF88" filter="url(#glowFilter)" />
+    <text x="28" y="17" fill="#00FF88" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="10.5" font-weight="700" letter-spacing="1">AGENTIC AI • FULL-STACK • DISTRIBUTED</text>
+  </g>
+
+  <!-- Main Candidate Name -->
+  <text x="65" y="145" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="48" font-weight="900" letter-spacing="1.5">RAVI RANJAN SINGH</text>
+
+  <!-- Professional Subheadline -->
+  <g transform="translate(65, 178)">
+    <text x="0" y="0" fill="url(#neonCyan)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="800" letter-spacing="3.5">SOFTWARE ENGINEER  |  AI SYSTEMS BUILDER</text>
+  </g>
+
+  <!-- Glowing Gradient Divider -->
+  <rect x="65" y="196" width="560" height="2.5" rx="1.25" fill="url(#neonCyan)" />
+
+  <!-- Strategic Tagline -->
+  <text x="65" y="228" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" font-weight="400">
+    Architecting multi-agent swarms, resilient backends, and high-assurance cloud software.
+  </text>
+  <text x="65" y="250" fill="#7E92A2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="400">
+    B.Tech CSE (Data Science &amp; Cloud Computing) • Sarala Birla University • Sergeant, NCC
+  </text>
+
+  <!-- 5 Technical Identifier Badges -->
+  <g transform="translate(65, 275)" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="10.5" font-weight="700" letter-spacing="0.8">
+    <!-- 1. GENERATIVE AI -->
+    <g transform="translate(0, 0)">
+      <rect width="122" height="28" rx="6" fill="#071E19" stroke="#00FF88" stroke-width="1.2" />
+      <text x="61" y="18" fill="#00FF88" text-anchor="middle">GENERATIVE AI</text>
+    </g>
+    <!-- 2. AGENTIC SYSTEMS -->
+    <g transform="translate(132, 0)">
+      <rect width="138" height="28" rx="6" fill="#061D24" stroke="#00D9FF" stroke-width="1.2" />
+      <text x="69" y="18" fill="#00D9FF" text-anchor="middle">AGENTIC SYSTEMS</text>
+    </g>
+    <!-- 3. FULL STACK -->
+    <g transform="translate(280, 0)">
+      <rect width="102" height="28" rx="6" fill="#071D1B" stroke="#00DFA5" stroke-width="1.2" />
+      <text x="51" y="18" fill="#00DFA5" text-anchor="middle">FULL STACK</text>
+    </g>
+    <!-- 4. CLOUD -->
+    <g transform="translate(392, 0)">
+      <rect width="76" height="28" rx="6" fill="#151229" stroke="#9875FF" stroke-width="1.2" />
+      <text x="38" y="18" fill="#C3B2FF" text-anchor="middle">CLOUD</text>
+    </g>
+    <!-- 5. SYSTEM DESIGN -->
+    <g transform="translate(478, 0)">
+      <rect width="128" height="28" rx="6" fill="#101923" stroke="#AAB7C4" stroke-width="1.2" />
+      <text x="64" y="18" fill="#F5F7FA" text-anchor="middle">SYSTEM DESIGN</text>
+    </g>
+  </g>
+
+  <!-- Bottom Telemetry Creed -->
+  <g transform="translate(65, 336)" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="10.5" letter-spacing="1">
+    <text x="0" y="0" fill="#00FF88" font-weight="700">PHILOSOPHY:</text>
+    <text x="95" y="0" fill="#AAB7C4">BUILD SYSTEMS, NOT JUST INTERFACES</text>
+    <text x="380" y="0" fill="#5A7184">|</text>
+    <text x="395" y="0" fill="#00D9FF" font-weight="700">MOTTO:</text>
+    <text x="450" y="0" fill="#F5F7FA" font-style="italic">"It's all about to create."</text>
+  </g>
+
+  <!-- RIGHT COLUMN: FUTURISTIC AI & DISTRIBUTED TOPOLOGY VISUALIZATION -->
+  <g transform="translate(930, 205)">
+    <!-- Ambient Core Glow -->
+    <circle cx="0" cy="0" r="145" fill="url(#coreGlow)" filter="url(#glowFilter)" />
+
+    <!-- Orbital Radar Rings -->
+    <circle cx="0" cy="0" r="135" fill="none" stroke="#00FF88" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="3 6" />
+    <circle cx="0" cy="0" r="105" fill="none" stroke="#00D9FF" stroke-width="1.2" stroke-opacity="0.35" stroke-dasharray="8 12" />
+    <circle cx="0" cy="0" r="75" fill="none" stroke="#9875FF" stroke-width="1.4" stroke-opacity="0.4" />
+    <circle cx="0" cy="0" r="45" fill="#06171B" stroke="#00FF88" stroke-width="1.8" />
+
+    <!-- Central Hexagonal AI Core -->
+    <polygon points="0,-24 21,-12 21,12 0,24 -21,12 -21,-12" fill="#0A2A22" stroke="#00FF88" stroke-width="2" filter="url(#glowFilter)" />
+    <circle cx="0" cy="0" r="7" fill="#00FF88" />
+    <text x="0" y="3" fill="#05080B" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="900" text-anchor="middle">AI</text>
+
+    <!-- Circuit Interconnect Conduits -->
+    <!-- Top-Left Conduit -->
+    <path d="M 0 0 L -80 -75" fill="none" stroke="#00FF88" stroke-width="1.5" stroke-opacity="0.7" />
+    <!-- Top-Right Conduit -->
+    <path d="M 0 0 L 85 -70" fill="none" stroke="#00D9FF" stroke-width="1.5" stroke-opacity="0.7" />
+    <!-- Right Conduit -->
+    <path d="M 0 0 L 115 10" fill="none" stroke="#00DFA5" stroke-width="1.5" stroke-opacity="0.7" />
+    <!-- Bottom-Right Conduit -->
+    <path d="M 0 0 L 75 85" fill="none" stroke="#9875FF" stroke-width="1.5" stroke-opacity="0.7" />
+    <!-- Bottom-Left Conduit -->
+    <path d="M 0 0 L -80 80" fill="none" stroke="#00FF88" stroke-width="1.5" stroke-opacity="0.7" />
+    <!-- Left Conduit -->
+    <path d="M 0 0 L -120 -5" fill="none" stroke="#00D9FF" stroke-width="1.5" stroke-opacity="0.7" />
+
+    <!-- Data Stream Packets (Traveling along conduits) -->
+    <circle cx="-40" cy="-37" r="3.5" fill="#00FF88" filter="url(#glowFilter)" />
+    <circle cx="42" cy="-35" r="3.5" fill="#00D9FF" filter="url(#glowFilter)" />
+    <circle cx="58" cy="5" r="3" fill="#00DFA5" />
+    <circle cx="38" cy="42" r="3.5" fill="#9875FF" filter="url(#glowFilter)" />
+    <circle cx="-40" cy="40" r="3" fill="#00FF88" />
+    <circle cx="-60" cy="-2" r="3.5" fill="#00D9FF" />
+
+    <!-- Orbital Feature Node 1: Multi-Agent Swarm (Top-Left) -->
+    <g transform="translate(-80, -75)">
+      <circle cx="0" cy="0" r="18" fill="#061B16" stroke="#00FF88" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="5" fill="#00FF88" />
+      <rect x="-55" y="-30" width="110" height="16" rx="3" fill="#061814" stroke="#00FF88" stroke-width="0.8" />
+      <text x="0" y="-19" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">SWARM ROUTER</text>
+    </g>
+
+    <!-- Orbital Feature Node 2: RAG & Vector Engine (Top-Right) -->
+    <g transform="translate(85, -70)">
+      <circle cx="0" cy="0" r="18" fill="#061D24" stroke="#00D9FF" stroke-width="1.5" />
+      <rect x="-5" y="-5" width="10" height="10" fill="#00D9FF" />
+      <rect x="-50" y="-30" width="100" height="16" rx="3" fill="#061920" stroke="#00D9FF" stroke-width="0.8" />
+      <text x="0" y="-19" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">RAG / PGVECTOR</text>
+    </g>
+
+    <!-- Orbital Feature Node 3: MCP Tool Bus (Right) -->
+    <g transform="translate(115, 10)">
+      <circle cx="0" cy="0" r="16" fill="#07201D" stroke="#00DFA5" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="4" fill="#00DFA5" />
+      <rect x="-42" y="20" width="84" height="16" rx="3" fill="#071A18" stroke="#00DFA5" stroke-width="0.8" />
+      <text x="0" y="31" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">MCP PROTOCOL</text>
+    </g>
+
+    <!-- Orbital Feature Node 4: Cloud & Docker Infrastructure (Bottom-Right) -->
+    <g transform="translate(75, 85)">
+      <circle cx="0" cy="0" r="18" fill="#131024" stroke="#9875FF" stroke-width="1.5" />
+      <polygon points="0,-6 6,4 -6,4" fill="#9875FF" />
+      <rect x="-50" y="22" width="100" height="16" rx="3" fill="#110E21" stroke="#9875FF" stroke-width="0.8" />
+      <text x="0" y="33" fill="#C3B2FF" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">AWS / DOCKER</text>
+    </g>
+
+    <!-- Orbital Feature Node 5: Redis Cache & Concurrency (Bottom-Left) -->
+    <g transform="translate(-80, 80)">
+      <circle cx="0" cy="0" r="17" fill="#071F1A" stroke="#00FF88" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="4.5" fill="#00FF88" />
+      <rect x="-52" y="22" width="104" height="16" rx="3" fill="#061A16" stroke="#00FF88" stroke-width="0.8" />
+      <text x="0" y="33" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">REDIS / LRU TIER</text>
+    </g>
+
+    <!-- Orbital Feature Node 6: Next.js & Full-Stack Mesh (Left) -->
+    <g transform="translate(-120, -5)">
+      <circle cx="0" cy="0" r="16" fill="#061D24" stroke="#00D9FF" stroke-width="1.5" />
+      <text x="0" y="3" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle">{ }</text>
+      <rect x="-48" y="20" width="96" height="16" rx="3" fill="#061920" stroke="#00D9FF" stroke-width="0.8" />
+      <text x="0" y="31" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">NEXT.JS / APIS</text>
+    </g>
+
+    <!-- Crosshair Target Reticles -->
+    <path d="M -145 0 L -130 0 M 130 0 L 145 0 M 0 -145 L 0 -130 M 0 130 L 0 145" stroke="#00FF88" stroke-width="1.5" stroke-opacity="0.6" />
+    <text x="0" y="130" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="7.5" letter-spacing="1" text-anchor="middle" opacity="0.8">DISTRIBUTED FABRIC v2.4</text>
+  </g>
+</svg>
