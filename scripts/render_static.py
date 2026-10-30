@@ -67,3 +67,4 @@ svg {{ display: block; width: {width}px; height: {height}px; }}
         print(f"[RENDERED] {png_name}: {width}x{height}, {size_kb:.1f} KB")
     else:
         print(f"[ERROR] Failed to generate {png_name}")
+
