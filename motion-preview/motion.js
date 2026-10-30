@@ -329,6 +329,7 @@ class ParallaxController {
     this.sensitivity = 1.0;
     this.maxTilt = 13.0; // degrees
     this.lerpFactor = 0.08;
+    this.zoom = 1.0;
 
     // Feature Toggles
     this.enableParallax = true;
@@ -403,7 +404,7 @@ class ParallaxController {
       const tz = this.currentTranslateZ.toFixed(1);
 
       this.cardWrapper.style.transform = 
-        `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(${tz}px)`;
+        `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(${tz}px) scale(${this.zoom.toFixed(2)})`;
     }
 
     // Update Specular Glare position
@@ -562,6 +563,14 @@ class AssetInspector {
       });
 
       this.dom.img.addEventListener('error', () => {
+        const src = this.dom.img.getAttribute('src') || '';
+        if (src.startsWith('assets/')) {
+          this.dom.img.setAttribute('src', '../' + src);
+          return;
+        } else if (src.startsWith('../assets/')) {
+          this.dom.img.setAttribute('src', src.substring(3));
+          return;
+        }
         this.dom.img.style.display = 'none';
         if (this.dom.fallback) {
           this.dom.fallback.style.display = 'flex';
@@ -751,6 +760,11 @@ class ControlsManager {
       }
     });
 
+    // Auto-detect OS prefers-reduced-motion setting
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setTimeout(() => this.setReducedMotion(true), 100);
+    }
+
     // 1. Particle Sliders
     this.bindSlider('sliderParticleCount', 'valParticleCount', '', (val) => {
       this.engine.setParticleCount(parseInt(val, 10));
@@ -768,7 +782,11 @@ class ControlsManager {
       this.engine.speedMultiplier = parseFloat(val);
     });
 
-    // 2. Parallax Sensitivity Slider
+    // 2. Camera Zoom & Parallax Sensitivity Sliders
+    this.bindSlider('sliderCameraZoom', 'valCameraZoom', 'x', (val) => {
+      this.parallax.zoom = parseFloat(val);
+    });
+
     this.bindSlider('sliderParallax', 'valParallax', 'x', (val) => {
       this.parallax.sensitivity = parseFloat(val);
     });
@@ -796,6 +814,10 @@ class ControlsManager {
 
     this.bindCheckbox('chkEnableGlow', (checked) => {
       this.engine.enableGlow = checked;
+    });
+
+    this.bindCheckbox('chkReducedMotion', (checked) => {
+      this.setReducedMotion(checked);
     });
 
     // 4. Design Token Palette Swatches (Click to copy)
@@ -971,6 +993,32 @@ class ControlsManager {
       this.showToast(`Selected ${text}`);
     }
     document.body.removeChild(ta);
+  }
+
+  setReducedMotion(enabled) {
+    if (enabled) {
+      this.parallax.enableParallax = false;
+      this.parallax.enableAutoOrbit = false;
+      this.parallax.targetRotX = 0;
+      this.parallax.targetRotY = 0;
+      this.engine.speedMultiplier = 0.05;
+      this.engine.enableGlow = false;
+      const statusLabel = document.querySelector('.status-label');
+      if (statusLabel) {
+        statusLabel.innerHTML = 'SYS_STATE: <strong class="text-cyan">REDUCED_MOTION</strong>';
+      }
+      this.showToast('Reduced Motion Mode Activated');
+    } else {
+      this.parallax.enableParallax = true;
+      this.engine.speedMultiplier = 1.0;
+      this.engine.enableGlow = true;
+      const statusLabel = document.querySelector('.status-label');
+      if (statusLabel) {
+        statusLabel.innerHTML = 'SYS_STATE: <strong class="text-emerald">ACTIVE_SIMULATION</strong>';
+      }
+      this.showToast('Standard 4D Motion Mode Restored');
+    }
+    this.updateCheck('chkReducedMotion', enabled);
   }
 
   showToast(message) {

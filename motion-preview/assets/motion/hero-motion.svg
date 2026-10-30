@@ -1,0 +1,326 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">Ravi Ranjan Singh — Software Engineer and AI Systems Builder (4D Motion Engine)</title>
+  <desc id="heroDesc">Cinematic 4D engineering experience featuring volumetric particle networks, 3D rotating hypercube spatial structures, typography light sweep, and high-assurance distributed systems architecture.</desc>
+
+  <defs>
+    <!-- Deep Obsidian Canvas Gradient -->
+    <linearGradient id="obsidianBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080B" />
+      <stop offset="50%" stop-color="#071015" />
+      <stop offset="100%" stop-color="#05080B" />
+    </linearGradient>
+
+    <!-- Radial Atmospheric Depth Glow -->
+    <radialGradient id="atmosphericAura" cx="75%" cy="54%" r="48%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.14" />
+      <stop offset="45%" stop-color="#00D9FF" stop-opacity="0.08" />
+      <stop offset="75%" stop-color="#8B5CF6" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#05080B" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Typography Specular Light Sweep Gradient (6s Seamless Loop) -->
+    <linearGradient id="typogSweep" x1="-100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F5F7FA" />
+      <stop offset="35%" stop-color="#F5F7FA" />
+      <stop offset="48%" stop-color="#00FF88" />
+      <stop offset="52%" stop-color="#00D9FF" />
+      <stop offset="65%" stop-color="#F5F7FA" />
+      <stop offset="100%" stop-color="#F5F7FA" />
+      <animate attributeName="x1" values="-100%; 100%; 100%" keyTimes="0; 0.6; 1" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="0%; 200%; 200%" keyTimes="0; 0.6; 1" dur="6s" repeatCount="indefinite" />
+    </linearGradient>
+
+    <!-- Linear Accent Hairline -->
+    <linearGradient id="hairlineEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#00D9FF" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Glassmorphic Badge Background -->
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1614" />
+      <stop offset="100%" stop-color="#060E11" />
+    </linearGradient>
+
+    <!-- 3D Spatial Faces Gradients -->
+    <linearGradient id="faceGradTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#00D9FF" stop-opacity="0.08" />
+    </linearGradient>
+    <linearGradient id="faceGradRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D9FF" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="faceGradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#082A20" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#051419" stop-opacity="0.3" />
+    </linearGradient>
+
+    <!-- Precision Hairline Grid Pattern -->
+    <pattern id="precisionGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00FF88" stroke-width="0.5" stroke-opacity="0.04" />
+      <circle cx="0" cy="0" r="0.75" fill="#00FF88" fill-opacity="0.15" />
+    </pattern>
+
+    <!-- Glow Filter -->
+    <filter id="coreGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base Obsidian Canvas & Grid -->
+  <rect width="1200" height="380" rx="6" fill="url(#obsidianBg)" />
+  <rect width="1200" height="380" rx="6" fill="url(#precisionGrid)" />
+  <rect width="1200" height="380" rx="6" fill="url(#atmosphericAura)" />
+
+  <!-- Outer Cybernetic Perimeter with Subtle Breathing Glow -->
+  <rect x="1" y="1" width="1198" height="378" rx="5" fill="none" stroke="#00FF88" stroke-opacity="0.2" stroke-width="1.2">
+    <animate attributeName="stroke-opacity" values="0.18; 0.42; 0.18" dur="6s" repeatCount="indefinite" />
+  </rect>
+
+  <!-- Precision Corner Reticles -->
+  <g stroke="#00FF88" stroke-opacity="0.7" stroke-width="1.2" fill="none">
+    <path d="M 14 30 L 14 14 L 30 14" />
+    <path d="M 1186 30 L 1186 14 L 1170 14" />
+    <path d="M 14 350 L 14 366 L 30 366" />
+    <path d="M 1186 350 L 1186 366 L 1170 366" />
+  </g>
+
+  <!-- Top Metadata Header Strip -->
+  <g font-family="'JetBrains Mono', 'SF Mono', Consolas, Menlo, monospace" font-size="9" letter-spacing="1">
+    <text x="50" y="30" fill="#00FF88" font-weight="700">SPEC: 4D_SPATIAL_ENGINE // MULTI_TIER_SWARM</text>
+    <text x="360" y="30" fill="#3D505C">|</text>
+    <text x="380" y="30" fill="#8899A6">AFFIL: SARALA BIRLA UNIVERSITY (2023-2027)</text>
+    <text x="740" y="30" fill="#3D505C">|</text>
+    <text x="760" y="30" fill="#00D9FF">NODE_ID: RR-0808</text>
+    <text x="1150" y="30" fill="#00FF88" text-anchor="end" font-weight="700">
+      <tspan>ONLINE // 60 FPS</tspan>
+      <animate attributeName="opacity" values="1; 0.35; 1" dur="2.4s" repeatCount="indefinite" />
+    </text>
+  </g>
+  <line x1="50" y1="38" x2="1150" y2="38" stroke="#00FF88" stroke-opacity="0.15" stroke-width="1" />
+
+  <!-- ========================================================================= -->
+  <!-- LEFT COLUMN: EDITORIAL IDENTITY & LIGHT SWEEP TYPOGRAPHY                   -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 68)">
+    <text x="0" y="18" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" letter-spacing="1.5">
+      SYSTEM ARCHITECTURE &amp; APPLIED AI
+    </text>
+
+    <!-- Primary Name with Specular Light Sweep -->
+    <text x="0" y="70" fill="url(#typogSweep)" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif" font-size="44" font-weight="800" letter-spacing="0.5">
+      RAVI RANJAN SINGH
+    </text>
+
+    <text x="0" y="102" fill="#00D9FF" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif" font-size="16.5" font-weight="600" letter-spacing="2">
+      SOFTWARE ENGINEER  ·  AI SYSTEMS BUILDER
+    </text>
+
+    <line x1="0" y1="120" x2="520" y2="120" stroke="url(#hairlineEmerald)" stroke-width="1" stroke-opacity="0.5" />
+
+    <text x="0" y="150" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="13.5" font-weight="400">
+      Engineering high-assurance agentic swarms, resilient distributed backends,
+    </text>
+    <text x="0" y="172" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif" font-size="13.5" font-weight="400">
+      and observable cloud platforms. Grounded in evidence, bounded by design.
+    </text>
+
+    <!-- Technical Badges -->
+    <g transform="translate(0, 202)" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600">
+      <rect x="0" y="0" width="118" height="24" rx="2" fill="url(#badgeGrad)" stroke="#00FF88" stroke-width="0.8" stroke-opacity="0.8" />
+      <text x="59" y="15.5" fill="#00FF88" text-anchor="middle">AGENTIC AI</text>
+
+      <rect x="126" y="0" width="136" height="24" rx="2" fill="url(#badgeGrad)" stroke="#00D9FF" stroke-width="0.8" stroke-opacity="0.8" />
+      <text x="194" y="15.5" fill="#00D9FF" text-anchor="middle">DISTRIBUTED</text>
+
+      <rect x="270" y="0" width="124" height="24" rx="2" fill="url(#badgeGrad)" stroke="#00DFA5" stroke-width="0.8" stroke-opacity="0.8" />
+      <text x="332" y="15.5" fill="#00DFA5" text-anchor="middle">FULL-STACK</text>
+
+      <rect x="402" y="0" width="118" height="24" rx="2" fill="url(#badgeGrad)" stroke="#8B5CF6" stroke-width="0.8" stroke-opacity="0.8" />
+      <text x="461" y="15.5" fill="#C4B5FD" text-anchor="middle">CLOUD INFRA</text>
+    </g>
+
+    <text x="0" y="262" fill="#5A7184" font-family="'JetBrains Mono', monospace" font-size="9.5" letter-spacing="0.8">
+      PHILOSOPHY: BUILD SYSTEMS, NOT JUST INTERFACES  //  MOTTO: "IT'S ALL ABOUT TO CREATE."
+    </text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT COLUMN: 4D SPATIAL ENGINE & 3D ROTATING HYPERCUBE STRUCTURE        -->
+  <!-- ========================================================================= -->
+  <g id="rightStage">
+    <!-- Viewport Panel Border -->
+    <rect x="620" y="48" width="530" height="294" rx="4" fill="#060C10" stroke="#00FF88" stroke-width="0.8" stroke-opacity="0.3" />
+    <rect x="620" y="48" width="530" height="22" rx="4" fill="#081519" />
+    <text x="632" y="63" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" letter-spacing="1">
+      TOPOLOGY // 4D SPATIAL CONTROL PLANE &amp; TESSERACT HYPER-STRUCTURE
+    </text>
+    <text x="1138" y="63" fill="#5A7184" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="end">
+      SIM_FREQ: 60Hz
+    </text>
+
+    <!-- Floating Volumetric Particle Cloud (Background Depth Plane z=0.5) -->
+    <g id="bgParticleCloud" opacity="0.45">
+      <circle cx="660" cy="110" r="1.5" fill="#00FF88"><animate attributeName="cy" values="110; 95; 110" dur="5s" repeatCount="indefinite" /></circle>
+      <circle cx="700" cy="240" r="1.2" fill="#00D9FF"><animate attributeName="cy" values="240; 255; 240" dur="6.5s" repeatCount="indefinite" /></circle>
+      <circle cx="780" cy="90" r="1.5" fill="#8B5CF6"><animate attributeName="cx" values="780; 795; 780" dur="7s" repeatCount="indefinite" /></circle>
+      <circle cx="980" cy="100" r="1.2" fill="#00FF88"><animate attributeName="cy" values="100; 85; 100" dur="5.5s" repeatCount="indefinite" /></circle>
+      <circle cx="1060" cy="230" r="1.6" fill="#00D9FF"><animate attributeName="cy" values="230; 245; 230" dur="6s" repeatCount="indefinite" /></circle>
+      <circle cx="1110" cy="140" r="1.2" fill="#8B5CF6"><animate attributeName="cx" values="1110; 1095; 1110" dur="8s" repeatCount="indefinite" /></circle>
+      <circle cx="690" cy="170" r="1.4" fill="#00FF88"><animate attributeName="cy" values="170; 185; 170" dur="4.8s" repeatCount="indefinite" /></circle>
+      <circle cx="1030" cy="270" r="1.3" fill="#00D9FF"><animate attributeName="cx" values="1030; 1045; 1030" dur="6.2s" repeatCount="indefinite" /></circle>
+    </g>
+
+    <!-- Concentric 3D Oblique Orbital Rings (Rotated in Spatial Perspective) -->
+    <g transform="translate(885, 195)">
+      <!-- Outer Orbit Ring 1 (Tilted -28 deg) -->
+      <g transform="rotate(-28)">
+        <ellipse cx="0" cy="0" rx="145" ry="52" fill="none" stroke="#00FF88" stroke-width="0.8" stroke-opacity="0.3" stroke-dasharray="10 8">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="18s" repeatCount="indefinite" />
+        </ellipse>
+        <!-- Orbiting Satellite Data Node -->
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="18s" repeatCount="indefinite" />
+          <circle cx="145" cy="0" r="3" fill="#00FF88" filter="url(#coreGlow)" />
+          <circle cx="145" cy="0" r="6" fill="none" stroke="#00FF88" stroke-width="0.5" stroke-opacity="0.6">
+            <animate attributeName="r" values="4; 8; 4" dur="2s" repeatCount="indefinite" />
+          </circle>
+        </g>
+      </g>
+
+      <!-- Mid Orbit Ring 2 (Tilted +36 deg) -->
+      <g transform="rotate(36)">
+        <ellipse cx="0" cy="0" rx="125" ry="44" fill="none" stroke="#00D9FF" stroke-width="0.8" stroke-opacity="0.35" stroke-dasharray="8 6">
+          <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="14s" repeatCount="indefinite" />
+        </ellipse>
+        <!-- Orbiting Satellite Data Node -->
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="14s" repeatCount="indefinite" />
+          <circle cx="-125" cy="0" r="2.8" fill="#00D9FF" filter="url(#coreGlow)" />
+        </g>
+      </g>
+
+      <!-- Inner High-Velocity Orbit Ring 3 (Horizontal Equator) -->
+      <ellipse cx="0" cy="0" rx="95" ry="32" fill="none" stroke="#8B5CF6" stroke-width="0.9" stroke-opacity="0.4" stroke-dasharray="6 4">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="9s" repeatCount="indefinite" />
+      </ellipse>
+      <g>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="9s" repeatCount="indefinite" />
+        <circle cx="0" cy="32" r="2.5" fill="#8B5CF6" filter="url(#coreGlow)" />
+      </g>
+
+      <!-- 3D TESSERACT HYPERCUBE STRUCTURE (Continuous Subtle Heave & Spatial Breathing) -->
+      <g id="hypercubeCore">
+        <animateTransform attributeName="transform" type="translate" values="0, -5; 0, 5; 0, -5" dur="6s" repeatCount="indefinite" />
+
+        <!-- Translucent Spatial Polygonal Faces -->
+        <polygon points="0,-52 46,-26 0,0 -46,-26" fill="url(#faceGradTop)" stroke="#00FF88" stroke-width="0.8" stroke-opacity="0.6" />
+        <polygon points="46,-26 46,26 0,52 0,0" fill="url(#faceGradRight)" stroke="#00D9FF" stroke-width="0.8" stroke-opacity="0.6" />
+        <polygon points="-46,-26 0,0 0,52 -46,26" fill="url(#faceGradLeft)" stroke="#00FF88" stroke-width="0.8" stroke-opacity="0.4" />
+
+        <!-- Inner Projected Core Cube (Isometric Scaled 0.48) -->
+        <polygon points="0,-25 22,-12 0,0 -22,-12" fill="#071E19" stroke="#00FF88" stroke-width="1.1" stroke-opacity="0.9" />
+        <polygon points="22,-12 22,12 0,25 0,0" fill="#08222A" stroke="#00D9FF" stroke-width="1.1" stroke-opacity="0.9" />
+        <polygon points="-22,-12 0,0 0,25 -22,12" fill="#131024" stroke="#8B5CF6" stroke-width="1.1" stroke-opacity="0.9" />
+
+        <!-- Hypercube 4D Inter-Vertex Projection Struts -->
+        <g stroke="#00FF88" stroke-width="0.75" stroke-opacity="0.55" stroke-dasharray="2 2">
+          <line x1="0" y1="-52" x2="0" y2="-25" />
+          <line x1="46" y1="-26" x2="22" y2="-12" />
+          <line x1="46" y1="26" x2="22" y2="12" />
+          <line x1="0" y1="52" x2="0" y2="25" />
+          <line x1="-46" y1="26" x2="-22" y2="12" />
+          <line x1="-46" y1="-26" x2="-22" y2="-12" />
+        </g>
+
+        <!-- Dynamic Optical Center Singularity -->
+        <circle cx="0" cy="0" r="3.5" fill="#F5F7FA" filter="url(#coreGlow)">
+          <animate attributeName="r" values="3; 5; 3" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="fill" values="#F5F7FA; #00FF88; #00D9FF; #F5F7FA" dur="4.8s" repeatCount="indefinite" />
+        </circle>
+
+        <!-- Outer Vertices with Pulsing Energy Points -->
+        <circle cx="0" cy="-52" r="2.2" fill="#00FF88" />
+        <circle cx="46" cy="-26" r="2.2" fill="#00D9FF" />
+        <circle cx="46" cy="26" r="2.2" fill="#00D9FF" />
+        <circle cx="0" cy="52" r="2.2" fill="#00FF88" />
+        <circle cx="-46" cy="26" r="2.2" fill="#00FF88" />
+        <circle cx="-46" cy="-26" r="2.2" fill="#00FF88" />
+      </g>
+
+      <!-- Neural Network Synapse Conduits to Peripheral Nodes -->
+      <g stroke-linecap="round">
+        <!-- Conduit to Top-Left Node (MCP Bus) -->
+        <line x1="-160" y1="-75" x2="-46" y2="-26" stroke="#00D9FF" stroke-width="0.9" stroke-opacity="0.4" stroke-dasharray="4 3">
+          <animate attributeName="stroke-opacity" values="0.2; 0.7; 0.2" dur="3s" repeatCount="indefinite" />
+        </line>
+        <!-- Conduit to Top-Right Node (Micro-Agents) -->
+        <line x1="160" y1="-75" x2="46" y2="-26" stroke="#00FF88" stroke-width="0.9" stroke-opacity="0.4" stroke-dasharray="4 3">
+          <animate attributeName="stroke-opacity" values="0.7; 0.2; 0.7" dur="3s" repeatCount="indefinite" />
+        </line>
+        <!-- Conduit to Bottom-Left Node (LRU Cache) -->
+        <line x1="-160" y1="75" x2="-46" y2="26" stroke="#00FF88" stroke-width="0.9" stroke-opacity="0.4" stroke-dasharray="4 3">
+          <animate attributeName="stroke-opacity" values="0.3; 0.8; 0.3" dur="3.5s" repeatCount="indefinite" />
+        </line>
+        <!-- Conduit to Bottom-Right Node (pgvector) -->
+        <line x1="160" y1="75" x2="46" y2="26" stroke="#8B5CF6" stroke-width="0.9" stroke-opacity="0.4" stroke-dasharray="4 3">
+          <animate attributeName="stroke-opacity" values="0.8; 0.3; 0.8" dur="3.5s" repeatCount="indefinite" />
+        </line>
+      </g>
+
+      <!-- Peripheral Telemetry Nodes -->
+      <!-- Node 1: Top-Left (MCP Tool Bus) -->
+      <g transform="translate(-210, -92)">
+        <rect width="125" height="30" rx="3" fill="#071418" stroke="#00D9FF" stroke-width="0.8" stroke-opacity="0.8" />
+        <circle cx="10" cy="15" r="2.5" fill="#00D9FF">
+          <animate attributeName="opacity" values="1; 0.3; 1" dur="1.8s" repeatCount="indefinite" />
+        </circle>
+        <text x="20" y="14" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">MCP TOOL BUS</text>
+        <text x="20" y="23" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="6.5">Sandboxed Protocol</text>
+      </g>
+
+      <!-- Node 2: Top-Right (38 Micro-Agents) -->
+      <g transform="translate(85, -92)">
+        <rect width="125" height="30" rx="3" fill="#071A15" stroke="#00FF88" stroke-width="0.8" stroke-opacity="0.8" />
+        <circle cx="10" cy="15" r="2.5" fill="#00FF88">
+          <animate attributeName="opacity" values="1; 0.3; 1" dur="2.1s" repeatCount="indefinite" />
+        </circle>
+        <text x="20" y="14" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">38 MICRO-AGENTS</text>
+        <text x="20" y="23" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="6.5">100 Domains Swarm</text>
+      </g>
+
+      <!-- Node 3: Bottom-Left (Redis / LRU) -->
+      <g transform="translate(-210, 62)">
+        <rect width="125" height="30" rx="3" fill="#071A15" stroke="#00FF88" stroke-width="0.8" stroke-opacity="0.8" />
+        <circle cx="10" cy="15" r="2.5" fill="#00FF88">
+          <animate attributeName="opacity" values="1; 0.3; 1" dur="1.5s" repeatCount="indefinite" />
+        </circle>
+        <text x="20" y="14" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">REDIS L1/L2 CACHE</text>
+        <text x="20" y="23" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="6.5">Bounded 5k LRU</text>
+      </g>
+
+      <!-- Node 4: Bottom-Right (PostgreSQL / pgvector) -->
+      <g transform="translate(85, 62)">
+        <rect width="125" height="30" rx="3" fill="#120E22" stroke="#8B5CF6" stroke-width="0.8" stroke-opacity="0.8" />
+        <circle cx="10" cy="15" r="2.5" fill="#8B5CF6">
+          <animate attributeName="opacity" values="1; 0.3; 1" dur="2.3s" repeatCount="indefinite" />
+        </circle>
+        <text x="20" y="14" fill="#C4B5FD" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700">POSTGRES / PGVECTOR</text>
+        <text x="20" y="23" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="6.5">Semantic Embeddings</text>
+      </g>
+    </g>
+
+    <!-- Bottom Readout Bar inside Viewport -->
+    <g transform="translate(634, 328)" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="#5A7184">
+      <text x="0" y="0">CONCURRENCY: DETERMINISTIC</text>
+      <text x="175" y="0">LATENCY: &lt;50ms</text>
+      <text x="345" y="0">471 TEST ASSERTIONS: PASS</text>
+    </g>
+  </g>
+</svg>

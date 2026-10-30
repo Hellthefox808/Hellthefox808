@@ -298,8 +298,8 @@ class VerificationHarness:
         if not content:
             return "FAIL", "README.md does not exist or is empty", []
         checks = []
-        if not re.search(r'(?:src|href)=["\']\./assets/hero\.svg["\']', content):
-            checks.append("Missing reference to ./assets/hero.svg in Hero banner")
+        if not re.search(r'(?:src|href)=["\']\./assets/(?:hero\.svg|animated/hero-motion\.gif)["\']', content):
+            checks.append("Missing reference to ./assets/hero.svg or ./assets/animated/hero-motion.gif in Hero banner")
         if "img.shields.io" not in content and "komarev.com" not in content:
             checks.append("Missing telemetry badges (shields.io or komarev profile counter)")
         if checks:
@@ -357,7 +357,7 @@ class VerificationHarness:
         if not content:
             return "FAIL", "README.md does not exist", []
         sections = [
-            ("Hero Banner", r"<img[^>]+src=[\"']\./assets/hero\.svg[\"']"),
+            ("Hero Banner", r"<img[^>]+src=[\"']\./assets/(?:hero\.svg|animated/hero-motion\.gif)[\"']"),
             ("About Me", r"##\s+(\d+\s+//\s+)?About Me"),
             ("Engineering Focus", r"##\s+(\d+\s+//\s+)?Engineering (Focus|Identity)"),
             ("Technical Architecture", r"##\s+(\d+\s+//\s+)?(Technical Architecture|Areas of Expertise)"),
@@ -368,7 +368,7 @@ class VerificationHarness:
             ("Certifications & Learning", r"##\s+(\d+\s+//\s+)?Certifications"),
             ("Currently Exploring", r"(##\s+(\d+\s+//\s+)?(Currently Exploring|Active Research)|###\s+Active Research & Current Exploration)"),
             ("Collaboration & Interests", r"##\s+(\d+\s+//\s+)?Collaboration"),
-            ("Contact & Footer", r"(##\s+(\d+\s+//\s+)?Contact|<img[^>]+src=[\"']\./assets/footer\.svg[\"']|Node ID:\s*RR-0808)"),
+            ("Contact & Footer", r"(##\s+(\d+\s+//\s+)?Contact|<img[^>]+src=[\"']\./assets/(?:footer\.svg|animated/footer-motion\.gif)[\"']|Node ID:\s*RR-0808)"),
         ]
         last_pos = -1
         out_of_seq = []
@@ -1289,7 +1289,7 @@ class VerificationHarness:
         if not content:
             return "FAIL", "README.md does not exist", []
         # Check that top banners use responsive width="100%" or equivalent
-        banners = re.findall(r'<img\b[^>]*src=["\']\./assets/(?:hero|expertise|architecture|divider|footer)\.svg["\'][^>]*>', content)
+        banners = re.findall(r'<img\b[^>]*src=["\']\./assets/(?:animated/(?:hero|expertise|architecture|footer|projects)-motion\.gif|(?:hero|expertise|architecture|divider|footer|projects)\.svg)["\'][^>]*>', content)
         non_responsive = []
         for b in banners:
             if 'width="100%"' not in b and "width='100%'" not in b:

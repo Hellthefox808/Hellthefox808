@@ -176,22 +176,26 @@ To solve platform-specific rendering anomalies (such as GitHub Mobile suppressin
 ```
 
 ### Motion Tiers & Animation Specifications
-- **SMIL Declarative Loops**: Hardware-accelerable vector transformations using `<animateTransform attributeName="transform" type="rotate" ... repeatCount="indefinite" />` and `<animate attributeName="stroke-dashoffset" ... />`.
+- **4D Spatial Illusion & Volumetric Projection**: Multi-layered depth planes ($z=0.5$ to $z=2.0$) simulating depth through perspective scaling, opacity modulation, and harmonic orbital drift.
+- **3D Rotating Hypercube Structure**: Isometric wireframe tesseract with animated vertex transformation, translucent gradient facet shading, and an optical center singularity.
+- **Concentric Oblique Orbital Rings**: Nested elliptical rings tilted along oblique axes ($-28^\circ$, $+36^\circ$, and equator) with dynamic orbiting satellite nodes.
+- **Typographic Specular Light Sweep**: Animated linear gradient sweep (`typogSweep`) traversing the candidate's name every 6 seconds, producing a specular gleam across typography.
 - **Conduit Pulse Speeds**:
   - Primary network bus pulse: 4.0s linear loop.
-  - Core hexagonal ring rotation: 24.0s continuous clockwise revolution.
+  - Orbital satellite revolution: 9.0s to 18.0s continuous cycles.
   - Data telemetry packet blink: 1.5s ease-in-out breathing cycle.
-- **GIF Master Encoding**: Rendered at 18 FPS with quantized cybernetic color palettes (256 colors maximum) to keep file sizes under 1.5 MB while maintaining crystal-clear vector sharpness.
+- **GIF Master Encoding**: Rendered at 18 FPS with adaptive 256-color palette quantization (Floyd-Steinberg dithering) to preserve razor-sharp typography and smooth transitions.
 
 ---
 
 ## 7. Interactive Motion Engine (`motion-preview/`)
 
-The interactive preview engine in `motion-preview/` (`index.html`, `styles.css`, `motion.js`) is an offline visual sandbox that simulates a real-time 3D particle constellation field:
+The interactive preview engine in `motion-preview/` (`index.html`, `styles.css`, `motion.js`, `assets/`) is an offline visual sandbox that simulates a real-time 3D particle constellation field:
 1. **Offline Independence**: Zero external CDN script tags; 100% self-contained vanilla ES6 JavaScript and HTML5 Canvas API.
-2. **Particle Constellation**: 80 floating nodes moving through a 3D coordinate space with dynamic distance-based connecting vectors.
-3. **Interactive Parallax**: Captures `mousemove` and `touchmove` events to project a dynamic 3D camera tilt matrix onto canvas vertices.
-4. **Performance Target**: Continuous 60 FPS execution via `requestAnimationFrame` with automatic canvas resolution scaling matching `window.devicePixelRatio`.
+2. **Volumetric Particle Constellation**: 40 to 300 floating nodes moving through a 3D coordinate space with dynamic distance-based proximity conduits and cursor deflection physics.
+3. **Interactive Parallax & Camera Zoom**: Smooth linear interpolation (`lerp = 0.08`) capturing cursor movement for dynamic 3D card tilt ($\theta_x, \theta_y \le 13^\circ$), combined with camera push-in and pull-out zoom controls ($0.7\times$ to $1.5\times$).
+4. **Reduced Motion & Accessibility**: Full compliance with `prefers-reduced-motion` media queries and an explicit interactive toggle to damp velocity, disable tilt, and ensure comfortable viewing.
+5. **Performance Target**: Continuous 60 FPS execution via `requestAnimationFrame` with automatic canvas resolution scaling matching `window.devicePixelRatio`.
 
 ---
 

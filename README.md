@@ -1,7 +1,16 @@
 <div align="center">
 
 <!-- HERO BANNER -->
-<img src="./assets/hero.svg" alt="Ravi Ranjan Singh — Software Engineer and AI Systems Builder Hero Banner" width="100%" />
+<img src="./assets/animated/hero-motion.gif" alt="Ravi Ranjan Singh — Software Engineer and AI Systems Builder Hero Banner" width="100%" />
+
+<p align="center">
+  <sub>
+    <a href="./motion-preview/index.html">4D Interactive Motion Engine</a> · 
+    <a href="./assets/motion/hero-motion.svg">SVG Motion Source</a> · 
+    <a href="./assets/hero.svg">Vector Schematic</a> · 
+    <a href="./assets/static/hero.png">Static Fallback</a>
+  </sub>
+</p>
 
 <br /><br />
 
@@ -98,9 +107,23 @@ My engineering practice is grounded in four foundational disciplines:
 ## 03 // Technical Architecture
 
 <div align="center">
-  <img src="./assets/architecture.svg" alt="End-to-End Technical Architecture Diagram" width="100%" />
-  <br /><br />
-  <img src="./assets/expertise.svg" alt="Areas of Engineering Expertise Architecture Diagram" width="100%" />
+  <img src="./assets/animated/architecture-motion.gif" alt="End-to-End Technical Architecture Diagram" width="100%" />
+  <p align="center">
+    <sub>
+      <a href="./assets/motion/architecture-motion.svg">SVG Motion Source</a> · 
+      <a href="./assets/architecture.svg">Vector Schematic</a> · 
+      <a href="./assets/static/architecture.png">Static Fallback</a>
+    </sub>
+  </p>
+  <br />
+  <img src="./assets/animated/expertise-motion.gif" alt="Areas of Engineering Expertise Architecture Diagram" width="100%" />
+  <p align="center">
+    <sub>
+      <a href="./assets/motion/expertise-motion.svg">SVG Motion Source</a> · 
+      <a href="./assets/expertise.svg">Vector Schematic</a> · 
+      <a href="./assets/static/expertise.png">Static Fallback</a>
+    </sub>
+  </p>
 </div>
 
 <br />
@@ -123,7 +146,14 @@ My engineering practice is grounded in four foundational disciplines:
 ## 04 // Featured Projects
 
 <div align="center">
-  <img src="./assets/projects.svg" alt="Featured Engineering Projects Matrix Diagram" width="100%" />
+  <img src="./assets/animated/projects-motion.gif" alt="Featured Engineering Projects Matrix Diagram" width="100%" />
+  <p align="center">
+    <sub>
+      <a href="./assets/motion/projects-motion.svg">SVG Motion Source</a> · 
+      <a href="./assets/projects.svg">Vector Schematic</a> · 
+      <a href="./assets/static/projects.png">Static Fallback</a>
+    </sub>
+  </p>
 </div>
 
 <br />
@@ -437,6 +467,15 @@ If you are building products that solve complex engineering challenges, let’s 
 
 <br /><br />
 
-<img src="./assets/footer.svg" alt="Closing Cybernetic Horizon and Creed Footer Graphic" width="100%" />
+<img src="./assets/animated/footer-motion.gif" alt="Closing Cybernetic Horizon and Creed Footer Graphic" width="100%" />
+
+<p align="center">
+  <sub>
+    <a href="./motion-preview/index.html">Launch 4D Interactive Experience</a> · 
+    <a href="./assets/motion/footer-motion.svg">SVG Motion Source</a> · 
+    <a href="./assets/footer.svg">Vector Schematic</a> · 
+    <a href="./assets/static/footer.png">Static Fallback</a>
+  </sub>
+</p>
 
 </div>
