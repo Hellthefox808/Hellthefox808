@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANTIGRAVITY // 4D Visual Motion Preview — Ravi Ranjan Singh</title>
+  <meta name="description" content="Standalone 4D Interactive Motion Engine and Cyber-Engineering Asset Inspector for Ravi Ranjan Singh's GitHub Profile Suite">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Fullscreen Interactive Canvas Particle Field -->
+  <canvas id="particleCanvas" aria-label="Interactive 4D Volumetric Particle Constellation"></canvas>
+
+  <!-- Cybernetic Grid Background Overlay -->
+  <div class="cyber-grid-overlay" aria-hidden="true"></div>
+
+  <!-- Main Viewport Shell -->
+  <div class="app-shell">
+
+    <!-- Top Telemetry HUD Header -->
+    <header class="hud-header">
+      <div class="hud-brand">
+        <div class="brand-glyph" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2" stroke="#00FF88"></polygon>
+            <polyline points="2 17 12 22 22 17" stroke="#00E5FF"></polyline>
+            <polyline points="2 12 12 17 22 12" stroke="#8B5CF6"></polyline>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">ANTIGRAVITY <span class="badge-version">v4.2 PRO</span></div>
+          <div class="brand-subtitle">4D VISUAL &amp; MOTION ENGINE // RR-0808</div>
+        </div>
+      </div>
+
+      <div class="hud-status-center">
+        <span class="status-pulse-dot" aria-hidden="true"></span>
+        <span class="status-label">SYS_STATE: <strong class="text-emerald">ACTIVE_SIMULATION</strong></span>
+      </div>
+
+      <div class="hud-telemetry-cluster">
+        <div class="telemetry-pill">
+          <span class="pill-label">FPS</span>
+          <span class="pill-value text-emerald" id="telemetryFps">60</span>
+        </div>
+        <div class="telemetry-pill">
+          <span class="pill-label">NODES</span>
+          <span class="pill-value text-cyan" id="telemetryParticles">160</span>
+        </div>
+        <div class="telemetry-pill">
+          <span class="pill-label">CONDUITS</span>
+          <span class="pill-value text-violet" id="telemetryLinks">0</span>
+        </div>
+        <div class="telemetry-pill pill-hide-mobile">
+          <span class="pill-label">FRAME</span>
+          <span class="pill-value text-primary" id="telemetryDelta">16.6ms</span>
+        </div>
+        <button class="hud-btn-toggle-controls" id="btnToggleDrawer" title="Toggle HUD Controls Panel">
+          <span class="btn-icon">⚙</span>
+          <span class="btn-text">CONTROLS</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main 3D Perspective Stage -->
+    <main class="viewport-stage" id="stageContainer">
+      <div class="stage-eyebrow">
+        <span class="eyebrow-segment text-emerald">// 3D PARALLAX VIEWPORT</span>
+        <span class="eyebrow-divider">::</span>
+        <span class="eyebrow-segment text-muted">MOUSE-INDUCED ROTATION LERP (0.08)</span>
+        <span class="eyebrow-divider">::</span>
+        <span class="eyebrow-segment text-cyan" id="stageCurrentTarget">HERO BANNER (1200x380)</span>
+      </div>
+
+      <!-- 3D Transform Perspective Card Wrapper -->
+      <div class="perspective-stage" id="perspectiveStage">
+        <div class="card-3d-wrapper" id="cardWrapper">
+          <!-- Specular Glare Reflection -->
+          <div class="card-glare" id="cardGlare" aria-hidden="true"></div>
+
+          <!-- Glassmorphic Cybernetic Card Frame -->
+          <div class="card-frame" id="cardFrame">
+            <!-- Corner Reticle HUD Brackets -->
+            <span class="reticle reticle-tl" aria-hidden="true"></span>
+            <span class="reticle reticle-tr" aria-hidden="true"></span>
+            <span class="reticle reticle-bl" aria-hidden="true"></span>
+            <span class="reticle reticle-br" aria-hidden="true"></span>
+
+            <!-- Card Header -->
+            <div class="card-header">
+              <div class="card-header-left">
+                <span class="card-status-dot"></span>
+                <span class="card-id" id="cardHeaderId">CARD_01 // HERO</span>
+                <span class="card-title-text" id="cardHeaderTitle">Distributed Agent Topology &amp; Systems Architecture</span>
+              </div>
+              <div class="card-header-right">
+                <span class="card-badge badge-dim" id="cardHeaderDimensions">1200 × 380</span>
+                <span class="card-badge badge-format" id="cardHeaderFormat">STANDALONE SVG</span>
+              </div>
+            </div>
+
+            <!-- Card Viewport Content -->
+            <div class="card-viewport" id="cardViewport">
+              <!-- Live Image Element -->
+              <img id="activeAssetImage" 
+                   src="../assets/hero.svg" 
+                   alt="Ravi Ranjan Singh Engineering Asset Preview" 
+                   class="asset-image" />
+
+              <!-- Cybernetic Fallback / Loading State Placeholder -->
+              <div class="card-fallback" id="cardFallback" style="display: none;">
+                <div class="fallback-grid"></div>
+                <div class="fallback-content">
+                  <div class="fallback-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00FF88" stroke-width="1.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="4 2"></rect>
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <line x1="12" y1="3" x2="12" y2="7"></line>
+                      <line x1="12" y1="17" x2="12" y2="21"></line>
+                      <line x1="3" y1="12" x2="7" y2="12"></line>
+                      <line x1="17" y1="12" x2="21" y2="12"></line>
+                    </svg>
+                  </div>
+                  <div class="fallback-title" id="fallbackTitle">ASSET SYNCHRONIZING</div>
+                  <div class="fallback-meta" id="fallbackMeta">Awaiting target pipeline asset generation: <code id="fallbackPath">assets/hero.svg</code></div>
+                  <div class="fallback-indicator">
+                    <span class="indicator-bar"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer Telemetry Bar -->
+            <div class="card-footer">
+              <div class="card-footer-left">
+                <span class="footer-label">PATH:</span>
+                <code class="footer-path" id="cardFooterPath">assets/hero.svg</code>
+              </div>
+              <div class="card-footer-right">
+                <span class="tag-cyber">CSP COMPLIANT</span>
+                <span class="tag-cyber text-emerald">ZERO DEPENDENCIES</span>
+                <span class="tag-cyber text-cyan">HIGH-DPI READY</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Asset Selector & Format Matrix -->
+    <section class="asset-inspector-bar">
+      <div class="inspector-group">
+        <span class="inspector-label">SELECT ASSET:</span>
+        <div class="asset-tabs" id="assetTabs" role="tablist">
+          <button class="tab-btn active" data-asset="hero" role="tab" aria-selected="true">
+            <span class="tab-index">01</span>
+            <span class="tab-name">Hero Banner</span>
+            <span class="tab-size">1200×380</span>
+          </button>
+          <button class="tab-btn" data-asset="expertise" role="tab" aria-selected="false">
+            <span class="tab-index">02</span>
+            <span class="tab-name">Expertise Taxonomy</span>
+            <span class="tab-size">1200×540</span>
+          </button>
+          <button class="tab-btn" data-asset="architecture" role="tab" aria-selected="false">
+            <span class="tab-index">03</span>
+            <span class="tab-name">Architecture Flow</span>
+            <span class="tab-size">1200×480</span>
+          </button>
+          <button class="tab-btn" data-asset="projects" role="tab" aria-selected="false">
+            <span class="tab-index">04</span>
+            <span class="tab-name">Featured Projects</span>
+            <span class="tab-size">1200×580</span>
+          </button>
+          <button class="tab-btn" data-asset="footer" role="tab" aria-selected="false">
+            <span class="tab-index">05</span>
+            <span class="tab-name">Telemetry Footer</span>
+            <span class="tab-size">1200×220</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="inspector-group format-group">
+        <span class="inspector-label">TARGET FORMAT:</span>
+        <div class="format-pills" id="formatPills">
+          <button class="pill-btn active" data-format="svg" title="Core Standalone XML/SVG Banner">
+            <span class="pill-dot dot-emerald"></span>
+            <span>Standalone SVG</span>
+          </button>
+          <button class="pill-btn" data-format="motion-svg" title="Declarative SMIL Motion SVG">
+            <span class="pill-dot dot-cyan"></span>
+            <span>Motion SVG</span>
+          </button>
+          <button class="pill-btn" data-format="gif" title="Rasterized 18 FPS Seamless Loop GIF">
+            <span class="pill-dot dot-violet"></span>
+            <span>Animated GIF</span>
+          </button>
+          <button class="pill-btn" data-format="png" title="High-DPI 2x Rasterized PNG Fallback">
+            <span class="pill-dot dot-amber"></span>
+            <span>Static PNG</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Floating HUD Controls Drawer -->
+    <aside class="controls-drawer" id="controlsDrawer" aria-label="Engine Telemetry Controls">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <span class="drawer-icon">🎛</span>
+          <span>HUD CONTROLS &amp; TELEMETRY</span>
+        </div>
+        <button class="drawer-close" id="btnCloseDrawer" aria-label="Close Controls Panel">&times;</button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- Control Group 1: Particle Field Parameters -->
+        <div class="control-card">
+          <div class="control-card-header">
+            <span class="card-icon">✨</span>
+            <span class="card-title">PARTICLE CONSTELLATION ENGINE</span>
+          </div>
+
+          <div class="slider-item">
+            <div class="slider-label-row">
+              <span>Particle Density (Nodes)</span>
+              <span class="slider-value text-emerald" id="valParticleCount">160</span>
+            </div>
+            <input type="range" id="sliderParticleCount" min="40" max="300" step="10" value="160" class="cyber-range">
+          </div>
+
+          <div class="slider-item">
+            <div class="slider-label-row">
+              <span>Proximity Conduits (Radius)</span>
+              <span class="slider-value text-cyan" id="valLinkDistance">115px</span>
+            </div>
+            <input type="range" id="sliderLinkDistance" min="50" max="180" step="5" value="115" class="cyber-range">
+          </div>
+
+          <div class="slider-item">
+            <div class="slider-label-row">
+              <span>Mouse Repulsion Field</span>
+              <span class="slider-value text-violet" id="valRepulsion">120px</span>
+            </div>
+            <input type="range" id="sliderRepulsion" min="40" max="240" step="10" value="120" class="cyber-range">
+          </div>
+
+          <div class="slider-item">
+            <div class="slider-label-row">
+              <span>Drift Velocity</span>
+              <span class="slider-value text-primary" id="valSpeed">1.0x</span>
+            </div>
+            <input type="range" id="sliderSpeed" min="0.2" max="2.5" step="0.1" value="1.0" class="cyber-range">
+          </div>
+        </div>
+
+        <!-- Control Group 2: 3D Camera & Parallax -->
+        <div class="control-card">
+          <div class="control-card-header">
+            <span class="card-icon">📐</span>
+            <span class="card-title">3D PERSPECTIVE &amp; CAMERA</span>
+          </div>
+
+          <div class="slider-item">
+            <div class="slider-label-row">
+              <span>Tilt Parallax Sensitivity</span>
+              <span class="slider-value text-emerald" id="valParallax">1.0x</span>
+            </div>
+            <input type="range" id="sliderParallax" min="0" max="2.5" step="0.1" value="1.0" class="cyber-range">
+          </div>
+
+          <div class="toggles-grid">
+            <label class="toggle-control">
+              <input type="checkbox" id="chkEnableLinks" checked>
+              <span class="toggle-indicator"></span>
+              <span class="toggle-text">Proximity Conduits</span>
+            </label>
+            <label class="toggle-control">
+              <input type="checkbox" id="chkEnableParticles" checked>
+              <span class="toggle-indicator"></span>
+              <span class="toggle-text">Floating Nodes</span>
+            </label>
+            <label class="toggle-control">
+              <input type="checkbox" id="chkEnableParallax" checked>
+              <span class="toggle-indicator"></span>
+              <span class="toggle-text">3D Mouse Tilt</span>
+            </label>
+            <label class="toggle-control">
+              <input type="checkbox" id="chkEnableRepulsion" checked>
+              <span class="toggle-indicator"></span>
+              <span class="toggle-text">Cursor Deflection</span>
+            </label>
+            <label class="toggle-control">
+              <input type="checkbox" id="chkEnableAutoOrbit">
+              <span class="toggle-indicator"></span>
+              <span class="toggle-text">Cinematic Idle Orbit</span>
+            </label>
+            <label class="toggle-control">
+              <input type="checkbox" id="chkEnableGlow" checked>
+              <span class="toggle-indicator"></span>
+              <span class="toggle-text">Conduit Energy Glow</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Control Group 3: Cyber-Engineering Design Tokens -->
+        <div class="control-card">
+          <div class="control-card-header">
+            <span class="card-icon">🎨</span>
+            <span class="card-title">DESIGN TOKEN PALETTE (CLICK TO COPY)</span>
+          </div>
+          <div class="palette-grid" id="paletteGrid">
+            <div class="token-swatch" data-token="#05080B" data-name="bg-void" title="Click to copy #05080B">
+              <span class="swatch-color" style="background: #05080B; border: 1px solid #30363D;"></span>
+              <div class="swatch-info">
+                <span class="swatch-name">bg-void</span>
+                <span class="swatch-hex">#05080B</span>
+              </div>
+            </div>
+            <div class="token-swatch" data-token="#0A0C10" data-name="bg-canvas" title="Click to copy #0A0C10">
+              <span class="swatch-color" style="background: #0A0C10; border: 1px solid #30363D;"></span>
+              <div class="swatch-info">
+                <span class="swatch-name">bg-canvas</span>
+                <span class="swatch-hex">#0A0C10</span>
+              </div>
+            </div>
+            <div class="token-swatch" data-token="#0D1117" data-name="bg-surface" title="Click to copy #0D1117">
+              <span class="swatch-color" style="background: #0D1117; border: 1px solid #30363D;"></span>
+              <div class="swatch-info">
+                <span class="swatch-name">bg-surface</span>
+                <span class="swatch-hex">#0D1117</span>
+              </div>
+            </div>
+            <div class="token-swatch" data-token="#00FF88" data-name="accent-emerald" title="Click to copy #00FF88">
+              <span class="swatch-color" style="background: #00FF88;"></span>
+              <div class="swatch-info">
+                <span class="swatch-name">accent-emerald</span>
+                <span class="swatch-hex">#00FF88</span>
+              </div>
+            </div>
+            <div class="token-swatch" data-token="#00E5FF" data-name="accent-cyan" title="Click to copy #00E5FF">
+              <span class="swatch-color" style="background: #00E5FF;"></span>
+              <div class="swatch-info">
+                <span class="swatch-name">accent-cyan</span>
+                <span class="swatch-hex">#00E5FF</span>
+              </div>
+            </div>
+            <div class="token-swatch" data-token="#8B5CF6" data-name="accent-violet" title="Click to copy #8B5CF6">
+              <span class="swatch-color" style="background: #8B5CF6;"></span>
+              <div class="swatch-info">
+                <span class="swatch-name">accent-violet</span>
+                <span class="swatch-hex">#8B5CF6</span>
+              </div>
+            </div>
+            <div class="token-swatch" data-token="#10B981" data-name="accent-mint" title="Click to copy #10B981">
+              <span class="swatch-color" style="background: #10B981;"></span>
+              <div class="swatch-info">
+                <span class="swatch-name">accent-mint</span>
+                <span class="swatch-hex">#10B981</span>
+              </div>
+            </div>
+            <div class="token-swatch" data-token="#FFB84D" data-name="accent-amber" title="Click to copy #FFB84D">
+              <span class="swatch-color" style="background: #FFB84D;"></span>
+              <div class="swatch-info">
+                <span class="swatch-name">accent-amber</span>
+                <span class="swatch-hex">#FFB84D</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Control Group 4: Simulation Presets -->
+        <div class="control-card">
+          <div class="control-card-header">
+            <span class="card-icon">⚡</span>
+            <span class="card-title">SIMULATION PRESETS</span>
+          </div>
+          <div class="presets-row">
+            <button class="btn-preset" data-preset="balanced">Balanced</button>
+            <button class="btn-preset" data-preset="neural">Neural Mesh</button>
+            <button class="btn-preset" data-preset="nebula">Deep Space</button>
+            <button class="btn-preset" data-preset="performance">Eco Mode</button>
+          </div>
+          <div class="actions-row">
+            <button class="btn-reset-defaults" id="btnResetDefaults">Reset All to Standard Defaults</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Bottom Telemetry HUD Status Bar -->
+    <footer class="hud-footer">
+      <div class="hud-footer-left">
+        <span class="telemetry-item">
+          <span class="item-tag">CURSOR:</span>
+          <span class="item-val" id="telemetryCursor">X: 0, Y: 0</span>
+        </span>
+        <span class="telemetry-separator">|</span>
+        <span class="telemetry-item">
+          <span class="item-tag">TILT:</span>
+          <span class="item-val" id="telemetryTilt">θx: +0.0°, θy: +0.0°</span>
+        </span>
+      </div>
+
+      <div class="hud-footer-center">
+        <span class="telemetry-engine-badge">
+          ANTIGRAVITY // 4D VISUAL &amp; MOTION PIPELINE CERTIFIED
+        </span>
+      </div>
+
+      <div class="hud-footer-right">
+        <span class="telemetry-item">
+          <span class="item-tag">VIEWPORT:</span>
+          <span class="item-val" id="telemetryViewport">1920×1080 @ 1.0x</span>
+        </span>
+        <span class="telemetry-separator">|</span>
+        <span class="telemetry-item">
+          <span class="item-tag">TARGET:</span>
+          <span class="item-val text-emerald" id="telemetryTarget">HERO (SVG)</span>
+        </span>
+      </div>
+    </footer>
+
+    <!-- Copy Token Toast Notification -->
+    <div class="cyber-toast" id="cyberToast" aria-live="polite">
+      <span class="toast-icon">✔</span>
+      <span class="toast-message" id="toastMessage">Copied #00FF88 to clipboard</span>
+    </div>
+
+  </div>
+
+  <!-- Pure ES6 Standalone Motion Engine Script -->
+  <script src="motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="archTitle archDesc">
+  <title id="archTitle">End-to-End System Architecture (Motion) — Ravi Ranjan Singh</title>
+  <desc id="archDesc">High-Assurance Agentic and Distributed Fabric showing animated streaming packets and data flow from edge ingress to persistent vector storage.</desc>
+
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080B" />
+      <stop offset="45%" stop-color="#081014" />
+      <stop offset="85%" stop-color="#0B1519" />
+      <stop offset="100%" stop-color="#05080B" />
+    </linearGradient>
+
+    <!-- Linear Accent Gradients -->
+    <linearGradient id="neonEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00DFA5" />
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00DFA5" />
+      <stop offset="100%" stop-color="#00D9FF" />
+    </linearGradient>
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D9FF" />
+      <stop offset="100%" stop-color="#9875FF" />
+    </linearGradient>
+
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.8" />
+      <stop offset="35%" stop-color="#00DFA5" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#00D9FF" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#9875FF" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Card Backgrounds -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B171D" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#071015" stop-opacity="0.96" />
+    </linearGradient>
+
+    <!-- Technical Grid Pattern -->
+    <pattern id="archGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#00FF88" stroke-width="0.75" stroke-opacity="0.06" />
+      <circle cx="0" cy="0" r="1" fill="#00FF88" fill-opacity="0.18" />
+    </pattern>
+
+    <!-- Glow Filter -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="480" rx="16" fill="url(#archBg)" />
+  <rect width="1200" height="480" rx="16" fill="url(#archGrid)" />
+  <rect x="2" y="2" width="1196" height="476" rx="15" fill="none" stroke="url(#borderGrad)" stroke-width="1.5" />
+
+  <!-- Corner HUD Reticles -->
+  <path d="M 18 45 L 18 20 Q 18 18 20 18 L 45 18" fill="none" stroke="#00FF88" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="28" cy="28" r="2" fill="#00FF88" />
+  <path d="M 1155 18 L 1180 18 Q 1182 18 1182 20 L 1182 45" fill="none" stroke="#00D9FF" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="1172" cy="28" r="2" fill="#00D9FF" />
+  <path d="M 18 435 L 18 460 Q 18 462 20 462 L 45 462" fill="none" stroke="#00DFA5" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="28" cy="452" r="2" fill="#00DFA5" />
+  <path d="M 1155 462 L 1180 462 Q 1182 462 1182 460 L 1182 435" fill="none" stroke="#9875FF" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="1172" cy="452" r="2" fill="#9875FF" />
+
+  <!-- Header Section -->
+  <g transform="translate(600, 34)" text-anchor="middle">
+    <text y="0" fill="#00FF88" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="11" font-weight="700" letter-spacing="2">
+      // END-TO-END TECHNICAL ARCHITECTURE &amp; DATA FLOW //
+    </text>
+    <text y="24" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1">
+      HIGH-ASSURANCE AGENTIC &amp; DISTRIBUTED FABRIC
+    </text>
+    <text y="42" fill="#7E92A2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" letter-spacing="0.5">
+      Multi-tier deterministic pipeline from edge ingress to persistent storage
+    </text>
+    <line x1="-380" y1="52" x2="380" y2="52" stroke="url(#neonCyan)" stroke-width="1.5" stroke-opacity="0.7" />
+  </g>
+
+  <!-- Connecting Bus Lines / Inter-Tier Chevrons with Staggered Pulsing -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bus 1 -> 2 -->
+    <line x1="250" y1="250" x2="280" y2="250" stroke="#00D9FF" stroke-width="2.5" stroke-dasharray="4 3" />
+    <polygon points="274,246 280,250 274,254" fill="#00D9FF">
+      <animate attributeName="opacity" values="0.4; 1; 0.4" dur="1.2s" repeatCount="indefinite" />
+    </polygon>
+
+    <!-- Bus 2 -> 3 -->
+    <line x1="480" y1="250" x2="510" y2="250" stroke="#00FF88" stroke-width="2.5" stroke-dasharray="4 3" />
+    <polygon points="504,246 510,250 504,254" fill="#00FF88">
+      <animate attributeName="opacity" values="0.4; 1; 0.4" dur="1.2s" begin="0.3s" repeatCount="indefinite" />
+    </polygon>
+
+    <!-- Bus 3 -> 4 -->
+    <line x1="710" y1="250" x2="740" y2="250" stroke="#9875FF" stroke-width="2.5" stroke-dasharray="4 3" />
+    <polygon points="734,246 740,250 734,254" fill="#9875FF">
+      <animate attributeName="opacity" values="0.4; 1; 0.4" dur="1.2s" begin="0.6s" repeatCount="indefinite" />
+    </polygon>
+
+    <!-- Bus 4 -> 5 -->
+    <line x1="940" y1="250" x2="970" y2="250" stroke="#00DFA5" stroke-width="2.5" stroke-dasharray="4 3" />
+    <polygon points="964,246 970,250 964,254" fill="#00DFA5">
+      <animate attributeName="opacity" values="0.4; 1; 0.4" dur="1.2s" begin="0.9s" repeatCount="indefinite" />
+    </polygon>
+  </g>
+
+  <!-- Animated Pipeline Flow Packet Traversing All 5 Layers (Seamless 4s Loop) -->
+  <circle cy="250" r="4.5" fill="#00FF88" filter="url(#softGlow)">
+    <animate attributeName="cx" values="150; 380; 610; 840; 1060; 150" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="fill" values="#00D9FF; #00FF88; #9875FF; #00DFA5; #00FF88; #00D9FF" dur="4s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- ========================================================================= -->
+  <!-- LAYER 1: EDGE & CLIENT INGRESS -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 95)">
+    <rect width="200" height="325" rx="12" fill="url(#cardBg)" stroke="#00D9FF" stroke-width="1.4" />
+    <rect width="200" height="30" rx="12" fill="#061D24" />
+    <circle cx="16" cy="15" r="4.5" fill="#00D9FF">
+      <animate attributeName="opacity" values="1; 0.3; 1" dur="1.6s" repeatCount="indefinite" />
+    </circle>
+    <text x="28" y="19" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" letter-spacing="0.8">
+      01 // EDGE &amp; INGRESS
+    </text>
+
+    <!-- Subtitle -->
+    <text x="14" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" font-weight="700">
+      Global Delivery Tier
+    </text>
+
+    <!-- Modules List -->
+    <g transform="translate(14, 75)" font-family="'JetBrains Mono', monospace" font-size="9.5">
+      <g transform="translate(0, 0)">
+        <rect width="172" height="42" rx="6" fill="#08232B" stroke="#00D9FF" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00D9FF" font-weight="700">Next.js 19 App Router</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">SSR &amp; Edge Middleware</text>
+      </g>
+      <g transform="translate(0, 50)">
+        <rect width="172" height="42" rx="6" fill="#08232B" stroke="#00D9FF" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00D9FF" font-weight="700">Cloudflare Edge CDN</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">WAF &amp; Anycast Routing</text>
+      </g>
+      <g transform="translate(0, 100)">
+        <rect width="172" height="42" rx="6" fill="#08232B" stroke="#00D9FF" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00D9FF" font-weight="700">Nginx Reverse Proxy</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">SSL / TLS 1.3 Termination</text>
+      </g>
+      <g transform="translate(0, 150)">
+        <rect width="172" height="42" rx="6" fill="#08232B" stroke="#00D9FF" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00D9FF" font-weight="700">Streaming Protocols</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">SSE &amp; Dual WebSockets</text>
+      </g>
+    </g>
+
+    <!-- Metric Pill -->
+    <g transform="translate(14, 280)">
+      <rect width="172" height="32" rx="6" fill="#051419" stroke="#00D9FF" stroke-width="0.7" />
+      <text x="86" y="15" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">SUB-50ms TTFB</text>
+      <text x="86" y="26" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">HTTP/3 Multiplexing</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- LAYER 2: API GATEWAY & SECURITY PERIMETER -->
+  <!-- ========================================================================= -->
+  <g transform="translate(280, 95)">
+    <rect width="200" height="325" rx="12" fill="url(#cardBg)" stroke="#00FF88" stroke-width="1.4" />
+    <rect width="200" height="30" rx="12" fill="#061F1A" />
+    <circle cx="16" cy="15" r="4.5" fill="#00FF88">
+      <animate attributeName="opacity" values="1; 0.3; 1" dur="1.6s" begin="0.3s" repeatCount="indefinite" />
+    </circle>
+    <text x="28" y="19" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" letter-spacing="0.8">
+      02 // API &amp; SECURITY
+    </text>
+
+    <!-- Subtitle -->
+    <text x="14" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" font-weight="700">
+      Zero-Trust Perimeter
+    </text>
+
+    <!-- Modules List -->
+    <g transform="translate(14, 75)" font-family="'JetBrains Mono', monospace" font-size="9.5">
+      <g transform="translate(0, 0)">
+        <rect width="172" height="42" rx="6" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00FF88" font-weight="700">FastAPI &amp; NestJS</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Async Microservices</text>
+      </g>
+      <g transform="translate(0, 50)">
+        <rect width="172" height="42" rx="6" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00FF88" font-weight="700">Token Rate Limiting</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Leaky Bucket Throttler</text>
+      </g>
+      <g transform="translate(0, 100)">
+        <rect width="172" height="42" rx="6" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00FF88" font-weight="700">Salted Scrypt KDF</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">N=16384, r=8, p=1</text>
+      </g>
+      <g transform="translate(0, 150)">
+        <rect width="172" height="42" rx="6" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00FF88" font-weight="700">Verhoeff D5 Engine</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Dihedral Aadhaar Check</text>
+      </g>
+    </g>
+
+    <!-- Metric Pill -->
+    <g transform="translate(14, 280)">
+      <rect width="172" height="32" rx="6" fill="#061814" stroke="#00FF88" stroke-width="0.7" />
+      <text x="86" y="15" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">ZERO-TRUST RBAC</text>
+      <text x="86" y="26" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">Strict Zod Schema Contracts</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- LAYER 3: AGENTIC SWARM & CONTROL PLANE -->
+  <!-- ========================================================================= -->
+  <g transform="translate(510, 95)">
+    <rect width="200" height="325" rx="12" fill="url(#cardBg)" stroke="#9875FF" stroke-width="1.4" />
+    <rect width="200" height="30" rx="12" fill="#151229" />
+    <circle cx="16" cy="15" r="4.5" fill="#9875FF">
+      <animate attributeName="opacity" values="1; 0.3; 1" dur="1.6s" begin="0.6s" repeatCount="indefinite" />
+    </circle>
+    <text x="28" y="19" fill="#C3B2FF" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" letter-spacing="0.8">
+      03 // AGENTIC CONTROL
+    </text>
+
+    <!-- Subtitle -->
+    <text x="14" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" font-weight="700">
+      Autonomous Orchestration
+    </text>
+
+    <!-- Modules List -->
+    <g transform="translate(14, 75)" font-family="'JetBrains Mono', monospace" font-size="9.5">
+      <g transform="translate(0, 0)">
+        <rect width="172" height="42" rx="6" fill="#1C1736" stroke="#9875FF" stroke-width="0.8" />
+        <text x="8" y="18" fill="#C3B2FF" font-weight="700">38-Agent Swarm Router</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Dynamic Graph Routing</text>
+      </g>
+      <g transform="translate(0, 50)">
+        <rect width="172" height="42" rx="6" fill="#1C1736" stroke="#9875FF" stroke-width="0.8" />
+        <text x="8" y="18" fill="#C3B2FF" font-weight="700">MCP Protocol Tools</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Standardized Tool Bus</text>
+      </g>
+      <g transform="translate(0, 100)">
+        <rect width="172" height="42" rx="6" fill="#1C1736" stroke="#9875FF" stroke-width="0.8" />
+        <text x="8" y="18" fill="#C3B2FF" font-weight="700">HITL State Machine</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">T0-T5 Gate &amp; LIFO Rollback</text>
+      </g>
+      <g transform="translate(0, 150)">
+        <rect width="172" height="42" rx="6" fill="#1C1736" stroke="#9875FF" stroke-width="0.8" />
+        <text x="8" y="18" fill="#C3B2FF" font-weight="700">SHA-256 Audit Ledger</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Ragas / TruLens Grounding</text>
+      </g>
+    </g>
+
+    <!-- Metric Pill -->
+    <g transform="translate(14, 280)">
+      <rect width="172" height="32" rx="6" fill="#120E24" stroke="#9875FF" stroke-width="0.7" />
+      <text x="86" y="15" fill="#C3B2FF" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">ZERO HALLUCINATION</text>
+      <text x="86" y="26" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">Bounded Context Execution</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- LAYER 4: MULTI-TIER CACHE & WORKERS -->
+  <!-- ========================================================================= -->
+  <g transform="translate(740, 95)">
+    <rect width="200" height="325" rx="12" fill="url(#cardBg)" stroke="#00DFA5" stroke-width="1.4" />
+    <rect width="200" height="30" rx="12" fill="#082823" />
+    <circle cx="16" cy="15" r="4.5" fill="#00DFA5">
+      <animate attributeName="opacity" values="1; 0.3; 1" dur="1.6s" begin="0.9s" repeatCount="indefinite" />
+    </circle>
+    <text x="28" y="19" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" letter-spacing="0.8">
+      04 // CACHE &amp; WORKERS
+    </text>
+
+    <!-- Subtitle -->
+    <text x="14" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" font-weight="700">
+      Multi-Tier Accelerator
+    </text>
+
+    <!-- Modules List -->
+    <g transform="translate(14, 75)" font-family="'JetBrains Mono', monospace" font-size="9.5">
+      <g transform="translate(0, 0)">
+        <rect width="172" height="42" rx="6" fill="#0B2F2A" stroke="#00DFA5" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00DFA5" font-weight="700">L1 In-Memory LRU</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Bounded MAX=5000 Items</text>
+      </g>
+      <g transform="translate(0, 50)">
+        <rect width="172" height="42" rx="6" fill="#0B2F2A" stroke="#00DFA5" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00DFA5" font-weight="700">Single-Flight Guard</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Stampede Deduplication</text>
+      </g>
+      <g transform="translate(0, 100)">
+        <rect width="172" height="42" rx="6" fill="#0B2F2A" stroke="#00DFA5" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00DFA5" font-weight="700">L2 Redis Distributed</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Cluster Sharded Keys</text>
+      </g>
+      <g transform="translate(0, 150)">
+        <rect width="172" height="42" rx="6" fill="#0B2F2A" stroke="#00DFA5" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00DFA5" font-weight="700">Async Job Queues</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">BullMQ &amp; Worker Pool</text>
+      </g>
+    </g>
+
+    <!-- Metric Pill with Cache Hit Flash -->
+    <g transform="translate(14, 280)">
+      <rect width="172" height="32" rx="6" fill="#07201D" stroke="#00DFA5" stroke-width="0.7">
+        <animate attributeName="stroke" values="#00DFA5; #00FF88; #00DFA5" dur="2.5s" repeatCount="indefinite" />
+      </rect>
+      <text x="86" y="15" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">STAMPEDE ELIMINATED</text>
+      <text x="86" y="26" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">99.4% L1/L2 Cache Hit Rate</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- LAYER 5: PERSISTENCE & VECTOR FABRIC -->
+  <!-- ========================================================================= -->
+  <g transform="translate(970, 95)">
+    <rect width="180" height="325" rx="12" fill="url(#cardBg)" stroke="#00FF88" stroke-width="1.4" />
+    <rect width="180" height="30" rx="12" fill="#061F1A" />
+    <circle cx="16" cy="15" r="4.5" fill="#00FF88">
+      <animate attributeName="opacity" values="1; 0.3; 1" dur="1.6s" begin="1.2s" repeatCount="indefinite" />
+    </circle>
+    <text x="28" y="19" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700" letter-spacing="0.8">
+      05 // PERSISTENCE
+    </text>
+
+    <!-- Subtitle -->
+    <text x="14" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" font-weight="700">
+      Reliability &amp; RAG
+    </text>
+
+    <!-- Modules List -->
+    <g transform="translate(14, 75)" font-family="'JetBrains Mono', monospace" font-size="9.5">
+      <g transform="translate(0, 0)">
+        <rect width="152" height="42" rx="6" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00FF88" font-weight="700">PostgreSQL Primary</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">ACID Compliant Relational</text>
+      </g>
+      <g transform="translate(0, 50)">
+        <rect width="152" height="42" rx="6" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00FF88" font-weight="700">pgvector HNSW</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Dense Vector Indexing</text>
+      </g>
+      <g transform="translate(0, 100)">
+        <rect width="152" height="42" rx="6" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00FF88" font-weight="700">Supabase Realtime</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Logical Replicator</text>
+      </g>
+      <g transform="translate(0, 150)">
+        <rect width="152" height="42" rx="6" fill="#082A20" stroke="#00FF88" stroke-width="0.8" />
+        <text x="8" y="18" fill="#00FF88" font-weight="700">SQLite Offline Sync</text>
+        <text x="8" y="32" fill="#AAB7C4" font-size="8.5">Edge Local-First Mirror</text>
+      </g>
+    </g>
+
+    <!-- Metric Pill -->
+    <g transform="translate(14, 280)">
+      <rect width="152" height="32" rx="6" fill="#061814" stroke="#00FF88" stroke-width="0.7" />
+      <text x="76" y="15" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" text-anchor="middle">ACID COMPLIANCE</text>
+      <text x="76" y="26" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="7.5" text-anchor="middle">Bi-Directional Sync</text>
+    </g>
+  </g>
+
+  <!-- Bottom Telemetry Status Bar -->
+  <g transform="translate(600, 452)" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="10" letter-spacing="1">
+    <text fill="#AAB7C4">
+      <tspan fill="#00FF88" font-weight="700">● PIPELINE VERIFIED:</tspan> END-TO-END DETERMINISTIC EXECUTION
+      <tspan fill="#5A7184" dx="10">//</tspan>
+      <tspan fill="#00D9FF" dx="10">P99: &lt; 85ms</tspan>
+      <tspan fill="#5A7184" dx="10">//</tspan>
+      <tspan fill="#9875FF" dx="10">CONCURRENCY: 10,000 REQ/SEC</tspan>
+      <tspan fill="#5A7184" dx="10">//</tspan>
+      <tspan fill="#00DFA5" dx="10">SECURITY: ZERO TRUST</tspan>
+    </text>
+  </g>
+</svg>

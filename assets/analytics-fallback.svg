@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" aria-labelledby="analyticsTitle analyticsDesc">
+  <title id="analyticsTitle">GitHub Analytics &amp; Telemetry Fallback Panel — Ravi Ranjan Singh</title>
+  <desc id="analyticsDesc">High-availability custom telemetry card displaying verified repository metrics, test assertions, language distribution, and credentials.</desc>
+
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="anBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080B" />
+      <stop offset="50%" stop-color="#081014" />
+      <stop offset="100%" stop-color="#05080B" />
+    </linearGradient>
+
+    <!-- Linear Accent Gradients -->
+    <linearGradient id="neonEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00DFA5" />
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00DFA5" />
+      <stop offset="100%" stop-color="#00D9FF" />
+    </linearGradient>
+
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.8" />
+      <stop offset="35%" stop-color="#00DFA5" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#00D9FF" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#9875FF" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Card Backgrounds -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B171D" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#071015" stop-opacity="0.96" />
+    </linearGradient>
+
+    <!-- Technical Grid Pattern -->
+    <pattern id="anGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#00FF88" stroke-width="0.75" stroke-opacity="0.05" />
+      <circle cx="0" cy="0" r="1" fill="#00FF88" fill-opacity="0.15" />
+    </pattern>
+
+    <!-- Glow Filter -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="280" rx="16" fill="url(#anBg)" />
+  <rect width="1200" height="280" rx="16" fill="url(#anGrid)" />
+  <rect x="2" y="2" width="1196" height="276" rx="15" fill="none" stroke="url(#borderGrad)" stroke-width="1.5" />
+
+  <!-- Corner HUD Reticles -->
+  <path d="M 18 35 L 18 20 Q 18 18 20 18 L 35 18" fill="none" stroke="#00FF88" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="26" cy="26" r="2" fill="#00FF88" />
+  <path d="M 1165 18 L 1180 18 Q 1182 18 1182 20 L 1182 35" fill="none" stroke="#00D9FF" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="1174" cy="26" r="2" fill="#00D9FF" />
+  <path d="M 18 245 L 18 260 Q 18 262 20 262 L 35 262" fill="none" stroke="#00DFA5" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="26" cy="254" r="2" fill="#00DFA5" />
+  <path d="M 1165 262 L 1180 262 Q 1182 262 1182 260 L 1182 245" fill="none" stroke="#9875FF" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="1174" cy="254" r="2" fill="#9875FF" />
+
+  <!-- Header Section -->
+  <g transform="translate(600, 32)" text-anchor="middle">
+    <text y="0" fill="#00FF88" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="10.5" font-weight="700" letter-spacing="2">
+      // GITHUB TELEMETRY &amp; SYSTEM METRICS //
+    </text>
+    <text y="22" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="1">
+      HIGH-AVAILABILITY ANALYTICS &amp; ACTIVITY RADAR
+    </text>
+    <line x1="-300" y1="34" x2="300" y2="34" stroke="url(#neonCyan)" stroke-width="1.2" stroke-opacity="0.7" />
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- 4 METRIC PANELS -->
+  <!-- ========================================================================= -->
+  <!-- PANEL 1: TOTAL REPOSITORIES -->
+  <g transform="translate(50, 80)">
+    <rect width="255" height="145" rx="10" fill="url(#cardBg)" stroke="#00FF88" stroke-width="1.2" />
+    <rect width="255" height="26" rx="10" fill="#061F1A" />
+    <circle cx="15" cy="13" r="4" fill="#00FF88" />
+    <text x="26" y="17" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">01 // REPOSITORIES</text>
+
+    <text x="20" y="65" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="34" font-weight="900">
+      39+
+    </text>
+    <text x="20" y="88" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">
+      Verified Repositories
+    </text>
+    <text x="20" y="108" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="10">
+      Distributed &amp; Agentic Systems
+    </text>
+    <text x="20" y="128" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="8.5">
+      100% Clean Git Commits
+    </text>
+  </g>
+
+  <!-- PANEL 2: PASSING ASSERTIONS -->
+  <g transform="translate(335, 80)">
+    <rect width="255" height="145" rx="10" fill="url(#cardBg)" stroke="#00D9FF" stroke-width="1.2" />
+    <rect width="255" height="26" rx="10" fill="#061D24" />
+    <circle cx="15" cy="13" r="4" fill="#00D9FF" />
+    <text x="26" y="17" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">02 // TEST COVERAGE</text>
+
+    <text x="20" y="65" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="34" font-weight="900">
+      471+
+    </text>
+    <text x="20" y="88" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">
+      Passing Vitest Assertions
+    </text>
+    <text x="20" y="108" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="10">
+      167 Suites • 0 Type Errors
+    </text>
+    <text x="20" y="128" fill="#7E92A2" font-family="'JetBrains Mono', monospace" font-size="8.5">
+      Full E2E Deterministic Harness
+    </text>
+  </g>
+
+  <!-- PANEL 3: PRIMARY LANGUAGES -->
+  <g transform="translate(620, 80)">
+    <rect width="255" height="145" rx="10" fill="url(#cardBg)" stroke="#9875FF" stroke-width="1.2" />
+    <rect width="255" height="26" rx="10" fill="#151229" />
+    <circle cx="15" cy="13" r="4" fill="#9875FF" />
+    <text x="26" y="17" fill="#C3B2FF" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">03 // STACK BREAKDOWN</text>
+
+    <g transform="translate(18, 45)" font-family="'JetBrains Mono', monospace" font-size="9">
+      <!-- Python -->
+      <text x="0" y="10" fill="#F5F7FA" font-weight="700">Python</text>
+      <text x="180" y="10" fill="#00FF88" font-weight="700">40%</text>
+      <rect x="0" y="15" width="215" height="5" rx="2.5" fill="#1E293B" />
+      <rect x="0" y="15" width="86" height="5" rx="2.5" fill="#00FF88" />
+
+      <!-- TypeScript -->
+      <text x="0" y="35" fill="#F5F7FA" font-weight="700">TypeScript / JS</text>
+      <text x="180" y="35" fill="#00D9FF" font-weight="700">30%</text>
+      <rect x="0" y="40" width="215" height="5" rx="2.5" fill="#1E293B" />
+      <rect x="0" y="40" width="65" height="5" rx="2.5" fill="#00D9FF" />
+
+      <!-- SQL / pgvector -->
+      <text x="0" y="60" fill="#F5F7FA" font-weight="700">SQL / pgvector</text>
+      <text x="180" y="60" fill="#9875FF" font-weight="700">15%</text>
+      <rect x="0" y="65" width="215" height="5" rx="2.5" fill="#1E293B" />
+      <rect x="0" y="65" width="32" height="5" rx="2.5" fill="#9875FF" />
+
+      <!-- C++ / System -->
+      <text x="0" y="85" fill="#F5F7FA" font-weight="700">C++ / Low-Latency</text>
+      <text x="180" y="85" fill="#00DFA5" font-weight="700">15%</text>
+      <rect x="0" y="90" width="215" height="5" rx="2.5" fill="#1E293B" />
+      <rect x="0" y="90" width="32" height="5" rx="2.5" fill="#00DFA5" />
+    </g>
+  </g>
+
+  <!-- PANEL 4: VERIFIED CREDENTIALS -->
+  <g transform="translate(905, 80)">
+    <rect width="245" height="145" rx="10" fill="url(#cardBg)" stroke="#00DFA5" stroke-width="1.2" />
+    <rect width="245" height="26" rx="10" fill="#082823" />
+    <circle cx="15" cy="13" r="4" fill="#00DFA5" />
+    <text x="26" y="17" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">04 // CREDENTIALS</text>
+
+    <text x="18" y="55" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="800">
+      Cisco (7x Badges)
+    </text>
+    <text x="18" y="73" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">
+      CCNA ENSA • SRWE • ITN
+    </text>
+    <text x="18" y="95" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="10.5">
+      AWS AI Governance Certified
+    </text>
+    <text x="18" y="113" fill="#7E92A2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="10">
+      SGT, 19 Jharkhand Bn NCC (Best Cadet)
+    </text>
+    <text x="18" y="131" fill="#C3B2FF" font-family="'JetBrains Mono', monospace" font-size="8.5">
+      Taekwondo Black Belt 1st Dan
+    </text>
+  </g>
+
+  <!-- Bottom Telemetry Bar -->
+  <g transform="translate(600, 255)" text-anchor="middle" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="9.5" letter-spacing="1">
+    <text fill="#5A7184">
+      <tspan fill="#00FF88" font-weight="700">STATUS: HIGH-AVAILABILITY LOCAL MIRROR</tspan>
+      <tspan dx="15">//</tspan>
+      <tspan fill="#AAB7C4" dx="15">INTEGRITY: 100% VERIFIED</tspan>
+      <tspan dx="15">//</tspan>
+      <tspan fill="#00D9FF" dx="15">ZERO FABRICATED METRICS</tspan>
+    </text>
+  </g>
+</svg>

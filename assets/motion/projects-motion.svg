@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="580" viewBox="0 0 1200 580" role="img" aria-labelledby="projTitle projDesc">
+  <title id="projTitle">Featured Engineering Projects — Ravi Ranjan Singh (Motion)</title>
+  <desc id="projDesc">Portfolio matrix displaying real software engineering systems across AI agents, full-stack platforms, offline-first architectures, and IoT analytics with declarative SMIL motion.</desc>
+
+  <defs>
+    <linearGradient id="projBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080B" />
+      <stop offset="50%" stop-color="#081216" />
+      <stop offset="100%" stop-color="#05080B" />
+    </linearGradient>
+
+    <linearGradient id="cardBg1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#091E1A" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#061311" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="cardBg2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#061D27" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#05121A" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="neonBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="50%" stop-color="#00D9FF" />
+      <stop offset="100%" stop-color="#9875FF" />
+    </linearGradient>
+
+    <pattern id="projGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#00FF88" stroke-width="0.5" stroke-opacity="0.05" />
+      <circle cx="0" cy="0" r="0.8" fill="#00FF88" fill-opacity="0.1" />
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="580" rx="16" fill="url(#projBg)" />
+  <rect width="1200" height="580" rx="16" fill="url(#projGrid)" />
+  <rect x="2" y="2" width="1196" height="576" rx="15" fill="none" stroke="#00FF88" stroke-opacity="0.2" stroke-width="1.5">
+    <animate attributeName="stroke-opacity" values="0.2;0.45;0.2" dur="5s" repeatCount="indefinite" />
+  </rect>
+
+  <!-- Corner Brackets -->
+  <path d="M 20 40 L 20 20 Q 20 18 22 18 L 42 18" fill="none" stroke="#00FF88" stroke-width="2" />
+  <path d="M 1158 18 L 1178 18 Q 1180 18 1180 20 L 1180 40" fill="none" stroke="#00D9FF" stroke-width="2" />
+  <path d="M 20 540 L 20 560 Q 20 562 22 562 L 42 562" fill="none" stroke="#00DFA5" stroke-width="2" />
+  <path d="M 1158 562 L 1178 562 Q 1180 562 1180 560 L 1180 540" fill="none" stroke="#9875FF" stroke-width="2" />
+
+  <!-- Header -->
+  <g transform="translate(600, 36)" text-anchor="middle">
+    <text y="0" fill="#00FF88" font-family="'JetBrains Mono', Menlo, monospace" font-size="10.5" font-weight="700" letter-spacing="2">
+      // VERIFIED REPOSITORY EVIDENCE &amp; PORTFOLIO //
+    </text>
+    <text y="24" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1">
+      FEATURED ENGINEERING SYSTEMS
+    </text>
+    <text y="42" fill="#7E92A2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12">
+      Production monorepos, high-assurance distributed backends, offline-first AI, and applied data platforms
+    </text>
+    <line x1="-380" y1="52" x2="380" y2="52" stroke="url(#neonBar)" stroke-width="1.5" stroke-opacity="0.7">
+      <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="4s" repeatCount="indefinite" />
+    </line>
+  </g>
+
+  <!-- CARD 1: PRAVRAHA / SHIVI -->
+  <g transform="translate(50, 105)">
+    <rect width="530" height="135" rx="10" fill="url(#cardBg1)" stroke="#00FF88" stroke-width="1.2">
+      <animate attributeName="stroke-opacity" values="0.7;1.0;0.7" dur="3s" repeatCount="indefinite" />
+    </rect>
+    <circle cx="22" cy="24" r="6" fill="#00FF88">
+      <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <text x="36" y="28" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="700">PRAVRAHA / SHIVI · AI REVOPS CONTROL PLANE</text>
+    <text x="22" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">Autonomous B2B Revenue Operations &amp; Control Plane</text>
+    <text x="22" y="72" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="11.5">38 specialized agents, 100 domain engines, zero-trust perimeter, pgvector semantic search, and Model Context Protocol (MCP) tool execution.</text>
+    <text x="22" y="94" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">471 Passing Vitest Assertions · 167 Suites · 100% Edge Ready</text>
+    <g transform="translate(22, 106)" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00FF88">
+      <text>Python • FastAPI • Next.js • TypeScript • pgvector • Redis • MCP</text>
+    </g>
+  </g>
+
+  <!-- CARD 2: NCC CRM V1.0 -->
+  <g transform="translate(620, 105)">
+    <rect width="530" height="135" rx="10" fill="url(#cardBg2)" stroke="#00D9FF" stroke-width="1.2">
+      <animate attributeName="stroke-opacity" values="0.7;1.0;0.7" dur="3.5s" repeatCount="indefinite" />
+    </rect>
+    <circle cx="22" cy="24" r="6" fill="#00D9FF">
+      <animate attributeName="r" values="5;7;5" dur="2.3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2.3s" repeatCount="indefinite" />
+    </circle>
+    <text x="36" y="28" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="700">19 JHARKHAND BN NCC COMMAND CENTRE</text>
+    <text x="22" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">High-Assurance Cadet Lifecycle &amp; Dispatch Platform</text>
+    <text x="22" y="72" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="11.5">Nginx load balancer failover, 5,000-item bounded LRU cache with single-flight stampede deduplication, scrypt hashing, and UIDAI Verhoeff validation.</text>
+    <text x="22" y="94" fill="#00D9FF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">Constant-Time Scrypt Verification • Verhoeff D5 Checksum</text>
+    <g transform="translate(22, 106)" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D9FF">
+      <text>TypeScript • Node.js • Supabase / PostgreSQL • Redis L2 • Docker • Nginx</text>
+    </g>
+  </g>
+
+  <!-- CARD 3: BHASHASAETU AI -->
+  <g transform="translate(50, 255)">
+    <rect width="530" height="135" rx="10" fill="url(#cardBg1)" stroke="#00FF88" stroke-width="1.2">
+      <animate attributeName="stroke-opacity" values="0.7;1.0;0.7" dur="4s" repeatCount="indefinite" />
+    </rect>
+    <circle cx="22" cy="24" r="6" fill="#00FF88">
+      <animate attributeName="r" values="5;7;5" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+    <text x="36" y="28" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="700">BHASHASAETU AI · MULTILINGUAL EDUCATION</text>
+    <text x="22" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">Offline-First Mother Tongue-Based Learning Platform</text>
+    <text x="22" y="72" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="11.5">Connects Hindi teachers with tribal languages (Santhali, Ho, Mundari). Local-first vector retrieval, voice synthesis, and deterministic SQLite-to-PostgreSQL sync.</text>
+    <text x="22" y="94" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">Zero-Connectivity Edge Operation • Speech DSP Pipelines</text>
+    <g transform="translate(22, 106)" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00FF88">
+      <text>Python • Offline RAG • SQLite • PostgreSQL • Speech DSP • Web Audio</text>
+    </g>
+  </g>
+
+  <!-- CARD 4: AIOT AGRI-HEALTH GUARDIAN -->
+  <g transform="translate(620, 255)">
+    <rect width="530" height="135" rx="10" fill="url(#cardBg2)" stroke="#00DFA5" stroke-width="1.2">
+      <animate attributeName="stroke-opacity" values="0.7;1.0;0.7" dur="3.8s" repeatCount="indefinite" />
+    </rect>
+    <circle cx="22" cy="24" r="6" fill="#00DFA5">
+      <animate attributeName="r" values="5;7;5" dur="2.7s" repeatCount="indefinite" />
+    </circle>
+    <text x="36" y="28" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="700">AIOT AGRI-HEALTH GUARDIAN · AGRI-TECH 2.0</text>
+    <text x="22" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">Intelligent Agriculture Telemetry &amp; Crop Advisory</text>
+    <text x="22" y="72" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="11.5">Real-time IoT soil sensor ingestion (pH, moisture, temperature). Edge heuristics detect crop stress and disease risks early with automated farmer advisories.</text>
+    <text x="22" y="94" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">Sensor Telemetry Ingestion • Scikit-Learn Anomaly Detection</text>
+    <g transform="translate(22, 106)" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00DFA5">
+      <text>TypeScript • Python • IoT Telemetry • Scikit-Learn • REST APIs • Reactive UI</text>
+    </g>
+  </g>
+
+  <!-- CARD 5: TRAVEL NEST -->
+  <g transform="translate(50, 405)">
+    <rect width="530" height="135" rx="10" fill="url(#cardBg1)" stroke="#00FF88" stroke-width="1.2">
+      <animate attributeName="stroke-opacity" values="0.7;1.0;0.7" dur="4.2s" repeatCount="indefinite" />
+    </rect>
+    <circle cx="22" cy="24" r="6" fill="#00FF88">
+      <animate attributeName="r" values="5;7;5" dur="2.4s" repeatCount="indefinite" />
+    </circle>
+    <text x="36" y="28" fill="#00FF88" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="700">TRAVEL NEST · BUDGET OPTIMIZATION ENGINE</text>
+    <text x="22" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">Multi-Destination Travel &amp; Expense Forecasting</text>
+    <text x="22" y="72" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="11.5">Dynamic travel itinerary management system featuring intelligent expense forecasting, currency conversions, and modular REST API services.</text>
+    <text x="22" y="94" fill="#00DFA5" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">Heuristic Budget Allocation • Sub-50ms Response Times</text>
+    <g transform="translate(22, 106)" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00FF88">
+      <text>JavaScript • Node.js • Express • REST APIs • Responsive UI Architecture</text>
+    </g>
+  </g>
+
+  <!-- CARD 6: GLASSMORHPIC EXPENSE TRACKER -->
+  <g transform="translate(620, 405)">
+    <rect width="530" height="135" rx="10" fill="url(#cardBg2)" stroke="#9875FF" stroke-width="1.2">
+      <animate attributeName="stroke-opacity" values="0.7;1.0;0.7" dur="4.5s" repeatCount="indefinite" />
+    </rect>
+    <circle cx="22" cy="24" r="6" fill="#9875FF">
+      <animate attributeName="r" values="5;7;5" dur="2.6s" repeatCount="indefinite" />
+    </circle>
+    <text x="36" y="28" fill="#C3B2FF" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="700">EXPENSE TRACKER · FINANCIAL TELEMETRY</text>
+    <text x="22" y="52" fill="#F5F7FA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700">Glassmorphic Financial Management Dashboard</text>
+    <text x="22" y="72" fill="#AAB7C4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="11.5">Full-stack financial dashboard with interactive Chart.js analytics, transactional MongoDB persistence, category breakdowns, and session authentication.</text>
+    <text x="22" y="94" fill="#C3B2FF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">Transactional Integrity • Real-Time Spending Analytics</text>
+    <g transform="translate(22, 106)" font-family="'JetBrains Mono', monospace" font-size="9" fill="#C3B2FF">
+      <text>Node.js • Express.js • MongoDB / Mongoose • Chart.js • EJS Templates</text>
+    </g>
+  </g>
+
+  <!-- Footer Telemetry -->
+  <g transform="translate(600, 560)" text-anchor="middle" font-family="'JetBrains Mono', Menlo, monospace" font-size="9" fill="#7E92A2">
+    <text>VERIFIED REPOSITORIES ON GITHUB (@Hellthefox808) • 100% REPRODUCIBLE BUILDS • ZERO FABRICATION</text>
+  </g>
+</svg>

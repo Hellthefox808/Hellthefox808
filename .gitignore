@@ -3,6 +3,10 @@
 .kilo/
 .kilocode/
 .vscode/
+.llm-guardrail/
+
+# Internal swarm operational logs
+.agents/teamwork/
 
 # Logs and environment
 *.log
