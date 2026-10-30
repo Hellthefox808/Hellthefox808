@@ -38,19 +38,15 @@ My engineering work focuses on the intersection of **full-stack software archite
 
 Rather than building superficial demos, I am dedicated to engineering software that operates reliably in production: systems with bounded resource usage, zero-trust security postures, cryptographic integrity, and thorough observability.
 
-```text
-┌─────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ CANDIDATE TELEMETRY                                                                             │
-├──────────────────────┬──────────────────────────────────────────────────────────────────────────┤
-│ Full Name            │ Ravi Ranjan Singh                                                        │
-│ Professional Focus   │ Software Engineer · AI Systems Builder · Cloud & Distributed Systems     │
-│ Degree & Major       │ B.Tech in Computer Science and Engineering (Data Science & Cloud)        │
-│ Institution          │ Sarala Birla University, Ranchi (2023–2027)                              │
-│ Leadership & Honours │ Sergeant (SGT), 19 Jharkhand Bn NCC · Best Cadet (2019) · Taekwondo 1st D│
-│ Public Repositories  │ 39+ Repositories spanning AI Agents, Full-Stack SaaS & ML Pipelines      │
-│ Operating Mindset    │ Build systems, not just interfaces. Validate decisions through evidence. │
-└──────────────────────┴──────────────────────────────────────────────────────────────────────────┘
-```
+| Specification Attribute | Verified Record |
+|---|---|
+| **Full Name** | Ravi Ranjan Singh |
+| **Professional Focus** | Software Engineer · AI Systems Builder · Cloud &amp; Distributed Systems |
+| **Degree &amp; Major** | B.Tech in Computer Science and Engineering (Data Science &amp; Cloud Computing) |
+| **Institution &amp; Batch** | Sarala Birla University, Ranchi (2023–2027) |
+| **Leadership &amp; Honours** | Sergeant (SGT), 19 Jharkhand Bn NCC · Best Cadet (2019) · Taekwondo Black Belt (1st Dan) |
+| **Verified Repositories** | 39+ Repositories spanning AI Agents, Full-Stack Platforms &amp; Data Pipelines |
+| **Engineering Creed** | Build systems, not just interfaces. Validate decisions through evidence. |
 
 <br />
 
@@ -61,14 +57,14 @@ My engineering practice is grounded in four foundational disciplines:
 <table>
   <tr>
     <td width="50%" valign="top">
-      <h4>⚡ 1. Software Engineering &amp; Architecture</h4>
+      <h4>[01] Software Engineering &amp; Architecture</h4>
       <p>
         Building decoupled, maintainable software architectures using clean domain-driven boundaries, SOLID principles, and microservices. Dedicated to deterministic execution, strict type contracts, idempotent operations, and performance tuning.
       </p>
       <sub><b>Core focus:</b> Microservices · API Design · Concurrency Control · Performance Engineering</sub>
     </td>
     <td width="50%" valign="top">
-      <h4>🧠 2. AI &amp; Agentic Systems</h4>
+      <h4>[02] AI &amp; Agentic Systems</h4>
       <p>
         Designing production-grade AI applications beyond standard prompt chains: autonomous multi-agent orchestration swarms, contextual Retrieval-Augmented Generation (RAG) with vector databases, Model Context Protocol (MCP) tool execution, and human-in-the-loop audit ledgers.
       </p>
@@ -77,14 +73,14 @@ My engineering practice is grounded in four foundational disciplines:
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <h4>🌐 3. Full-Stack Platform Engineering</h4>
+      <h4>[03] Full-Stack Platform Engineering</h4>
       <p>
         Crafting seamless, accessible, and reactive user experiences paired with resilient backend services. Extensive experience across the React/Next.js ecosystem, modern Node.js/NestJS runtimes, and high-performance Python FastAPI microservices.
       </p>
       <sub><b>Core focus:</b> React 19 · Next.js App Router · TypeScript · FastAPI · Tailwind CSS</sub>
     </td>
     <td width="50%" valign="top">
-      <h4>☁️ 4. Cloud, Distributed Systems &amp; Data</h4>
+      <h4>[04] Cloud, Distributed Systems &amp; Data</h4>
       <p>
         Architecting scalable cloud infrastructure using AWS, multi-stage Docker containerization, automated CI/CD pipelines, and multi-tier caching (L1 in-memory bounded LRU + L2 Redis). Leveraging data pipelines with Pandas and Scikit-learn for actionable intelligence.
       </p>
@@ -140,7 +136,7 @@ An evidence-based selection of real systems built, architected, and maintained a
     <td width="50%" valign="top">
       <h3>
         <a href="https://github.com/Hellthefox808/ShiVi-D">
-          🔮 PravRaha / ShiVi · AI-Native RevOps &amp; Control Plane
+          PravRaha / ShiVi · AI-Native RevOps &amp; Control Plane
         </a>
       </h3>
       <p>
@@ -164,7 +160,7 @@ An evidence-based selection of real systems built, architected, and maintained a
     <td width="50%" valign="top">
       <h3>
         <a href="https://github.com/Hellthefox808/NCC-CRM-V1.0">
-          🛡️ 19 Jharkhand Bn NCC Command Centre (NCC CRM)
+          19 Jharkhand Bn NCC Command Centre (NCC CRM)
         </a>
       </h3>
       <p>
@@ -191,7 +187,7 @@ An evidence-based selection of real systems built, architected, and maintained a
     <td width="50%" valign="top">
       <h3>
         <a href="https://github.com/Hellthefox808/ShiVi-AI-Offline-First-Multilingual-Education-Platform">
-          🌐 BhashaSetu AI · Offline-First Multilingual Platform
+          BhashaSetu AI · Offline-First Multilingual Platform
         </a>
       </h3>
       <p>
@@ -215,7 +211,7 @@ An evidence-based selection of real systems built, architected, and maintained a
     <td width="50%" valign="top">
       <h3>
         <a href="https://github.com/Hellthefox808/agri-tech-2..0">
-          🌱 AIoT Agri-Health Guardian (agri-tech-2..0)
+          AIoT Agri-Health Guardian (agri-tech-2..0)
         </a>
       </h3>
       <p>
@@ -242,7 +238,7 @@ An evidence-based selection of real systems built, architected, and maintained a
     <td width="50%" valign="top">
       <h3>
         <a href="https://github.com/Hellthefox808/Travel-v1.1.2-Buget">
-          ✈️ Travel Nest (Travel-v1.1.2-Buget)
+          Travel Nest (Travel-v1.1.2-Buget)
         </a>
       </h3>
       <p>
@@ -264,7 +260,7 @@ An evidence-based selection of real systems built, architected, and maintained a
     <td width="50%" valign="top">
       <h3>
         <a href="https://github.com/Hellthefox808/Expense-tracker">
-          📊 Glassmorphic Financial Engine (Expense-tracker)
+          Financial Intelligence Engine (Expense-tracker)
         </a>
       </h3>
       <p>
