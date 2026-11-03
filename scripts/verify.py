@@ -362,6 +362,7 @@ class VerificationHarness:
             ("Engineering Focus", r"##\s+(\d+\s+//\s+)?Engineering (Focus|Identity)"),
             ("Technical Architecture", r"##\s+(\d+\s+//\s+)?(Technical Architecture|Areas of Expertise)"),
             ("Featured Projects", r"##\s+(\d+\s+//\s+)?Featured Projects"),
+            ("Professional Experience", r"##\s+(\d+\s+//\s+)?Professional Experience"),
             ("Technology Stack", r"##\s+(\d+\s+//\s+)?Techn(ology|ical) Stack"),
             ("GitHub Analytics", r"##\s+(\d+\s+//\s+)?GitHub Analytics"),
             ("Leadership & Community", r"##\s+(\d+\s+//\s+)?Leadership"),
@@ -393,7 +394,7 @@ class VerificationHarness:
 
     def _test_motion_svg_existence(self):
         required = ["hero-motion.svg", "expertise-motion.svg", "architecture-motion.svg",
-                    "particles-motion.svg", "footer-motion.svg"]
+                    "projects-motion.svg", "particles-motion.svg", "footer-motion.svg"]
         motion_dir = self.root / "assets" / "motion"
         missing = [f"assets/motion/{name}" for name in required if not (motion_dir / name).exists()]
         if missing:
@@ -401,7 +402,8 @@ class VerificationHarness:
         return "PASS", f"All {len(required)} motion SVGs exist in assets/motion/", []
 
     def _test_animated_gif_existence(self):
-        required = ["hero-motion.gif", "expertise-motion.gif", "architecture-motion.gif", "footer-motion.gif"]
+        required = ["hero-motion.gif", "expertise-motion.gif", "architecture-motion.gif",
+                    "projects-motion.gif", "footer-motion.gif"]
         anim_dir = self.root / "assets" / "animated"
         missing = [f"assets/animated/{name}" for name in required if not (anim_dir / name).exists()]
         if missing:
@@ -409,7 +411,7 @@ class VerificationHarness:
         return "PASS", f"All {len(required)} animated GIF assets exist in assets/animated/", []
 
     def _test_static_png_existence(self):
-        required = ["hero.png", "expertise.png", "architecture.png", "footer.png"]
+        required = ["hero.png", "expertise.png", "architecture.png", "projects.png", "footer.png"]
         static_dir = self.root / "assets" / "static"
         missing = [f"assets/static/{name}" for name in required if not (static_dir / name).exists()]
         if missing:
@@ -1000,7 +1002,9 @@ class VerificationHarness:
         known_domains = {
             "github.com", "raw.githubusercontent.com", "linkedin.com", "www.linkedin.com",
             "img.shields.io", "komarev.com", "skillicons.dev", "streak-stats.demolab.com",
-            "github-readme-stats-sigma-five.vercel.app", "cisco.com", "www.cisco.com"
+            "github-readme-stats-sigma-five.vercel.app", "cisco.com", "www.cisco.com",
+            "github-readme-activity-graph.vercel.app", "github-profile-trophy.vercel.app",
+            "readme-typing-svg.demolab.com", "skillbuilder.aws", "credly.com"
         }
         unknown = [d for d in set(urls) if d not in known_domains]
         if unknown:

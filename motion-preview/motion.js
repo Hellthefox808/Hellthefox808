@@ -1056,8 +1056,13 @@ class MotionApp {
     const telemetry = new HUDTelemetry();
     const controls = new ControlsManager(engine, parallax);
 
-    // Master Animation Loop
+    // Master Animation Loop with Tab Visibility Optimization
+    let animId = null;
     function frame(time) {
+      if (document.hidden) {
+        animId = null;
+        return;
+      }
       // 1. Update and draw canvas particles
       engine.updateAndRender();
 
@@ -1067,10 +1072,16 @@ class MotionApp {
       // 3. Update real-time HUD telemetry
       telemetry.tick(time, engine.particles.length, engine.activeLinksCount, rotation);
 
-      requestAnimationFrame(frame);
+      animId = requestAnimationFrame(frame);
     }
 
-    requestAnimationFrame(frame);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && animId === null) {
+        animId = requestAnimationFrame(frame);
+      }
+    });
+
+    animId = requestAnimationFrame(frame);
     console.info('[ANTIGRAVITY] 4D Motion Engine v4.2 initialized successfully.');
   }
 }

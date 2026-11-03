@@ -126,7 +126,7 @@
     </g>
   </g>
 
-  <!-- CARD 6: GLASSMORHPIC EXPENSE TRACKER (BOTTOM-RIGHT) -->
+  <!-- CARD 6: GLASSMORPHIC EXPENSE TRACKER (BOTTOM-RIGHT) -->
   <g transform="translate(620, 405)">
     <rect width="530" height="135" rx="10" fill="url(#cardBg2)" stroke="#9875FF" stroke-width="1.2" />
     <circle cx="22" cy="24" r="6" fill="#9875FF" />

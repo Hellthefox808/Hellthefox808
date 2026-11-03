@@ -23,6 +23,16 @@
 </a>
 <img src="https://img.shields.io/badge/Status-Open_for_Engineering_Roles-05080B?style=for-the-badge&labelColor=071E19&color=00FF88" alt="Engineering Status Badge" />
 <img src="https://komarev.com/ghpvc/?username=Hellthefox808&style=for-the-badge&color=00DFA5&label=PROFILE+VIEWS" alt="Profile Views Counter Telemetry Badge" />
+<br />
+<a href="mailto:raviranjansingh601520@gmail.com">
+  <img src="https://img.shields.io/badge/Email-raviranjansingh601520-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Contact Badge" />
+</a>
+<img src="https://img.shields.io/badge/📍_Ranchi,_India-Open_to_Remote-05080B?style=for-the-badge&labelColor=071E19&color=00D9FF" alt="Location Badge" />
+
+<br /><br />
+
+<!-- Dynamic Typing Animation -->
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&pause=1000&color=00FF88&center=true&vCenter=true&width=700&lines=Building+Agentic+AI+Systems+%7C+Multi-Agent+Orchestration;Engineering+Resilient+Distributed+Backends;Architecting+Cloud-Native+Platforms+%7C+Zero-Trust+Security;Semi-Finalist+%40+Build+with+Bharat+2.0+%7C+NIT+Delhi" alt="Dynamic Typing Animation SVG" />
 
 <br /><br />
 
@@ -54,6 +64,7 @@ Rather than building superficial demos, I am dedicated to engineering software t
 | **Degree &amp; Major** | B.Tech in Computer Science and Engineering (Data Science &amp; Cloud Computing) |
 | **Institution &amp; Batch** | Sarala Birla University, Ranchi (2023–2027) |
 | **Leadership &amp; Honours** | Sergeant (SGT), 19 Jharkhand Bn NCC · Best Cadet (2019) · Taekwondo Black Belt (1st Dan) |
+| **National Milestones** | National Semi-Finalist — Build with Bharat 2.0 x CodeVerse @ NIT Delhi (Team Lead: Team SHIVI@808) |
 | **Verified Repositories** | 39+ Repositories spanning AI Agents, Full-Stack Platforms &amp; Data Pipelines |
 | **Engineering Creed** | Build systems, not just interfaces. Validate decisions through evidence. |
 
@@ -318,7 +329,67 @@ An evidence-based selection of real systems built, architected, and maintained a
 
 <br />
 
-## 05 // Technology Stack
+## 05 // Professional Experience
+
+Industry internships and engineering apprenticeships verified against production delivery:
+
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <h4>PravRaha · Phoenix, AZ &amp; Ranchi</h4>
+      <p>
+        <b>Full Stack AI B2B SaaS Developer Intern</b><br />
+        <sub>June 2026 – August 2026</sub>
+      </p>
+      <ul>
+        <li>Architected enterprise B2B SaaS control plane interfaces using React 19, Next.js 15 App Router, and TypeScript.</li>
+        <li>Implemented multi-agent orchestration swarms and RAG workflows with PostgreSQL <code>pgvector</code> semantic prospect clustering.</li>
+        <li>Built lead scoring and qualification intelligence pipelines under founder mentorship (Ex-Amazon / ACCELQ).</li>
+      </ul>
+      <p>
+        <sub><b>Stack:</b> React 19 · Next.js · TypeScript · Python · FastAPI · PostgreSQL (pgvector) · MCP</sub>
+      </p>
+    </td>
+    <td width="33%" valign="top">
+      <h4>BSNL LTD · Fiber Exchange, Ranchi</h4>
+      <p>
+        <b>Telecommunications Engineering Apprentice</b><br />
+        <sub>May 2026 – August 2026</sub>
+      </p>
+      <ul>
+        <li>Monitored carrier optical networks across live exchange infrastructure and GPON point-to-multipoint topologies.</li>
+        <li>Conducted OTDR trace diagnostics, optical power link budgeting, and splice loss calibration on OLT/ONU nodes.</li>
+        <li>Analyzed carrier network failover protocols, wavelength-division multiplexing (WDM), and service uptime telemetry.</li>
+      </ul>
+      <p>
+        <sub><b>Domain:</b> Carrier Optical Networks · GPON · FTTH · OTDR · WDM · Fiber Diagnostics</sub>
+      </p>
+    </td>
+    <td width="33%" valign="top">
+      <h4>Cognifyz Technologies · Nagpur</h4>
+      <p>
+        <b>Data Science Intern</b><br />
+        <sub>June 2026 – July 2026</sub>
+      </p>
+      <ul>
+        <li>Executed statistical data cleaning, distribution profiling, and outlier mitigation across multi-dimensional datasets.</li>
+        <li>Constructed interactive geospatial heatmaps with Python Folium and coordinate projections.</li>
+        <li>Engineered predictive feature classification pipelines using Scikit-Learn, Pandas, NumPy, and Seaborn.</li>
+      </ul>
+      <p>
+        <sub><b>Stack:</b> Python · Pandas · NumPy · Scikit-Learn · Folium · Matplotlib · Seaborn</sub>
+      </p>
+    </td>
+  </tr>
+</table>
+
+<div align="center">
+  <img src="./assets/divider.svg" alt="Visual Telemetry Line Divider" role="separator" width="100%" />
+</div>
+
+<br />
+
+## 06 // Technology Stack
 
 ```text
 LANGUAGES     ::  Python  •  TypeScript  •  JavaScript  •  SQL (PostgreSQL)  •  C++  •  Java  •  HTML5  •  CSS3
@@ -351,7 +422,7 @@ TOOLING       ::  Git  •  Vitest  •  Jest  •  VS Code  •  Postman  •  
 
 <br />
 
-## 06 // GitHub Analytics
+## 07 // GitHub Analytics
 
 <div align="center">
   <!-- GitHub Stats Card -->
@@ -372,6 +443,16 @@ TOOLING       ::  Git  •  Vitest  •  Jest  •  VS Code  •  Postman  •  
 
   <br /><br />
 
+  <!-- GitHub Contribution Activity Graph -->
+  <img width="95%" src="https://github-readme-activity-graph.vercel.app/graph?username=Hellthefox808&bg_color=05080B&color=F5F7FA&line=00FF88&point=00D9FF&area=true&hide_border=false&border=00FF8844" alt="GitHub Contribution Activity Graph" />
+
+  <br /><br />
+
+  <!-- GitHub Profile Trophies Matrix -->
+  <img width="95%" src="https://github-profile-trophy.vercel.app/?username=Hellthefox808&theme=matrix&no-frame=true&no-bg=true&margin_w=15&column=7" alt="GitHub Profile Trophies Matrix" />
+
+  <br /><br />
+
   <!-- High-Availability Local SVG Fallback Telemetry Panel -->
   <img src="./assets/analytics-fallback.svg" alt="High-Availability Telemetry and Metrics Fallback Card" width="100%" />
 </div>
@@ -382,7 +463,7 @@ TOOLING       ::  Git  •  Vitest  •  Jest  •  VS Code  •  Postman  •  
 
 <br />
 
-## 07 // Leadership &amp; Community
+## 08 // Leadership &amp; Community
 
 Beyond code, I cultivate structured leadership, high accountability, and the ability to execute under pressure through military and martial arts training.
 
@@ -405,7 +486,7 @@ Beyond code, I cultivate structured leadership, high accountability, and the abi
 
 <br />
 
-## 08 // Certifications &amp; Learning
+## 09 // Certifications &amp; Learning
 
 - **Cisco Networking Academy (7 Professional Credentials):**
   - CCNA: Introduction to Networks (ITN) — Enterprise Network Topologies, IPv4/IPv6, Ethernet &amp; Switching.
@@ -415,7 +496,10 @@ Beyond code, I cultivate structured leadership, high accountability, and the abi
   - Cisco Python Essentials (PCAP Certified Fundamentals).
   - Cisco Data Science &amp; Machine Learning Fundamentals.
   - Cisco Network Operating Systems &amp; Linux Administration.
+- **Amazon Web Services (AWS):**
+  - AWS | Security, Compliance &amp; Governance for AI Solutions (Aug 2026) — Verification ID: `6dadce11-8433-4eca-a884-7a9bc74e0023`.
 - **Honours &amp; Awards:**
+  - National Semi-Finalist — **Build with Bharat 2.0 x CodeVerse** at **NIT Delhi** (Team Lead: Team SHIVI@808).
   - Best Cadet Award (**19 Jharkhand** Battalion NCC, **2019**).
   - National Cadet Corps Meritorious Scholarship.
   - National-Level Martial Arts Tournament Competitor (Black Belt 1st Dan).
@@ -426,7 +510,7 @@ Beyond code, I cultivate structured leadership, high accountability, and the abi
 
 <br />
 
-## 09 // Currently Exploring
+## 10 // Currently Exploring
 
 Technologies and topics actively being researched, prototyped, and benchmarked:
 
@@ -441,7 +525,7 @@ Technologies and topics actively being researched, prototyped, and benchmarked:
 
 <br />
 
-## 10 // Collaboration &amp; Interests
+## 11 // Collaboration &amp; Interests
 
 I am actively seeking:
 
@@ -464,7 +548,7 @@ If you are building products that solve complex engineering challenges, let’s 
 
 <br />
 
-## 11 // Contact &amp; Footer
+## 12 // Contact &amp; Footer
 
 <div align="center">
 
