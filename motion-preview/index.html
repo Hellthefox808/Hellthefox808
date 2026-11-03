@@ -59,11 +59,23 @@
           <span class="pill-label">UPTIME</span>
           <span class="pill-value text-cyan" id="telemetryUptime">0s</span>
         </div>
-        <button class="hud-btn-toggle-controls" id="btnToggleAudio" title="Toggle Procedural Cybernetic Audio">
+        <button class="hud-btn-toggle-controls" id="btnToggleTheme" title="Cycle Visual Cyber Themes (Hotkey: T)">
+          <span class="btn-icon">🎨</span>
+          <span class="btn-text" id="lblThemeName">MATRIX</span>
+        </button>
+        <button class="hud-btn-toggle-controls" id="btnToggleTerminal" title="Toggle Interactive Cyber Terminal (Hotkey: ~)">
+          <span class="btn-icon">&gt;_</span>
+          <span class="btn-text">TERMINAL</span>
+        </button>
+        <button class="hud-btn-toggle-controls" id="btnToggleAudio" title="Toggle Procedural Cybernetic Audio (Hotkey: A)">
           <span class="btn-icon">🔇</span>
           <span class="btn-text">AUDIO</span>
         </button>
-        <button class="hud-btn-toggle-controls" id="btnToggleDrawer" title="Toggle HUD Controls Panel">
+        <button class="hud-btn-toggle-controls" id="btnToggleShortcuts" title="Keyboard Shortcuts Cheatsheet (Hotkey: ?)">
+          <span class="btn-icon">⌨</span>
+          <span class="btn-text">KEYS</span>
+        </button>
+        <button class="hud-btn-toggle-controls" id="btnToggleDrawer" title="Toggle HUD Controls Panel (Hotkey: C)">
           <span class="btn-icon">⚙</span>
           <span class="btn-text">CONTROLS</span>
         </button>
@@ -441,6 +453,93 @@
         </span>
       </div>
     </footer>
+
+    <!-- Interactive Cyber Terminal HUD Console -->
+    <aside class="terminal-drawer" id="terminalDrawer" aria-label="Interactive Cyber Telemetry Terminal">
+      <div class="terminal-header">
+        <div class="terminal-title">
+          <span class="terminal-icon">&gt;_</span>
+          <span>ANTIGRAVITY // CYBER COMMAND CONSOLE</span>
+          <span class="badge-terminal">NODE: RR-0808</span>
+        </div>
+        <div class="terminal-actions">
+          <button class="btn-term-action" id="btnTermClear" title="Clear Terminal Output">CLEAR</button>
+          <button class="drawer-close" id="btnCloseTerminal" aria-label="Close Terminal Console">&times;</button>
+        </div>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <div class="terminal-output" id="terminalOutput"></div>
+        <div class="terminal-prompt-row">
+          <span class="prompt-symbol">guest@antigravity:~$</span>
+          <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Type 'help' for commands..." />
+          <span class="prompt-cursor" aria-hidden="true"></span>
+        </div>
+        <div class="terminal-quick-pills">
+          <span class="quick-pills-label">QUICK EXEC:</span>
+          <button class="term-pill" data-cmd="help">help</button>
+          <button class="term-pill" data-cmd="status">status</button>
+          <button class="term-pill" data-cmd="projects">projects</button>
+          <button class="term-pill" data-cmd="experience">experience</button>
+          <button class="term-pill" data-cmd="skills">skills</button>
+          <button class="term-pill" data-cmd="theme">theme</button>
+          <button class="term-pill" data-cmd="shockwave">shockwave</button>
+          <button class="term-pill" data-cmd="whoami">whoami</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Keyboard Shortcuts Cheatsheet Modal -->
+    <div class="shortcuts-modal-overlay" id="shortcutsModal" aria-hidden="true">
+      <div class="shortcuts-modal-card">
+        <div class="shortcuts-modal-header">
+          <div class="shortcuts-modal-title">
+            <span class="shortcuts-icon">⌨</span>
+            <span>CYBER COMMAND KEYBOARD SHORTCUTS</span>
+          </div>
+          <button class="drawer-close" id="btnCloseShortcuts" aria-label="Close Shortcuts Modal">&times;</button>
+        </div>
+        <div class="shortcuts-modal-body">
+          <div class="shortcuts-grid">
+            <div class="shortcut-row">
+              <kbd class="key-badge">Space</kbd>
+              <span class="shortcut-desc">Trigger Kinetic Shockwave Impulse</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">T</kbd>
+              <span class="shortcut-desc">Cycle Visual Theme (Matrix / Synthwave / Cyberpunk / Abyssal)</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">A</kbd>
+              <span class="shortcut-desc">Toggle Procedural Web Audio Synthesizer</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">~</kbd> <span class="shortcut-sep">/</span> <kbd class="key-badge">`</kbd>
+              <span class="shortcut-desc">Toggle Interactive Cyber CLI Terminal</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">C</kbd>
+              <span class="shortcut-desc">Toggle HUD Telemetry Controls Drawer</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">1 - 5</kbd>
+              <span class="shortcut-desc">Quick-Switch Active Visual Banner Asset</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">F</kbd>
+              <span class="shortcut-desc">Toggle Browser Fullscreen Mode</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">?</kbd>
+              <span class="shortcut-desc">Toggle Keyboard Shortcuts Cheatsheet</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">Esc</kbd>
+              <span class="shortcut-desc">Dismiss Active Drawers and Modals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Copy Token Toast Notification -->
     <div class="cyber-toast" id="cyberToast" aria-live="polite">

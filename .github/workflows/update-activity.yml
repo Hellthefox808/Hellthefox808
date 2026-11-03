@@ -1,0 +1,42 @@
+name: Automated Profile Activity Stream
+
+on:
+  schedule:
+    # Run every 6 hours automatically
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-activity:
+    name: Sync Live GitHub Telemetry Feed
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Execute Activity Telemetry Updater
+        run: python scripts/update_activity.py
+
+      - name: Commit and Push Activity Telemetry
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain README.md)" ]; then
+            git add README.md
+            git commit -m "chore(telemetry): update dynamic github activity feed [skip ci]"
+            git push origin main
+          else
+            echo "Activity feed already synchronized; zero delta detected."
+          fi

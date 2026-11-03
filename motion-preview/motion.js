@@ -58,6 +58,22 @@ class Particle {
     this.alpha = this.baseAlpha;
   }
 
+  setPalette(colors) {
+    if (!colors || colors.length < 5) return;
+    const rand = Math.random();
+    if (rand < 0.45) {
+      this.color = colors[0];
+    } else if (rand < 0.70) {
+      this.color = colors[1];
+    } else if (rand < 0.85) {
+      this.color = colors[2];
+    } else if (rand < 0.95) {
+      this.color = colors[3];
+    } else {
+      this.color = colors[4];
+    }
+  }
+
   update(width, height, mouse, repulsionRadius, speedMultiplier, enableRepulsion) {
     // Update breathing pulse
     this.pulseAngle += this.pulseSpeed;
@@ -152,6 +168,7 @@ class ParticleEngine {
     this.activeLinksCount = 0;
     this.particles = [];
     this.shockwaves = [];
+    this.currentPalette = null;
 
     // Interactive Mouse Tracking
     this.mouse = {
@@ -207,8 +224,16 @@ class ParticleEngine {
   }
 
   emitShockwave(x, y) {
-    this.shockwaves.push({ x, y, radius: 0, maxRadius: 220, alpha: 0.85 });
+    const color = this.currentPalette ? this.currentPalette[0] : '#00FF88';
+    this.shockwaves.push({ x, y, radius: 0, maxRadius: 240, alpha: 0.88, color });
     if (window.cyberAudio) window.cyberAudio.playImpulse();
+  }
+
+  retheme(colors) {
+    this.currentPalette = colors;
+    for (let i = 0; i < this.particles.length; i++) {
+      this.particles[i].setPalette(colors);
+    }
   }
 
   resize() {
@@ -333,9 +358,10 @@ class ParticleEngine {
         ctx.save();
         ctx.beginPath();
         ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(0, 255, 136, ${sw.alpha})`;
+        ctx.globalAlpha = sw.alpha;
+        ctx.strokeStyle = sw.color || '#00FF88';
         ctx.lineWidth = 2.0;
-        ctx.shadowColor = '#00FF88';
+        ctx.shadowColor = sw.color || '#00FF88';
         ctx.shadowBlur = 10;
         ctx.stroke();
         ctx.restore();
@@ -1145,11 +1171,601 @@ class CyberAudio {
     this.playTone(660, 'sine', 0.18, 0.05);
     setTimeout(() => this.playTone(880, 'sine', 0.12, 0.03), 40);
   }
+
+  playShockwave() {
+    if (!this.enabled || !this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(750, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(65, this.ctx.currentTime + 0.28);
+      gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.30);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.30);
+    } catch (e) {}
+  }
+
+  playKeyClick() {
+    if (!this.enabled || !this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(1200 + Math.random() * 400, this.ctx.currentTime);
+      gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.025);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.025);
+    } catch (e) {}
+  }
+
+  playChime() {
+    const freqs = [523.25, 659.25, 783.99]; // C5, E5, G5
+    freqs.forEach((f, i) => {
+      setTimeout(() => this.playTone(f, 'sine', 0.16, 0.035), i * 55);
+    });
+  }
+
+  playExecute() {
+    this.playTone(587.33, 'triangle', 0.10, 0.04);
+    setTimeout(() => this.playTone(880, 'sine', 0.15, 0.04), 45);
+  }
+
+  playAlert() {
+    this.playTone(320, 'sawtooth', 0.12, 0.04);
+    setTimeout(() => this.playTone(240, 'sawtooth', 0.15, 0.04), 80);
+  }
 }
 
 /**
  * ----------------------------------------------------------------------------
- * 8. APPLICATION BOOTSTRAPPER
+ * 8. DYNAMIC CYBER THEME MANAGER
+ * Switches live CSS tokens, particle distribution palettes, and UI accents
+ * ----------------------------------------------------------------------------
+ */
+class CyberThemeManager {
+  static THEMES = {
+    matrix: {
+      key: 'matrix',
+      name: 'MATRIX CYBER',
+      primary: '#00FF88',
+      secondary: '#00E5FF',
+      accent: '#8B5CF6',
+      colors: ['#00FF88', '#00E5FF', '#8B5CF6', '#10B981', '#FFFFFF']
+    },
+    synthwave: {
+      key: 'synthwave',
+      name: 'SYNTHWAVE SUNSET',
+      primary: '#FF007F',
+      secondary: '#00F0FF',
+      accent: '#FFE600',
+      colors: ['#FF007F', '#00F0FF', '#FFE600', '#FF52B0', '#FFFFFF']
+    },
+    cyberpunk: {
+      key: 'cyberpunk',
+      name: 'CYBERPUNK GOLD',
+      primary: '#FFE600',
+      secondary: '#00E5FF',
+      accent: '#FF2A55',
+      colors: ['#FFE600', '#00E5FF', '#FF2A55', '#FACC15', '#FFFFFF']
+    },
+    abyssal: {
+      key: 'abyssal',
+      name: 'DEEP ABYSSAL',
+      primary: '#00FFA3',
+      secondary: '#38BDF8',
+      accent: '#6366F1',
+      colors: ['#00FFA3', '#38BDF8', '#6366F1', '#6EE7B7', '#FFFFFF']
+    }
+  };
+
+  constructor(engine, audio) {
+    this.engine = engine;
+    this.audio = audio;
+    this.themeKeys = Object.keys(CyberThemeManager.THEMES);
+    this.currentIndex = 0;
+    this.lblTheme = document.getElementById('lblThemeName');
+    this.btnToggle = document.getElementById('btnToggleTheme');
+
+    if (this.btnToggle) {
+      this.btnToggle.addEventListener('click', () => this.cycle());
+    }
+  }
+
+  getCurrentTheme() {
+    return CyberThemeManager.THEMES[this.themeKeys[this.currentIndex]];
+  }
+
+  cycle() {
+    this.currentIndex = (this.currentIndex + 1) % this.themeKeys.length;
+    this.apply(this.themeKeys[this.currentIndex]);
+  }
+
+  apply(key) {
+    const theme = CyberThemeManager.THEMES[key];
+    if (!theme) return;
+    this.currentIndex = this.themeKeys.indexOf(key);
+
+    if (key === 'matrix') {
+      delete document.documentElement.dataset.theme;
+    } else {
+      document.documentElement.dataset.theme = key;
+    }
+
+    if (this.lblTheme) {
+      this.lblTheme.textContent = theme.name.split(' ')[0];
+    }
+
+    if (this.engine) {
+      this.engine.retheme(theme.colors);
+    }
+
+    if (this.audio) {
+      this.audio.playChime();
+    }
+
+    HUDTelemetry.showToast(`Theme switched: ${theme.name}`);
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 9. INTERACTIVE CYBER TELEMETRY TERMINAL CONSOLE
+ * Standalone client-side command interpreter with tactile sound & quick pills
+ * ----------------------------------------------------------------------------
+ */
+class CyberTerminal {
+  constructor(engine, themeManager, audio, inspector) {
+    this.engine = engine;
+    this.themeManager = themeManager;
+    this.audio = audio;
+    this.inspector = inspector;
+
+    this.drawer = document.getElementById('terminalDrawer');
+    this.output = document.getElementById('terminalOutput');
+    this.input = document.getElementById('terminalInput');
+    this.btnToggle = document.getElementById('btnToggleTerminal');
+    this.btnClose = document.getElementById('btnCloseTerminal');
+    this.btnClear = document.getElementById('btnTermClear');
+    this.pills = document.querySelectorAll('.term-pill');
+
+    this.isOpen = false;
+    this.history = [];
+    this.historyIdx = -1;
+
+    this.init();
+  }
+
+  init() {
+    if (this.btnToggle) {
+      this.btnToggle.addEventListener('click', () => this.toggle());
+    }
+    if (this.btnClose) {
+      this.btnClose.addEventListener('click', () => this.close());
+    }
+    if (this.btnClear) {
+      this.btnClear.addEventListener('click', () => this.clear());
+    }
+
+    if (this.input) {
+      this.input.addEventListener('keydown', (e) => {
+        if (this.audio) this.audio.playKeyClick();
+        if (e.key === 'Enter') {
+          const cmd = this.input.value.trim();
+          this.input.value = '';
+          if (cmd) {
+            this.history.push(cmd);
+            this.historyIdx = this.history.length;
+            this.execute(cmd);
+          }
+        } else if (e.key === 'ArrowUp') {
+          if (this.history.length > 0 && this.historyIdx > 0) {
+            this.historyIdx--;
+            this.input.value = this.history[this.historyIdx];
+          }
+          e.preventDefault();
+        } else if (e.key === 'ArrowDown') {
+          if (this.historyIdx < this.history.length - 1) {
+            this.historyIdx++;
+            this.input.value = this.history[this.historyIdx];
+          } else {
+            this.historyIdx = this.history.length;
+            this.input.value = '';
+          }
+          e.preventDefault();
+        } else if (e.key === 'Escape') {
+          this.close();
+        }
+      });
+    }
+
+    if (this.pills) {
+      this.pills.forEach((pill) => {
+        pill.addEventListener('click', () => {
+          const cmd = pill.dataset.cmd;
+          if (cmd) {
+            this.execute(cmd);
+            if (this.input) this.input.focus();
+          }
+        });
+      });
+    }
+
+    this.printBanner();
+  }
+
+  toggle() {
+    if (this.isOpen) this.close();
+    else this.open();
+  }
+
+  open() {
+    if (!this.drawer) return;
+    this.drawer.classList.add('open');
+    this.isOpen = true;
+    if (this.btnToggle) this.btnToggle.classList.add('active');
+    if (this.input) setTimeout(() => this.input.focus(), 150);
+    if (this.audio) this.audio.playChime();
+  }
+
+  close() {
+    if (!this.drawer) return;
+    this.drawer.classList.remove('open');
+    this.isOpen = false;
+    if (this.btnToggle) this.btnToggle.classList.remove('active');
+  }
+
+  clear() {
+    if (this.output) this.output.innerHTML = '';
+  }
+
+  printBanner() {
+    const banner = [
+      '<span class="term-line-system">====================================================================</span>',
+      '<span class="term-line-success">  ANTIGRAVITY // CYBER COMMAND TELEMETRY CONSOLE [v4.2 PRO]</span>',
+      '<span class="term-line-accent">  Operator: Ravi Ranjan Singh // Node: RR-0808 // Sarala Birla Univ.</span>',
+      '<span class="term-line-system">====================================================================</span>',
+      'Type <span class="term-line-success">\'help\'</span> for system directives or click quick pills below.'
+    ].join('\n');
+    this.print(banner);
+  }
+
+  print(html) {
+    if (!this.output) return;
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    this.output.appendChild(div);
+    this.output.scrollTop = this.output.scrollHeight;
+  }
+
+  execute(rawCmd) {
+    this.print(`<span class="term-line-prompt">guest@antigravity:~$ ${rawCmd}</span>`);
+    const parts = rawCmd.trim().split(/\s+/);
+    const cmd = parts[0].toLowerCase();
+    const arg = parts[1] ? parts[1].toLowerCase() : '';
+
+    if (this.audio) this.audio.playExecute();
+
+    switch (cmd) {
+      case 'help':
+        this.print([
+          '<span class="term-line-accent">DIRECTIVES &amp; SYSTEM COMMANDS:</span>',
+          '  <span class="term-line-success">status</span>      - Display live runtime telemetry, FPS, and node topology',
+          '  <span class="term-line-success">projects</span>    - Query 6 featured AI/Agent systems and live telemetry',
+          '  <span class="term-line-success">experience</span>  - Display professional engineering apprenticeships',
+          '  <span class="term-line-success">skills</span>      - Print enterprise technology stack and capability matrix',
+          '  <span class="term-line-success">theme [key]</span> - Set/cycle theme (matrix, synthwave, cyberpunk, abyssal)',
+          '  <span class="term-line-success">audio [cmd]</span> - Synthesizer audio control (on, off, toggle)',
+          '  <span class="term-line-success">shockwave</span>   - Trigger kinetic quantum impulse particle blast',
+          '  <span class="term-line-success">whoami</span>      - Display operator dossier, credentials &amp; honors',
+          '  <span class="term-line-success">clear</span>       - Clear console buffer',
+          '  <span class="term-line-success">exit</span>        - Close terminal interface'
+        ].join('\n'));
+        break;
+
+      case 'status':
+        const fps = document.getElementById('telemetryFps')?.textContent || '60';
+        const uptime = document.getElementById('telemetryUptime')?.textContent || '0s';
+        const theme = this.themeManager?.getCurrentTheme()?.name || 'MATRIX CYBER';
+        const audioState = this.audio?.enabled ? 'ACTIVE (Online)' : 'MUTED (Offline)';
+        this.print([
+          '<span class="term-line-accent">[LIVE TELEMETRY SNAPSHOT]</span>',
+          `  Framerate:       <span class="term-line-success">${fps} FPS</span>`,
+          `  Active Nodes:    <span class="term-line-success">${this.engine?.particles?.length || 160}</span>`,
+          `  Active Conduits: <span class="term-line-success">${this.engine?.activeLinksCount || 0}</span>`,
+          `  Active Theme:    <span class="term-line-success">${theme}</span>`,
+          `  Procedural Synth:<span class="term-line-success">${audioState}</span>`,
+          `  System Uptime:   <span class="term-line-success">${uptime}</span>`,
+          `  Screen Res:      <span class="term-line-success">${window.innerWidth}x${window.innerHeight} @ ${window.devicePixelRatio || 1}x DPR</span>`
+        ].join('\n'));
+        break;
+
+      case 'projects':
+        this.print([
+          '<span class="term-line-accent">[FEATURED PRODUCTION ARTIFACTS]</span>',
+          '  1. <span class="term-line-success">Automated-ad-campaign-copywriter</span>: Multi-agent Gemini marketing pipeline',
+          '  2. <span class="term-line-success">AI-SALE-PITCH--Customizer</span>: Persona-conditioned RAG pitch generation',
+          '  3. <span class="term-line-success">AI-Powered-Sales-Funnel-Analyzer</span>: Predictive churn &amp; conversion scoring',
+          '  4. <span class="term-line-success">RAG-Evaluation-Engine</span>: Multi-agent RAG hallucination audit bench',
+          '  5. <span class="term-line-success">Autonomous-Code-Agent-Bench</span>: Self-healing Python/TypeScript test runner',
+          '  6. <span class="term-line-success">Expense-tracker</span>: Production financial ledger with Chart.js analytics',
+          '  Target repo: <a href="https://github.com/Hellthefox808" target="_blank" style="color: #00E5FF">https://github.com/Hellthefox808</a>'
+        ].join('\n'));
+        break;
+
+      case 'experience':
+        this.print([
+          '<span class="term-line-accent">[PROFESSIONAL EXPERIENCE]</span>',
+          '  • <span class="term-line-success">PravRaha</span> (Full Stack AI B2B SaaS Developer Intern | Jun–Aug 2026)',
+          '    Next.js 15 App Router · TypeScript · pgvector · Multi-agent swarms',
+          '  • <span class="term-line-success">BSNL LTD</span> (Enterprise Telecom &amp; Network Engineering Intern | Jun–Jul 2025)',
+          '    Carrier-grade MPLS · BGP/OSPF · Fiber FTTH optical infrastructure',
+          '  • <span class="term-line-success">Cognifyz Technologies</span> (Full Stack Web Developer Apprentice | Feb–Apr 2025)',
+          '    Microservices · Async event-driven APIs · Responsive interfaces'
+        ].join('\n'));
+        break;
+
+      case 'skills':
+        this.print([
+          '<span class="term-line-accent">[TECHNICAL CAPABILITY SPECTRUM]</span>',
+          '  • <span class="term-line-success">AI &amp; Agents:</span> Multi-Agent Swarms, RAG, pgvector, LangChain, LlamaIndex, MCP',
+          '  • <span class="term-line-success">Languages:</span> TypeScript, JavaScript (ES6+), Python 3.11+, SQL, HTML5/CSS3',
+          '  • <span class="term-line-success">Full-Stack:</span> React 19, Next.js 15, Node.js, Express, FastAPI, Tailwind CSS',
+          '  • <span class="term-line-success">Data/Infra:</span> PostgreSQL, MongoDB, Redis, AWS (ECS, S3, IAM), Docker, Linux SysAdmin',
+          '  • <span class="term-line-success">Testing/QA:</span> Vitest, Jest, Playwright, CI/CD GitHub Actions'
+        ].join('\n'));
+        break;
+
+      case 'theme':
+        if (arg && CyberThemeManager.THEMES[arg]) {
+          this.themeManager.apply(arg);
+          this.print(`<span class="term-line-success">Visual theme switched to: ${arg.toUpperCase()}</span>`);
+        } else {
+          this.themeManager.cycle();
+          const cur = this.themeManager.getCurrentTheme();
+          this.print(`<span class="term-line-success">Visual theme cycled to: ${cur.name}</span>`);
+        }
+        break;
+
+      case 'audio':
+        if (arg === 'on') {
+          if (!this.audio.enabled) this.audio.toggle();
+          this.print('<span class="term-line-success">Cybernetic audio synthesizer ACTIVATED.</span>');
+        } else if (arg === 'off') {
+          if (this.audio.enabled) this.audio.toggle();
+          this.print('<span class="term-line-warning">Cybernetic audio synthesizer MUTED.</span>');
+        } else {
+          const state = this.audio.toggle();
+          this.print(`<span class="term-line-success">Audio toggled: ${state ? 'ON' : 'OFF'}</span>`);
+        }
+        const audioBtn = document.getElementById('btnToggleAudio');
+        if (audioBtn) {
+          audioBtn.classList.toggle('active', this.audio.enabled);
+          const icon = audioBtn.querySelector('.btn-icon');
+          const text = audioBtn.querySelector('.btn-text');
+          if (icon) icon.textContent = this.audio.enabled ? '🔊' : '🔇';
+          if (text) text.textContent = this.audio.enabled ? 'AUDIO: ON' : 'AUDIO';
+        }
+        break;
+
+      case 'shockwave':
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        if (this.engine) this.engine.emitShockwave(cx, cy);
+        if (this.audio) this.audio.playShockwave();
+        this.print('<span class="term-line-success">Quantum impulse shockwave deployed at coordinates (center).</span>');
+        break;
+
+      case 'whoami':
+        this.print([
+          '<span class="term-line-accent">[OPERATOR DOSSIER]</span>',
+          '  Name:       Ravi Ranjan Singh',
+          '  Handle:     Hellthefox808',
+          '  Identity:   Full-Stack AI Systems Architect &amp; Software Engineer',
+          '  Institution:Sarala Birla University, Ranchi (B.Tech CSE)',
+          '  Leadership: NCC Sergeant (19 Jharkhand Bn) · Best Cadet Award (2019)',
+          '  Martial:    Taekwondo Black Belt (1st Dan) · Competitive Judo',
+          '  Honors:     National Semi-Finalist (Build with Bharat 2.0 @ NIT Delhi)',
+          '  Motto:      "Think deeply. Architect deliberately. Ship with evidence."'
+        ].join('\n'));
+        break;
+
+      case 'clear':
+        this.clear();
+        break;
+
+      case 'exit':
+      case 'quit':
+        this.close();
+        break;
+
+      default:
+        if (this.audio) this.audio.playAlert();
+        this.print(`<span class="term-line-warning">Command not recognized: '${rawCmd}'. Type 'help' for command manual.</span>`);
+        break;
+    }
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 10. KEYBOARD SHORTCUTS CHEATSHEET MODAL
+ * ----------------------------------------------------------------------------
+ */
+class ShortcutsModalManager {
+  constructor() {
+    this.modal = document.getElementById('shortcutsModal');
+    this.btnToggle = document.getElementById('btnToggleShortcuts');
+    this.btnClose = document.getElementById('btnCloseShortcuts');
+    this.isOpen = false;
+    this.init();
+  }
+
+  init() {
+    if (this.btnToggle) {
+      this.btnToggle.addEventListener('click', () => this.toggle());
+    }
+    if (this.btnClose) {
+      this.btnClose.addEventListener('click', () => this.close());
+    }
+    if (this.modal) {
+      this.modal.addEventListener('click', (e) => {
+        if (e.target === this.modal) this.close();
+      });
+    }
+  }
+
+  toggle() {
+    if (this.isOpen) this.close();
+    else this.open();
+  }
+
+  open() {
+    if (!this.modal) return;
+    this.modal.classList.add('open');
+    this.modal.setAttribute('aria-hidden', 'false');
+    this.isOpen = true;
+    if (window.cyberAudio) window.cyberAudio.playChime();
+  }
+
+  close() {
+    if (!this.modal) return;
+    this.modal.classList.remove('open');
+    this.modal.setAttribute('aria-hidden', 'true');
+    this.isOpen = false;
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 11. GLOBAL SHORTCUTS & HOTKEY DISPATCHER
+ * ----------------------------------------------------------------------------
+ */
+class GlobalKeyboardManager {
+  constructor(engine, themeManager, audio, terminal, shortcutsModal, controls, inspector) {
+    this.engine = engine;
+    this.themeManager = themeManager;
+    this.audio = audio;
+    this.terminal = terminal;
+    this.shortcutsModal = shortcutsModal;
+    this.controls = controls;
+    this.inspector = inspector;
+
+    this.init();
+  }
+
+  init() {
+    window.addEventListener('keydown', (e) => {
+      const activeEl = document.activeElement;
+      const isInput = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA');
+
+      if (isInput && activeEl.id === 'terminalInput') {
+        if (e.key === 'Escape') {
+          this.terminal.close();
+          e.preventDefault();
+        }
+        return;
+      }
+
+      if (isInput) return;
+
+      switch (e.key) {
+        case ' ':
+          e.preventDefault();
+          const cx = window.innerWidth / 2;
+          const cy = window.innerHeight / 2;
+          if (this.engine) this.engine.emitShockwave(cx, cy);
+          if (this.audio) this.audio.playShockwave();
+          HUDTelemetry.showToast('Kinetic Shockwave Deployed [Space]');
+          break;
+
+        case 't':
+        case 'T':
+          e.preventDefault();
+          if (this.themeManager) this.themeManager.cycle();
+          break;
+
+        case 'a':
+        case 'A':
+          e.preventDefault();
+          if (this.audio) {
+            const state = this.audio.toggle();
+            const btn = document.getElementById('btnToggleAudio');
+            if (btn) {
+              btn.classList.toggle('active', state);
+              const icon = btn.querySelector('.btn-icon');
+              const text = btn.querySelector('.btn-text');
+              if (icon) icon.textContent = state ? '🔊' : '🔇';
+              if (text) text.textContent = state ? 'AUDIO: ON' : 'AUDIO';
+            }
+            HUDTelemetry.showToast(`Procedural Synth: ${state ? 'ENABLED' : 'MUTED'} [A]`);
+          }
+          break;
+
+        case '`':
+        case '~':
+          e.preventDefault();
+          if (this.terminal) this.terminal.toggle();
+          break;
+
+        case 'c':
+        case 'C':
+          e.preventDefault();
+          const drawer = document.getElementById('controlsDrawer');
+          if (drawer) drawer.classList.toggle('open');
+          break;
+
+        case '?':
+          e.preventDefault();
+          if (this.shortcutsModal) this.shortcutsModal.toggle();
+          break;
+
+        case 'f':
+        case 'F':
+          e.preventDefault();
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+            HUDTelemetry.showToast('Fullscreen Mode Activated [F]');
+          } else {
+            document.exitFullscreen().catch(() => {});
+            HUDTelemetry.showToast('Fullscreen Mode Exited [F]');
+          }
+          break;
+
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+          e.preventDefault();
+          const assetKeys = ['hero', 'expertise', 'architecture', 'projects', 'footer'];
+          const idx = parseInt(e.key, 10) - 1;
+          if (idx >= 0 && idx < assetKeys.length && this.inspector) {
+            this.inspector.setAsset(assetKeys[idx]);
+            if (this.audio) this.audio.playChime();
+          }
+          break;
+
+        case 'Escape':
+          if (this.terminal && this.terminal.isOpen) this.terminal.close();
+          if (this.shortcutsModal && this.shortcutsModal.isOpen) this.shortcutsModal.close();
+          const ctrlDrawer = document.getElementById('controlsDrawer');
+          if (ctrlDrawer) ctrlDrawer.classList.remove('open');
+          break;
+      }
+    });
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 12. APPLICATION BOOTSTRAPPER
  * Orchestrates unified animation frame loop and lifecycle initialization
  * ----------------------------------------------------------------------------
  */
@@ -1164,7 +1780,7 @@ class MotionApp {
       return;
     }
 
-    // Instantiate Subsystems
+    // Instantiate Core Subsystems
     const engine = new ParticleEngine(canvas);
     const parallax = new ParallaxController(cardWrapper, cardGlare);
     const inspector = new AssetInspector();
@@ -1185,6 +1801,26 @@ class MotionApp {
         if (text) text.textContent = isOn ? 'AUDIO: ON' : 'AUDIO';
       });
     }
+
+    // Cyber Theme Manager
+    const themeManager = new CyberThemeManager(engine, audio);
+
+    // Cyber CLI Terminal Console
+    const terminal = new CyberTerminal(engine, themeManager, audio, inspector);
+
+    // Shortcuts Cheatsheet Modal
+    const shortcutsModal = new ShortcutsModalManager();
+
+    // Global Keyboard Hotkey Dispatcher
+    const keyboard = new GlobalKeyboardManager(
+      engine,
+      themeManager,
+      audio,
+      terminal,
+      shortcutsModal,
+      controls,
+      inspector
+    );
 
     // Master Animation Loop with Tab Visibility Optimization
     let animId = null;
@@ -1212,7 +1848,7 @@ class MotionApp {
     });
 
     animId = requestAnimationFrame(frame);
-    console.info('[ANTIGRAVITY] 4D Motion Engine v4.2 initialized successfully.');
+    console.info('[ANTIGRAVITY] 4D Motion Engine v4.2 PRO initialized successfully with Terminal, Theme Switcher & Shortcuts.');
   }
 }
 
