@@ -148,9 +148,10 @@ class ParticleEngine {
     this.enableRepulsion = true;
     this.enableGlow = true;
 
-    // Metrics State
+    // Metrics State & Dynamic Shockwaves
     this.activeLinksCount = 0;
     this.particles = [];
+    this.shockwaves = [];
 
     // Interactive Mouse Tracking
     this.mouse = {
@@ -179,6 +180,14 @@ class ParticleEngine {
       this.mouse.y = -1000;
     }, { passive: true });
 
+    // Interactive Shockwave Emitter on Click
+    window.addEventListener('click', (e) => {
+      // Avoid triggering when clicking controls drawer
+      if (!e.target.closest('#controlsDrawer') && !e.target.closest('#btnToggleDrawer')) {
+        this.emitShockwave(e.clientX, e.clientY);
+      }
+    }, { passive: true });
+
     // Touch Event Handling for Mobile / Tablets
     window.addEventListener('touchmove', (e) => {
       if (e.touches.length > 0) {
@@ -188,13 +197,18 @@ class ParticleEngine {
       }
     }, { passive: true });
 
-    window.addEventListener('touchend', () => {
+    window.addEventListener('touchend', (e) => {
       this.mouse.active = false;
       this.mouse.x = -1000;
       this.mouse.y = -1000;
     }, { passive: true });
 
     this.populateParticles();
+  }
+
+  emitShockwave(x, y) {
+    this.shockwaves.push({ x, y, radius: 0, maxRadius: 220, alpha: 0.85 });
+    if (window.cyberAudio) window.cyberAudio.playImpulse();
   }
 
   resize() {
@@ -301,6 +315,43 @@ class ParticleEngine {
     if (this.enableParticles) {
       for (let i = 0; i < this.particles.length; i++) {
         this.particles[i].draw(ctx, this.enableGlow);
+      }
+    }
+
+    // 4. Render Dynamic Quantum Impulse Shockwaves
+    if (this.shockwaves.length > 0) {
+      for (let s = this.shockwaves.length - 1; s >= 0; s--) {
+        const sw = this.shockwaves[s];
+        sw.radius += 5.5;
+        sw.alpha *= 0.94;
+
+        if (sw.radius >= sw.maxRadius || sw.alpha < 0.02) {
+          this.shockwaves.splice(s, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(0, 255, 136, ${sw.alpha})`;
+        ctx.lineWidth = 2.0;
+        ctx.shadowColor = '#00FF88';
+        ctx.shadowBlur = 10;
+        ctx.stroke();
+        ctx.restore();
+
+        // Push nearby particles with radial impulse
+        for (let i = 0; i < this.particles.length; i++) {
+          const p = this.particles[i];
+          const dx = p.x - sw.x;
+          const dy = p.y - sw.y;
+          const dist = Math.hypot(dx, dy);
+          if (Math.abs(dist - sw.radius) < 30 && dist > 0) {
+            const impulse = (30 - Math.abs(dist - sw.radius)) * 0.15;
+            p.x += (dx / dist) * impulse;
+            p.y += (dy / dist) * impulse;
+          }
+        }
       }
     }
   }
@@ -658,8 +709,11 @@ class HUDTelemetry {
     this.cursorEl = document.getElementById('telemetryCursor');
     this.tiltEl = document.getElementById('telemetryTilt');
     this.viewportEl = document.getElementById('telemetryViewport');
+    this.clockEl = document.getElementById('telemetryClock');
+    this.uptimeEl = document.getElementById('telemetryUptime');
 
     this.lastFrameTime = performance.now();
+    this.sessionStart = performance.now();
     this.frameDeltas = [];
     this.maxSamples = 30;
     this.lastTelemetryUpdate = 0;
@@ -705,6 +759,15 @@ class HUDTelemetry {
       if (this.nodesEl) this.nodesEl.textContent = particleCount;
       if (this.linksEl) this.linksEl.textContent = linkCount;
       if (this.deltaEl) this.deltaEl.textContent = `${avgDelta.toFixed(1)}ms`;
+
+      if (this.clockEl) {
+        const now = new Date();
+        this.clockEl.textContent = now.toTimeString().split(' ')[0];
+      }
+      if (this.uptimeEl) {
+        const sec = Math.floor((currentTime - this.sessionStart) / 1000);
+        this.uptimeEl.textContent = `${sec}s`;
+      }
 
       if (this.cursorEl) {
         this.cursorEl.textContent = `X: ${this.mouseX}, Y: ${this.mouseY}`;
@@ -1034,7 +1097,59 @@ class ControlsManager {
 
 /**
  * ----------------------------------------------------------------------------
- * 7. APPLICATION BOOTSTRAPPER
+ * 7. PROCEDURAL CYBERNETIC SYNTHESIZER
+ * Zero-dependency Web Audio API procedural audio generator
+ * ----------------------------------------------------------------------------
+ */
+class CyberAudio {
+  constructor() {
+    this.ctx = null;
+    this.enabled = false;
+  }
+
+  init() {
+    if (!this.ctx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) this.ctx = new AudioContextClass();
+    }
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+  }
+
+  toggle() {
+    this.enabled = !this.enabled;
+    if (this.enabled) this.init();
+    return this.enabled;
+  }
+
+  playTone(freq = 440, type = 'sine', duration = 0.12, gainVal = 0.04) {
+    if (!this.enabled || !this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+      gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + duration);
+    } catch (e) {
+      // AudioContext policy suppression safe-catch
+    }
+  }
+
+  playImpulse() {
+    this.playTone(660, 'sine', 0.18, 0.05);
+    setTimeout(() => this.playTone(880, 'sine', 0.12, 0.03), 40);
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 8. APPLICATION BOOTSTRAPPER
  * Orchestrates unified animation frame loop and lifecycle initialization
  * ----------------------------------------------------------------------------
  */
@@ -1055,6 +1170,21 @@ class MotionApp {
     const inspector = new AssetInspector();
     const telemetry = new HUDTelemetry();
     const controls = new ControlsManager(engine, parallax);
+
+    // Audio Synthesizer Integration
+    const audio = new CyberAudio();
+    window.cyberAudio = audio;
+    const audioBtn = document.getElementById('btnToggleAudio');
+    if (audioBtn) {
+      audioBtn.addEventListener('click', () => {
+        const isOn = audio.toggle();
+        audioBtn.classList.toggle('active', isOn);
+        const icon = audioBtn.querySelector('.btn-icon');
+        const text = audioBtn.querySelector('.btn-text');
+        if (icon) icon.textContent = isOn ? '🔊' : '🔇';
+        if (text) text.textContent = isOn ? 'AUDIO: ON' : 'AUDIO';
+      });
+    }
 
     // Master Animation Loop with Tab Visibility Optimization
     let animId = null;

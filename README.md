@@ -32,7 +32,7 @@
 <br /><br />
 
 <!-- Dynamic Typing Animation -->
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&pause=1000&color=00FF88&center=true&vCenter=true&width=700&lines=Building+Agentic+AI+Systems+%7C+Multi-Agent+Orchestration;Engineering+Resilient+Distributed+Backends;Architecting+Cloud-Native+Platforms+%7C+Zero-Trust+Security;Semi-Finalist+%40+Build+with+Bharat+2.0+%7C+NIT+Delhi" alt="Dynamic Typing Animation SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&pause=1200&color=00FF88&center=true&vCenter=true&width=750&lines=Autonomous+Multi-Agent+Swarms+%26+MCP+Control+Planes;High-Assurance+Distributed+Backends+%7C+pgvector+%26+Redis+L1%2FL2;National+Semi-Finalist+%40+Build+with+Bharat+2.0+(NIT+Delhi);Sergeant+(SGT)+%7C+19+Jharkhand+Bn+NCC+%7C+Best+Cadet;Think+deeply.+Architect+deliberately.+Ship+with+evidence." alt="Dynamic Real-Time Typing Animation SVG" />
 
 <br /><br />
 
@@ -195,6 +195,9 @@ An evidence-based selection of real systems built, architected, and maintained a
         <a href="https://github.com/Hellthefox808/ShiVi-D">
           <img src="https://img.shields.io/badge/Repository-Hellthefox808%2FShiVi--D-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="PravRaha ShiVi Repository Badge" />
         </a>
+        <img src="https://img.shields.io/github/stars/Hellthefox808/ShiVi-D?style=flat-square&logo=github&color=00D9FF&labelColor=05080B" alt="ShiVi-D Live Stars Badge" />
+        <img src="https://img.shields.io/github/forks/Hellthefox808/ShiVi-D?style=flat-square&logo=github&color=8B5CF6&labelColor=05080B" alt="ShiVi-D Live Forks Badge" />
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/ShiVi-D?style=flat-square&logo=git&color=00DFA5&labelColor=05080B" alt="ShiVi-D Last Commit Badge" />
       </p>
     </td>
     <!-- PROJECT 2: NCC CRM -->
@@ -219,6 +222,8 @@ An evidence-based selection of real systems built, architected, and maintained a
         <a href="https://github.com/Hellthefox808/NCC-CRM-V1.0">
           <img src="https://img.shields.io/badge/Repository-Hellthefox808%2FNCC--CRM--V1.0-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="NCC CRM Repository Badge" />
         </a>
+        <img src="https://img.shields.io/github/stars/Hellthefox808/NCC-CRM-V1.0?style=flat-square&logo=github&color=00D9FF&labelColor=05080B" alt="NCC CRM Live Stars Badge" />
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/NCC-CRM-V1.0?style=flat-square&logo=git&color=8B5CF6&labelColor=05080B" alt="NCC CRM Last Commit Badge" />
       </p>
     </td>
   </tr>
@@ -246,6 +251,8 @@ An evidence-based selection of real systems built, architected, and maintained a
         <a href="https://github.com/Hellthefox808/ShiVi-AI-Offline-First-Multilingual-Education-Platform">
           <img src="https://img.shields.io/badge/Repository-Hellthefox808%2FBhashaSetu_AI-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="BhashaSetu AI Repository Badge" />
         </a>
+        <img src="https://img.shields.io/github/stars/Hellthefox808/ShiVi-AI-Offline-First-Multilingual-Education-Platform?style=flat-square&logo=github&color=00D9FF&labelColor=05080B" alt="BhashaSetu AI Live Stars Badge" />
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/ShiVi-AI-Offline-First-Multilingual-Education-Platform?style=flat-square&logo=git&color=00DFA5&labelColor=05080B" alt="BhashaSetu AI Last Commit Badge" />
       </p>
     </td>
     <!-- PROJECT 4: AGRI-TECH -->
@@ -270,6 +277,7 @@ An evidence-based selection of real systems built, architected, and maintained a
         <a href="https://github.com/Hellthefox808/agri-tech-2..0">
           <img src="https://img.shields.io/badge/Repository-Hellthefox808%2Fagri--tech--2..0-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="Agri-Tech Repository Badge" />
         </a>
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/agri-tech-2..0?style=flat-square&logo=git&color=00D9FF&labelColor=05080B" alt="Agri-Tech Last Commit Badge" />
       </p>
     </td>
   </tr>
@@ -296,6 +304,7 @@ An evidence-based selection of real systems built, architected, and maintained a
         <a href="https://github.com/Hellthefox808/Travel-v1.1.2-Buget">
           <img src="https://img.shields.io/badge/Repository-Hellthefox808%2FTravel--v1.1.2--Buget-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="Travel Nest Repository Badge" />
         </a>
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/Travel-v1.1.2-Buget?style=flat-square&logo=git&color=00DFA5&labelColor=05080B" alt="Travel Nest Last Commit Badge" />
       </p>
     </td>
     <td width="50%" valign="top">
@@ -318,6 +327,7 @@ An evidence-based selection of real systems built, architected, and maintained a
         <a href="https://github.com/Hellthefox808/Expense-tracker">
           <img src="https://img.shields.io/badge/Repository-Hellthefox808%2FExpense--tracker-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="Expense Tracker Repository Badge" />
         </a>
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/Expense-tracker?style=flat-square&logo=git&color=9875FF&labelColor=05080B" alt="Expense Tracker Last Commit Badge" />
       </p>
     </td>
   </tr>
@@ -450,6 +460,15 @@ TOOLING       ::  Git  •  Vitest  •  Jest  •  VS Code  •  Postman  •  
 
   <!-- GitHub Profile Trophies Matrix -->
   <img width="95%" src="https://github-profile-trophy.vercel.app/?username=Hellthefox808&theme=matrix&no-frame=true&no-bg=true&margin_w=15&column=7" alt="GitHub Profile Trophies Matrix" />
+
+  <br /><br />
+
+  <!-- Dynamic GitHub Contribution Snake Game -->
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Hellthefox808/Hellthefox808/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Hellthefox808/Hellthefox808/output/github-contribution-grid-snake.svg" />
+    <img src="https://raw.githubusercontent.com/Hellthefox808/Hellthefox808/output/github-contribution-grid-snake-dark.svg" alt="Dynamic GitHub Contribution Snake Animation" width="100%" />
+  </picture>
 
   <br /><br />
 

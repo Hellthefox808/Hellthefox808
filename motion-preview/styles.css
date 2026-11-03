@@ -281,6 +281,12 @@ html, body {
   transform: translateY(-1px);
 }
 
+.hud-btn-toggle-controls.active {
+  background: var(--accent-emerald);
+  color: var(--bg-void);
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.7);
+}
+
 /* ==========================================================================
    2. 3D Perspective Stage & Card Container
    ========================================================================== */
