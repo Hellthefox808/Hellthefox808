@@ -6,6 +6,10 @@ on:
     - cron: "0 */6 * * *"
   workflow_dispatch:
 
+concurrency:
+  group: activity-sync-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -28,6 +32,8 @@ jobs:
 
       - name: Execute Activity Telemetry Updater
         run: python scripts/update_activity.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit and Push Activity Telemetry
         run: |
@@ -40,3 +46,4 @@ jobs:
           else
             echo "Activity feed already synchronized; zero delta detected."
           fi
+

@@ -43,20 +43,53 @@ EVENT_MAP = {
 
 
 def fetch_events() -> list:
-    """Fetch public events from GitHub REST API with offline graceful fallback."""
+    """Fetch public events from GitHub REST API with SRE rate-limit telemetry and offline graceful fallback."""
+    headers = {
+        "User-Agent": f"Antigravity-Activity-Updater ({USERNAME})",
+        "Accept": "application/vnd.github.v3+json",
+    }
+
+    # Authenticate via environment token if present in CI/CD runner
+    token = os.getenv("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+        print("[AUTH] Using GITHUB_TOKEN authentication (High-Quota Mode).")
+    else:
+        print("[AUTH] Anonymous execution mode (Standard 60 req/hr Quota).")
+
     try:
-        req = urllib.request.Request(
-            API_URL,
-            headers={
-                "User-Agent": f"Antigravity-Activity-Updater ({USERNAME})",
-                "Accept": "application/vnd.github.v3+json",
-            },
-        )
-        with urllib.request.urlopen(req, timeout=6) as resp:
+        req = urllib.request.Request(API_URL, headers=headers)
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            # Observability & Rate-Limit Telemetry
+            limit = resp.headers.get("X-RateLimit-Limit", "Unknown")
+            remaining = resp.headers.get("X-RateLimit-Remaining", "Unknown")
+            reset_ts = resp.headers.get("X-RateLimit-Reset", "")
+            reset_time = ""
+            if reset_ts and reset_ts.isdigit():
+                try:
+                    reset_time = datetime.fromtimestamp(int(reset_ts)).strftime("%H:%M:%S UTC")
+                except Exception:
+                    pass
+
+            print(f"[METRIC] GitHub API Quota: {remaining}/{limit} remaining. Reset window: {reset_time or 'N/A'}")
+
             if resp.status == 200:
-                return json.loads(resp.read().decode("utf-8"))
+                payload = json.loads(resp.read().decode("utf-8"))
+                print(f"[INFO] Ingested {len(payload)} raw events from GitHub REST API.")
+                return payload
+            else:
+                print(f"[WARN] Non-200 HTTP response received: {resp.status}")
+    except urllib.error.HTTPError as http_err:
+        if http_err.code == 403 and "rate limit" in str(http_err).lower():
+            print(f"[ERROR] [CLASSIFICATION: RATE_LIMITED] Rate limit exceeded on GitHub API: {http_err}")
+        else:
+            print(f"[ERROR] [CLASSIFICATION: HTTP_ERROR] HTTP exception: {http_err}")
+    except urllib.error.URLError as url_err:
+        print(f"[WARN] [CLASSIFICATION: NETWORK_UNAVAILABLE] Offline or network failure: {url_err}")
     except Exception as ex:
-        print(f"[WARN] Failed to fetch live GitHub events: {ex}")
+        print(f"[WARN] [CLASSIFICATION: UNKNOWN_EXCEPTION] Unexpected error fetching live events: {ex}")
+
+    print("[RESILIENCE] Graceful fallback activated: serving certified baseline telemetry.")
     return []
 
 
@@ -187,3 +220,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
