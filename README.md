@@ -86,6 +86,19 @@ Rather than building superficial demos, I am dedicated to engineering software t
 
 ## 02 // Engineering Focus
 
+<div align="center">
+  <img src="./assets/animated/expertise-motion.gif" alt="Areas of Engineering Expertise Architecture Diagram" width="100%" />
+  <p align="center">
+    <sub>
+      <a href="./assets/motion/expertise-motion.svg">SVG Motion Source</a> · 
+      <a href="./assets/expertise.svg">Vector Schematic</a> · 
+      <a href="./assets/static/expertise.png">Static Fallback</a>
+    </sub>
+  </p>
+</div>
+
+<br />
+
 My engineering practice is grounded in four foundational disciplines:
 
 <table>
@@ -149,15 +162,6 @@ My engineering practice is grounded in four foundational disciplines:
       <a href="./assets/motion/architecture-motion.svg">SVG Motion Source</a> · 
       <a href="./assets/architecture.svg">Vector Schematic</a> · 
       <a href="./assets/static/architecture.png">Static Fallback</a>
-    </sub>
-  </p>
-  <br />
-  <img src="./assets/animated/expertise-motion.gif" alt="Areas of Engineering Expertise Architecture Diagram" width="100%" />
-  <p align="center">
-    <sub>
-      <a href="./assets/motion/expertise-motion.svg">SVG Motion Source</a> · 
-      <a href="./assets/expertise.svg">Vector Schematic</a> · 
-      <a href="./assets/static/expertise.png">Static Fallback</a>
     </sub>
   </p>
 </div>
@@ -528,8 +532,23 @@ TOOLING       ::  Git  •  Vitest  •  Jest  •  VS Code  •  Postman  •  
 | **Testing &amp; QA Engineering** | Vitest (471 passing assertions), Jest, Playwright | Comprehensive unit, property-based, and end-to-end integration gates |
 
 <div align="center">
-  <h4>Core Technologies</h4>
-  <img src="https://skillicons.dev/icons?i=python,ts,js,react,nextjs,tailwind,nodejs,nestjs,express,fastapi,postgres,redis,mongodb,sqlite,aws,docker,linux,githubactions,git,vscode&theme=dark" alt="Technical Stack Icons Overview" />
+  <h4>Languages &amp; Core Runtimes</h4>
+  <img src="https://skillicons.dev/icons?i=python,ts,js,cpp,java,html,css&theme=dark" alt="Programming Languages Skill Icons" />
+  
+  <br /><br />
+  
+  <h4>Full-Stack &amp; Frameworks</h4>
+  <img src="https://skillicons.dev/icons?i=react,nextjs,tailwind,nodejs,nestjs,express,fastapi,vite&theme=dark" alt="Frontend and Backend Frameworks Skill Icons" />
+
+  <br /><br />
+
+  <h4>Cloud, Storage &amp; Infrastructure</h4>
+  <img src="https://skillicons.dev/icons?i=postgres,redis,supabase,mongodb,sqlite,aws,docker,linux,githubactions,nginx,cloudflare&theme=dark" alt="Cloud Infrastructure and Databases Skill Icons" />
+
+  <br /><br />
+
+  <h4>AI, Data Science &amp; Tooling</h4>
+  <img src="https://skillicons.dev/icons?i=pytorch,tensorflow,scikitlearn,git,github,vscode,postman,bun&theme=dark" alt="AI Data and Developer Tooling Skill Icons" />
 </div>
 
 <div align="center">
