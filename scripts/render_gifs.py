@@ -1,12 +1,14 @@
-import http.server
-import socketserver
-import threading
-import subprocess
-import os
-import json
 import base64
-import time
+import http.server
 import io
+import json
+import os
+import shutil
+import socketserver
+import subprocess
+import sys
+import threading
+import time
 from PIL import Image
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -14,7 +16,53 @@ ASSETS_DIR = os.path.join(PROJECT_ROOT, "assets")
 ANIMATED_DIR = os.path.join(ASSETS_DIR, "animated")
 os.makedirs(ANIMATED_DIR, exist_ok=True)
 
-CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+
+def find_browser() -> str | None:
+    """Locate Google Chrome, Chromium, or Microsoft Edge across OS platforms."""
+    env_override = os.getenv("CHROME_PATH") or os.getenv("BROWSER_PATH")
+    if env_override and os.path.isfile(env_override):
+        return env_override
+
+    for candidate in ["google-chrome", "chromium", "chromium-browser", "chrome", "msedge"]:
+        path = shutil.which(candidate)
+        if path:
+            return path
+
+    if sys.platform == "win32":
+        candidates = [
+            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+            os.path.expandvars(r"%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe"),
+            r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+            r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+        ]
+    elif sys.platform == "darwin":
+        candidates = [
+            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+            "/Applications/Chromium.app/Contents/MacOS/Chromium",
+            "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        ]
+    else:  # Linux / Unix
+        candidates = [
+            "/usr/bin/google-chrome",
+            "/usr/bin/google-chrome-stable",
+            "/usr/bin/chromium",
+            "/usr/bin/chromium-browser",
+            "/snap/bin/chromium",
+        ]
+
+    for p in candidates:
+        if os.path.isfile(p):
+            return p
+
+    return None
+
+
+CHROME_PATH = find_browser()
+if not CHROME_PATH:
+    print("[ERROR] No supported headless browser (Chrome/Chromium/Edge) found on system.")
+    print("Please set the CHROME_PATH environment variable.")
+    sys.exit(1)
 
 current_frames = []
 
@@ -37,8 +85,13 @@ class FrameReceiver(http.server.SimpleHTTPRequestHandler):
         pass
 
 socketserver.TCPServer.allow_reuse_address = True
-PORT = 8999
-server = socketserver.TCPServer(("127.0.0.1", PORT), FrameReceiver)
+try:
+    server = socketserver.TCPServer(("127.0.0.1", 8999), FrameReceiver)
+    PORT = 8999
+except OSError:
+    server = socketserver.TCPServer(("127.0.0.1", 0), FrameReceiver)
+    PORT = server.server_address[1]
+
 server_thread = threading.Thread(target=server.serve_forever)
 server_thread.daemon = True
 server_thread.start()

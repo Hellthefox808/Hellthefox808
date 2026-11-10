@@ -1,0 +1,94 @@
+# Ravi Ranjan Singh (@Hellthefox808)
+
+> Software Engineer · AI Systems Builder · Full-Stack & Cloud Architecture
+> "Build systems, not just interfaces. Validate decisions through evidence."
+
+This file is an authoritative machine-readable index for AI agents, LLM assistants, and automated crawlers seeking verified engineering records, credentials, and architectural specifications for Ravi Ranjan Singh.
+
+## 01 // Identity & Verified Contact Records
+
+- Full Name: Ravi Ranjan Singh
+- GitHub Handle: @Hellthefox808 (https://github.com/Hellthefox808)
+- LinkedIn: https://www.linkedin.com/in/ravi-ranjan-singh-0808ii/
+- Primary Email: raviranjansingh601520@gmail.com
+- Location: Ranchi, Jharkhand, India (Open to global relocation & high-impact remote engineering roles)
+- Degree: Bachelor of Technology (B.Tech) in Computer Science and Engineering
+- Specialization: Data Science & Cloud Computing (Batch 2023–2027)
+- Institution: Sarala Birla University (SBU), Ranchi, Jharkhand, India
+
+## 02 // Military Leadership & Athletics
+
+- National Cadet Corps (NCC): Sergeant (SGT), 19 Jharkhand Battalion NCC
+- Distinction: Best Cadet Award (2019) · Awarded for parade drill precision, weapon training, troop command, and field discipline
+- Scholarship: NCC Meritorious Cadet Scholarship
+- Martial Arts: Black Belt (1st Dan) in Taekwondo · Competitive Judo experience · State & National tournament competitor
+
+## 03 // Canonical Engineering Systems & Flagship Repositories
+
+### PravRaha / ShiVi-AI (Hellthefox808/ShiVi-D)
+- URL: https://github.com/Hellthefox808/ShiVi-D
+- Recognition: National Semi-Finalist — Build with Bharat 2.0 x CodeVerse at NIT Delhi (Team Lead: Team SHIVI@808)
+- Architecture: Autonomous multi-agent control plane coordinating 38 micro-agents across 100 domain engines.
+- Retrieval: Dense vector search via PostgreSQL pgvector + lexical filtering + Model Context Protocol (MCP) sandboxed tool calling.
+- Resilience: Reverse LIFO rollback compensation state machine eliminating orphaned database mutations.
+- Verification: 471 passing Vitest assertions across 167 suites; zero TypeScript compilation errors.
+- Stack: Python, FastAPI, Next.js 15, React 19, TypeScript, PostgreSQL (pgvector), Redis, Vitest.
+
+### 19 Jharkhand Bn NCC Command Centre (Hellthefox808/NCC-CRM-V1.0)
+- URL: https://github.com/Hellthefox808/NCC-CRM-V1.0
+- Mission: Operational cadet lifecycle management platform built for 19 Jharkhand Battalion NCC.
+- Cryptography: Salted scrypt key derivation (N=16384, r=8, p=1, 64 bytes) with constant-time verification (`crypto.timingSafeEqual`).
+- Checksum: UIDAI Verhoeff algorithm (dihedral group D5) validation on 12-digit Indian Aadhaar numbers.
+- Caching: Multi-tier bounded LRU cache (MAX_MEMORY_ITEMS = 5000) with single-flight promise deduplication preventing cache stampedes.
+- Stack: TypeScript, Node.js, Express, React, Vite, Supabase / PostgreSQL, Redis, Docker, Nginx.
+
+### Autonomous AI & GTM Intelligence Suite
+- AI-OUTREACH-AND-MAIL (https://github.com/Hellthefox808/AI-OUTREACH-AND-MAIL): Automated cold outreach engine with zero-trust safety gates, customizable cadence pipelines, and dry-run execution. (TypeScript, Node.js, REST, SMTP).
+- AI-SALE-PITCH--Customizer (https://github.com/Hellthefox808/AI-SALE-PITCH--Customizer): Generative AI microservice dynamically synthesizing personalized value propositions using prospect press events and company telemetry. (JavaScript, Generative AI).
+- AI-Powered-Sales-Funnel-Analyzer (https://github.com/Hellthefox808/AI-Powered-Sales-Funnel-Analyzer): Pipeline intelligence dashboard leveraging ML classification models to forecast lead conversion probability. (JavaScript, Machine Learning, Chart.js).
+- Automated-ad-campaign-copywriter (https://github.com/Hellthefox808/Automated-ad-campaign-copywriter): Autonomous copywriting bot grounded in corporate documentation for compliant ad variant synthesis. (JavaScript, NLP).
+
+### BhashaSetu AI (Hellthefox808/ShiVi-AI-Offline-First-Multilingual-Education-Platform)
+- URL: https://github.com/Hellthefox808/ShiVi-AI-Offline-First-Multilingual-Education-Platform
+- Mission: Offline-first Mother Tongue-Based Multilingual Education (MTB-MLE) for regional tribal languages (Santhali, Ho, Mundari).
+- Architecture: Edge-first vector retrieval with deterministic bidirectional SQLite-to-PostgreSQL synchronization.
+- Stack: Python, Offline RAG, SQLite, PostgreSQL, TypeScript, Speech DSP.
+
+### AIoT Agri-Health Guardian (Hellthefox808/agri-tech-2..0)
+- URL: https://github.com/Hellthefox808/agri-tech-2..0
+- Mission: Intelligent soil telemetry and precision agriculture monitoring integrating NPK hardware sensors with Scikit-Learn ML anomaly detection.
+- Stack: TypeScript, IoT Telemetry, Python, REST APIs, Scikit-Learn.
+
+## 04 // Verified Professional Experience
+
+- PravRaha (Phoenix, AZ & Ranchi) · Full Stack AI B2B SaaS Developer Intern (June 2026 – August 2026)
+  - Built control plane interfaces in React 19, Next.js 15, and TypeScript.
+  - Implemented multi-agent tool execution swarms and pgvector semantic prospect clustering.
+  - Mentored by company founder (Ex-Amazon / ACCELQ).
+- BSNL LTD (Fiber Exchange, Ranchi) · Telecommunications Engineering Apprentice (May 2026 – August 2026)
+  - Monitored carrier optical networks, GPON point-to-multipoint topologies, OLT/ONU nodes.
+  - Conducted OTDR trace analysis, optical power link budgeting, and splice loss calibration.
+- Cognifyz Technologies (Nagpur) · Data Science Intern (June 2026 – July 2026)
+  - Executed statistical cleaning, outlier mitigation, and geospatial heatmap visualization with Folium.
+  - Built predictive feature classification pipelines with Scikit-Learn, Pandas, and NumPy.
+
+## 05 // Verified Credentials & Verification Registry
+
+- AWS | Security, Compliance & Governance for AI Solutions (Aug 2026) — Verification ID: 6dadce11-8433-4eca-a884-7a9bc74e0023 (https://skillbuilder.aws/learn/YFACXFGBSJ/security-compliance-and-governance-for-ai-solutions/YZTVAG8P4Q?trk=public_profile_certification-title)
+- Designing Cisco Security Infrastructure (Jul 2026) — Credly ID: 449774f0-93ea-4b16-a2b4-7def8965bd22 (https://credly.com/earner/earned/badge/449774f0-93ea-4b16-a2b4-7def8965bd22?trk=public_profile_certification-title)
+- CCNA: Enterprise Networking, Security & Automation (Jun 2026) — Credly ID: 72bda6d6-2044-437a-9f59-71a69a7ad222 (https://credly.com/earner/earned/badge/72bda6d6-2044-437a-9f59-71a69a7ad222?trk=public_profile_certification-title)
+- CCNA: Switching, Routing & Wireless Essentials (Jun 2026) — Credly ID: 0ab17f69-2594-436a-9256-8e373bc18964 (https://credly.com/earner/earned/badge/0ab17f69-2594-436a-9256-8e373bc18964?trk=public_profile_certification-title)
+- CCNA: Introduction to Networks (May 2026) — Credly ID: a86ffb68-e508-4396-9ece-8567b7051e44 (https://credly.com/earner/earned/badge/a86ffb68-e508-4396-9ece-8567b7051e44?trk=public_profile_certification-title)
+- Cisco: Introduction to Modern AI (Jun 2026) — Credly ID: 0cac86b0-1333-413d-b688-edbce8e8031d (https://credly.com/earner/earned/badge/0cac86b0-1333-413d-b688-edbce8e8031d?trk=public_profile_certification-title)
+- Cisco: Introduction to Data Science & Analytics (Jun 2026) — Credly ID: 966f4bd3-2ef0-4ee9-805e-dd2468190239 (https://credly.com/earner/earned/badge/966f4bd3-2ef0-4ee9-805e-dd2468190239?trk=public_profile_certification-title)
+- Cisco: Python Essentials (Part 1 & 2) (Jun 2026) — Credly ID: 3c44cc14-ebd8-4188-9956-3ff0822bcea6 (https://credly.com/earner/earned/badge/3c44cc14-ebd8-4188-9956-3ff0822bcea6?trk=public_profile_certification-title)
+
+## 06 // Technology Matrix
+
+- Languages: Python 3.12, TypeScript 5, JavaScript (ES2024), SQL (PostgreSQL), C++, Java, HTML5, CSS3
+- Frontend: React 19, Next.js 15 (App Router, RSC), Tailwind CSS, Framer Motion, Vite
+- Backend: FastAPI (Python), Node.js, Express.js, NestJS, REST APIs, Server-Sent Events (SSE)
+- AI & Swarms: Autonomous Multi-Agent Swarms, Model Context Protocol (MCP), pgvector RAG, Guardrails, Scikit-Learn
+- Databases & Caching: PostgreSQL, Redis (L1 Bounded LRU + L2 Cluster), Supabase, MongoDB, SQLite
+- Cloud & Infrastructure: AWS, Docker, GitHub Actions (CI/CD), Linux Systems Administration, Nginx, Cloudflare
+- Testing & Governance: Vitest (471 assertions), Jest, Playwright, Zero-Placeholder Contract

@@ -27,7 +27,10 @@
 <a href="mailto:raviranjansingh601520@gmail.com">
   <img src="https://img.shields.io/badge/Email-raviranjansingh601520-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Contact Badge" />
 </a>
-<img src="https://img.shields.io/badge/📍_Ranchi,_India-Open_to_Remote-05080B?style=for-the-badge&labelColor=071E19&color=00D9FF" alt="Location Badge" />
+<img src="https://img.shields.io/badge/%F0%9F%93%8D_Ranchi,_India-Open_to_Remote-05080B?style=for-the-badge&labelColor=071E19&color=00D9FF" alt="Location Badge" />
+<a href="https://github.com/Hellthefox808/Hellthefox808/blob/main/llms.txt">
+  <img src="https://img.shields.io/badge/llms.txt-agent_ready-6f42c1?style=for-the-badge&logo=markdown&logoColor=white" alt="llms.txt Machine-Readable Profile Index Badge" />
+</a>
 
 <br /><br />
 
@@ -35,6 +38,17 @@
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&pause=1200&color=00FF88&center=true&vCenter=true&width=750&lines=Autonomous+Multi-Agent+Swarms+%26+MCP+Control+Planes;High-Assurance+Distributed+Backends+%7C+pgvector+%26+Redis+L1%2FL2;National+Semi-Finalist+%40+Build+with+Bharat+2.0+(NIT+Delhi);Sergeant+(SGT)+%7C+19+Jharkhand+Bn+NCC+%7C+Best+Cadet;Think+deeply.+Architect+deliberately.+Ship+with+evidence." alt="Dynamic Real-Time Typing Animation SVG" />
 
 <br /><br />
+
+<!-- Quick Telemetry Stream -->
+<p align="center">
+  <img src="https://img.shields.io/badge/REPOSITORIES-41+_VERIFIED-00FF88?style=flat-square&logo=git&logoColor=05080B" alt="41 Plus Verified Repositories Telemetry Badge" />
+  <img src="https://img.shields.io/badge/TEST_HARNESS-471_PASSED-00D9FF?style=flat-square&logo=vitest&logoColor=05080B" alt="471 Passing Vitest Assertions Badge" />
+  <img src="https://img.shields.io/badge/AGENTIC_SWARMS-38_AGENTS_//_100_ENGINES-8B5CF6?style=flat-square&logo=openai&logoColor=white" alt="38 Specialized AI Micro-Agents Badge" />
+  <img src="https://img.shields.io/badge/MILITARY_LEADERSHIP-NCC_SERGEANT-00DFA5?style=flat-square&logo=shield&logoColor=05080B" alt="NCC Sergeant Best Cadet Leadership Badge" />
+  <img src="https://img.shields.io/badge/MARTIAL_ARTS-BLACK_BELT_1ST_DAN-FFB84D?style=flat-square&logo=target&logoColor=05080B" alt="Taekwondo Black Belt 1st Dan Badge" />
+</p>
+
+<br />
 
 <h3>Software Engineer · AI Systems Builder · Full-Stack &amp; Cloud</h3>
 
@@ -65,7 +79,7 @@ Rather than building superficial demos, I am dedicated to engineering software t
 | **Institution &amp; Batch** | Sarala Birla University, Ranchi (2023–2027) |
 | **Leadership &amp; Honours** | Sergeant (SGT), 19 Jharkhand Bn NCC · Best Cadet (2019) · Taekwondo Black Belt (1st Dan) |
 | **National Milestones** | National Semi-Finalist — Build with Bharat 2.0 x CodeVerse @ NIT Delhi (Team Lead: Team SHIVI@808) |
-| **Verified Repositories** | 39+ Repositories spanning AI Agents, Full-Stack Platforms &amp; Data Pipelines |
+| **Verified Repositories** | 41+ Repositories spanning AI Agents, Full-Stack Platforms &amp; Data Pipelines |
 | **Engineering Creed** | Build systems, not just interfaces. Validate decisions through evidence. |
 
 <br />
@@ -108,6 +122,17 @@ My engineering practice is grounded in four foundational disciplines:
     </td>
   </tr>
 </table>
+
+<br />
+
+### Core Engineering Principles
+
+| Architecture Principle | Operational Standard | High-Assurance Guarantee |
+|---|---|---|
+| **Zero-Placeholder Law** | Complete, production-hardened deliverables only | Zero `// TODO` stubs, comprehensive error handling, and deterministic runtime branches. |
+| **Evidence-Driven Engineering** | Validate architecture through empirical verification | 471 passing Vitest assertions across 167 suites, regression gates, and strict CI/CD. |
+| **Deterministic Compensation** | Reverse LIFO rollback state machines | Eliminates orphaned database writes and dangling distributed transactions on failures. |
+| **Defense-In-Depth Security** | Zero-trust perimeter with constant-time verification | Salted scrypt key derivation, timing-safe checks, PII data masking, and rate lockout. |
 
 <div align="center">
   <img src="./assets/divider.svg" alt="Visual Telemetry Line Divider" role="separator" width="100%" />
@@ -333,6 +358,87 @@ An evidence-based selection of real systems built, architected, and maintained a
   </tr>
 </table>
 
+<br />
+
+### Autonomous AI &amp; GTM Intelligence Suite
+
+Production-grade agentic tools and sales automation microservices built for precision revenue workflows:
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h4><a href="https://github.com/Hellthefox808/AI-OUTREACH-AND-MAIL">AI-OUTREACH-AND-MAIL · Autonomous Cold Dispatch</a></h4>
+      <p>High-deliverability outbound outreach engine engineered with zero-trust safety gates, customizable cadence pipelines, and deterministic dry-run verification.</p>
+      <ul>
+        <li><b>Dry-Run Safety Engine:</b> Validates email templates, variables, and recipient domains before live dispatch.</li>
+        <li><b>Dynamic Variable Synthesis:</b> Contextual merge tags personalizing communications per target organization.</li>
+      </ul>
+      <p>
+        <sub><b>Stack:</b> TypeScript · Node.js · REST APIs · SMTP Protocol · Automated Lead Ingestion</sub>
+      </p>
+      <p>
+        <a href="https://github.com/Hellthefox808/AI-OUTREACH-AND-MAIL">
+          <img src="https://img.shields.io/badge/Repository-Hellthefox808%2FAI--OUTREACH--AND--MAIL-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="AI Outreach Repository Badge" />
+        </a>
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/AI-OUTREACH-AND-MAIL?style=flat-square&logo=git&color=8B5CF6&labelColor=05080B" alt="AI Outreach Last Commit Badge" />
+      </p>
+    </td>
+    <td width="50%" valign="top">
+      <h4><a href="https://github.com/Hellthefox808/AI-SALE-PITCH--Customizer">AI-SALE-PITCH · Dynamic Value Proposition Engine</a></h4>
+      <p>Generative AI microservice dynamically tailoring cold sales introductions and pitches based on real-time prospect telemetry, corporate news, and press announcements.</p>
+      <ul>
+        <li><b>Contextual Ingestion:</b> Extracts relevant company events to ground generative sales narratives.</li>
+        <li><b>Anti-Slop Guardrails:</b> Strict prompt boundaries producing crisp, jargon-free value propositions.</li>
+      </ul>
+      <p>
+        <sub><b>Stack:</b> JavaScript · Generative AI · Contextual Prompt Engineering · RESTful Microservice</sub>
+      </p>
+      <p>
+        <a href="https://github.com/Hellthefox808/AI-SALE-PITCH--Customizer">
+          <img src="https://img.shields.io/badge/Repository-Hellthefox808%2FAI--SALE--PITCH--Customizer-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="AI Sale Pitch Customizer Repository Badge" />
+        </a>
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/AI-SALE-PITCH--Customizer?style=flat-square&logo=git&color=00DFA5&labelColor=05080B" alt="AI Sale Pitch Last Commit Badge" />
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h4><a href="https://github.com/Hellthefox808/AI-Powered-Sales-Funnel-Analyzer">AI-Powered Sales Funnel Analyzer</a></h4>
+      <p>Visual pipeline intelligence dashboard leveraging machine learning classification models to forecast lead conversion probability and identify funnel friction points.</p>
+      <ul>
+        <li><b>Predictive Conversion Scoring:</b> Multi-variable ML scoring ranking pipeline opportunities by closure likelihood.</li>
+        <li><b>Interactive Funnel Telemetry:</b> Reactive charts visualizing stage velocity and conversion drop-offs.</li>
+      </ul>
+      <p>
+        <sub><b>Stack:</b> JavaScript · Machine Learning · Reactive Dashboard · Chart.js · Data Analytics</sub>
+      </p>
+      <p>
+        <a href="https://github.com/Hellthefox808/AI-Powered-Sales-Funnel-Analyzer">
+          <img src="https://img.shields.io/badge/Repository-Hellthefox808%2FAI--Powered--Sales--Funnel--Analyzer-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="AI Sales Funnel Analyzer Repository Badge" />
+        </a>
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/AI-Powered-Sales-Funnel-Analyzer?style=flat-square&logo=git&color=00D9FF&labelColor=05080B" alt="AI Sales Funnel Last Commit Badge" />
+      </p>
+    </td>
+    <td width="50%" valign="top">
+      <h4><a href="https://github.com/Hellthefox808/Automated-ad-campaign-copywriter">Automated Ad Campaign Copywriter</a></h4>
+      <p>Autonomous copywriting bot integrated directly with corporate product documentation to generate high-converting, compliant ad variants and customer Q&amp;A responses.</p>
+      <ul>
+        <li><b>Document-Grounded Copy:</b> Synthesizes marketing headlines directly corroborated by technical specs.</li>
+        <li><b>Multi-Platform Variants:</b> Generates tuned ad copy for LinkedIn, search ads, and technical briefs.</li>
+      </ul>
+      <p>
+        <sub><b>Stack:</b> JavaScript · NLP Pipelines · Knowledge Retrieval · Automated Creative Generation</sub>
+      </p>
+      <p>
+        <a href="https://github.com/Hellthefox808/Automated-ad-campaign-copywriter">
+          <img src="https://img.shields.io/badge/Repository-Hellthefox808%2FAutomated--ad--campaign--copywriter-00FF88?style=flat-square&logo=github&logoColor=05080B" alt="Automated Ad Campaign Copywriter Repository Badge" />
+        </a>
+        <img src="https://img.shields.io/github/last-commit/Hellthefox808/Automated-ad-campaign-copywriter?style=flat-square&logo=git&color=9875FF&labelColor=05080B" alt="Automated Ad Campaign Last Commit Badge" />
+      </p>
+    </td>
+  </tr>
+</table>
+
 <div align="center">
   <img src="./assets/divider.svg" alt="Visual Telemetry Line Divider" role="separator" width="100%" />
 </div>
@@ -523,16 +629,16 @@ Beyond code, I cultivate structured leadership, high accountability, and the abi
 
 ## 09 // Certifications &amp; Learning
 
-- **Cisco Networking Academy (7 Professional Credentials):**
-  - CCNA: Introduction to Networks (ITN) — Enterprise Network Topologies, IPv4/IPv6, Ethernet &amp; Switching.
-  - CCNA: Switching, Routing, and Wireless Essentials (SRWE) — VLANs, Inter-VLAN Routing, STP, EtherChannel.
-  - CCNA: Enterprise Networking, Security, and Automation (ENSA) — OSPF, WAN Concepts, QoS, Network Programmability.
-  - Cisco CCNA Cybersecurity &amp; Threat Defense Fundamentals.
-  - Cisco Python Essentials (PCAP Certified Fundamentals).
-  - Cisco Data Science &amp; Machine Learning Fundamentals.
-  - Cisco Network Operating Systems &amp; Linux Administration.
 - **Amazon Web Services (AWS):**
-  - AWS | Security, Compliance &amp; Governance for AI Solutions (Aug 2026) — Verification ID: `6dadce11-8433-4eca-a884-7a9bc74e0023`.
+  - **AWS | Security, Compliance &amp; Governance for AI Solutions** (Aug 2026) — Verification ID: [`6dadce11-8433-4eca-a884-7a9bc74e0023`](https://skillbuilder.aws/learn/YFACXFGBSJ/security-compliance-and-governance-for-ai-solutions/YZTVAG8P4Q?trk=public_profile_certification-title) · Foundation Model risk mitigation, LLM guardrails, IAM governance.
+- **Cisco Systems &amp; Cisco Networking Academy (7 Professional Credentials):**
+  - **Designing Cisco Security Infrastructure** (Jul 2026) — Credly ID: [`449774f0-93ea-4b16-a2b4-7def8965bd22`](https://credly.com/earner/earned/badge/449774f0-93ea-4b16-a2b4-7def8965bd22?trk=public_profile_certification-title) · Next-Gen Firewalls (NGFW), ZTNA, IPS/IDS, cryptographic VPNs.
+  - **CCNA: Enterprise Networking, Security &amp; Automation (ENSA)** (Jun 2026) — Credly ID: [`72bda6d6-2044-437a-9f59-71a69a7ad222`](https://credly.com/earner/earned/badge/72bda6d6-2044-437a-9f59-71a69a7ad222?trk=public_profile_certification-title) · OSPFv2 routing, WAN architecture, network automation, RESTCONF/NETCONF.
+  - **CCNA: Switching, Routing &amp; Wireless Essentials (SRWE)** (Jun 2026) — Credly ID: [`0ab17f69-2594-436a-9256-8e373bc18964`](https://credly.com/earner/earned/badge/0ab17f69-2594-436a-9256-8e373bc18964?trk=public_profile_certification-title) · VLAN segmentation, inter-VLAN routing, STP, EtherChannel, DHCPv4/v6.
+  - **CCNA: Introduction to Networks (ITN)** (May 2026) — Credly ID: [`a86ffb68-e508-4396-9ece-8567b7051e44`](https://credly.com/earner/earned/badge/a86ffb68-e508-4396-9ece-8567b7051e44?trk=public_profile_certification-title) · OSI &amp; TCP/IP models, IPv4/IPv6 subnetting, Ethernet media access, router/switch configuration.
+  - **Introduction to Modern AI** (Jun 2026) — Credly ID: [`0cac86b0-1333-413d-b688-edbce8e8031d`](https://credly.com/earner/earned/badge/0cac86b0-1333-413d-b688-edbce8e8031d?trk=public_profile_certification-title) · Deep learning, neural networks, computer vision, ethical AI.
+  - **Introduction to Data Science &amp; Analytics** (Jun 2026) — Credly ID: [`966f4bd3-2ef0-4ee9-805e-dd2468190239`](https://credly.com/earner/earned/badge/966f4bd3-2ef0-4ee9-805e-dd2468190239?trk=public_profile_certification-title) · Statistical inference, data cleaning pipelines, distribution profiling, visualization.
+  - **Python Essentials (Part 1 &amp; 2)** (Jun 2026) — Credly ID: [`3c44cc14-ebd8-4188-9956-3ff0822bcea6`](https://credly.com/earner/earned/badge/3c44cc14-ebd8-4188-9956-3ff0822bcea6?trk=public_profile_certification-title) · OOP design, generators, decorators, exception handling, data structures.
 - **Honours &amp; Awards:**
   - National Semi-Finalist — **Build with Bharat 2.0 x CodeVerse** at **NIT Delhi** (Team Lead: Team SHIVI@808).
   - Best Cadet Award (**19 Jharkhand** Battalion NCC, **2019**).
@@ -549,10 +655,10 @@ Beyond code, I cultivate structured leadership, high accountability, and the abi
 
 Technologies and topics actively being researched, prototyped, and benchmarked:
 
-- **Agentic AI &amp; Model Context Protocol (MCP):** Custom MCP server and client implementations connecting LLMs to local filesystems, external APIs, and sandboxed runtimes.
-- **LLM Infrastructure &amp; Evaluation:** Benchmarking agent reasoning with Ragas, TruLens, and automated unit test generation.
+- **Agentic AI &amp; Model Context Protocol (MCP):** Custom MCP server and client implementations connecting LLMs to local filesystems, external APIs, and sandboxed runtimes; exploring token-efficient AST-aware code search (Tree-sitter indexing inspired by `xerj`) to cut agent context overhead while preventing hallucinations.
+- **LLM Infrastructure &amp; Evaluation:** Benchmarking agent reasoning with Ragas, TruLens, and automated unit test generation; researching reference-coding patterns that retrieve proven open-source implementations before code generation.
 - **Distributed Systems &amp; Consensus:** Deep dive into Raft consensus, Kafka streaming, and event-sourcing architectures.
-- **Systems Programming in Rust:** Memory safety without garbage collection, concurrency primitives, and high-performance WebAssembly.
+- **Systems Programming in Rust:** Memory safety without garbage collection, concurrency primitives, zero-cost abstractions, and high-throughput vector/lexical retrieval engines.
 
 <div align="center">
   <img src="./assets/divider.svg" alt="Visual Telemetry Line Divider" role="separator" width="100%" />

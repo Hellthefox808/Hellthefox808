@@ -38,7 +38,9 @@ EVENT_MAP = {
     "ForkEvent": ("🍴", "Fork"),
     "PullRequestEvent": ("🔀", "Pull Request"),
     "IssuesEvent": ("📋", "Issue"),
+    "IssueCommentEvent": ("💬", "Comment"),
     "ReleaseEvent": ("🏷️", "Release"),
+    "PublicEvent": ("🌐", "Public"),
 }
 
 
@@ -116,11 +118,11 @@ def format_event_details(event: dict) -> tuple[str, str, str, str]:
     if event_type == "PushEvent":
         commits = payload.get("commits", [])
         if commits:
-            msg = commits[-1].get("message", "Commit updates").split("\n")[0]
+            msg = commits[-1].get("message", "Commit updates").split("\n")[0].strip()
             if len(msg) > 60:
                 msg = msg[:57] + "..."
-            # Escape pipes for Markdown table safety
-            msg = msg.replace("|", "&#124;")
+            # Escape pipes and angle brackets for Markdown table safety
+            msg = msg.replace("|", "&#124;").replace("<", "&lt;").replace(">", "&gt;")
             details = msg
         else:
             branch = payload.get("ref", "").replace("refs/heads/", "")
@@ -134,6 +136,30 @@ def format_event_details(event: dict) -> tuple[str, str, str, str]:
     elif event_type == "ForkEvent":
         forkee = payload.get("forkee", {}).get("full_name", "")
         details = f"Forked to `{forkee}`" if forkee else "Forked repository"
+    elif event_type == "PullRequestEvent":
+        action = payload.get("action", "activity").capitalize()
+        pr = payload.get("pull_request", {})
+        title = pr.get("title", "")
+        if len(title) > 45:
+            title = title[:42] + "..."
+        title = title.replace("|", "&#124;").replace("<", "&lt;").replace(">", "&gt;")
+        number = pr.get("number", "")
+        details = f"{action} PR #{number}: {title}" if number and title else f"{action} pull request"
+    elif event_type == "IssuesEvent":
+        action = payload.get("action", "activity").capitalize()
+        issue = payload.get("issue", {})
+        title = issue.get("title", "")
+        if len(title) > 45:
+            title = title[:42] + "..."
+        title = title.replace("|", "&#124;").replace("<", "&lt;").replace(">", "&gt;")
+        number = issue.get("number", "")
+        details = f"{action} issue #{number}: {title}" if number and title else f"{action} issue"
+    elif event_type == "ReleaseEvent":
+        rel = payload.get("release", {})
+        tag = rel.get("tag_name") or rel.get("name", "release")
+        details = f"Published release `{tag}`"
+    elif event_type == "PublicEvent":
+        details = "Open-sourced repository"
 
     return date_str, action_str, repo_link, details
 

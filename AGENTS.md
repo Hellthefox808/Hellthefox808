@@ -26,6 +26,8 @@ All components within this repository are governed by the strict **Zero-Placehol
 2. **Zero-Fabrication Contract**: Every technical claim, performance metric, academic degree, professional role, military distinction, and industry certification must map directly to verified codebase records, git commit histories, or external credential registries.
 3. **Genuine State Execution**: Implementations maintain real state and produce genuine deterministic outputs. Hardcoded test bypasses, facade mocks, and synthetic verification strings are strictly prohibited.
 4. **Forensic Audit Compliance**: All deliverables are subject to independent inspection by automated verification suites (`scripts/verify.py`) and adversarial auditor agents.
+5. **Reference-Coding Protocol**: Prior to implementing non-trivial distributed backends, RAG search pipelines, or agentic tools, retrieve and inspect proven open-source implementations (e.g. `xerj` AST-aware search, tantivy, pgvector), cite source coordinates, and adapt architecture with verifiable attribution.
+6. **Agentic Index Parity (`llms.txt`)**: All profile metrics, project records, and credential registries must strictly synchronize with the machine-readable `llms.txt` and `docs/content-verification.md` ledgers.
 
 ---
 

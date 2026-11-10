@@ -522,6 +522,7 @@ class VerificationHarness:
 
     def _test_motion_preview_loop(self):
         js = self.root / "motion-preview" / "motion.js"
+        index = self.root / "motion-preview" / "index.html"
         if not js.exists():
             return "FAIL", "motion-preview/motion.js is missing", []
         content = js.read_text(encoding="utf-8")
@@ -530,9 +531,18 @@ class VerificationHarness:
             checks.append("Missing requestAnimationFrame loop in motion.js")
         if "addeventlistener" not in content.lower() and "onresize" not in content.lower():
             checks.append("Missing event listeners (resize/mousemove) in motion.js")
+
+        # Verify DOM ID linkage: ensure all getElementById in motion.js exist in index.html
+        if index.exists():
+            html_content = index.read_text(encoding="utf-8")
+            js_ids = re.findall(r'getElementById\(["\']([^"\']+)["\']\)', content)
+            missing_ids = [i for i in set(js_ids) if f'id="{i}"' not in html_content and f"id='{i}'" not in html_content]
+            if missing_ids:
+                checks.append(f"DOM IDs referenced in motion.js missing in index.html: {missing_ids}")
+
         if checks:
             return "FAIL", "motion.js animation engine hooks incomplete", checks
-        return "PASS", "motion.js implements requestAnimationFrame loop and event listeners", []
+        return "PASS", "motion.js implements animation loop, event listeners, and 100% DOM element parity", []
 
     # =========================================================================
     # TIER 2: BOUNDARY & CORNER CASES
@@ -965,11 +975,13 @@ class VerificationHarness:
         content = self._get_readme_content()
         if not content:
             return "FAIL", "README.md does not exist", []
-        # Check URLs in href/src for raw whitespace
-        bad_urls = re.findall(r'(?:href|src)=["\'](https?://[^"\']*\s[^"\']*)["\']', content)
+        # Check URLs in href/src for raw whitespace or unencoded non-ASCII characters (RFC 3986)
+        whitespace_urls = re.findall(r'(?:href|src)=["\'](https?://[^"\']*\s[^"\']*)["\']', content)
+        non_ascii_urls = re.findall(r'(?:href|src)=["\'](https?://[^"\']*[^\x00-\x7F][^"\']*)["\']', content)
+        bad_urls = list(set(whitespace_urls + non_ascii_urls))
         if bad_urls:
-            return "FAIL", f"Found unescaped whitespace in external URLs: {bad_urls}", bad_urls
-        return "PASS", "All external URLs are free of unescaped whitespace characters", []
+            return "FAIL", f"Found unescaped whitespace or unencoded non-ASCII characters in external URLs: {bad_urls}", bad_urls
+        return "PASS", "All external URLs comply with RFC 3986 (free of raw whitespace and unencoded Unicode)", []
 
     def _test_anchor_fragment_integrity(self):
         content = self._get_readme_content()

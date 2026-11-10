@@ -35,6 +35,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Run E2E Quality Verification Gate
+        run: python scripts/verify.py --all
+
       - name: Commit and Push Activity Telemetry
         run: |
           git config --local user.name "github-actions[bot]"
@@ -42,6 +45,7 @@ jobs:
           if [ -n "$(git status --porcelain README.md)" ]; then
             git add README.md
             git commit -m "chore(telemetry): update dynamic github activity feed [skip ci]"
+            git pull --rebase origin main
             git push origin main
           else
             echo "Activity feed already synchronized; zero delta detected."
