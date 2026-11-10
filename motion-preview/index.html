@@ -71,6 +71,10 @@
           <span class="btn-icon">📜</span>
           <span class="btn-text">STORYLINE</span>
         </button>
+        <button class="hud-btn-toggle-controls" id="btnToggleArchitecture" title="Launch Interactive Systems Architecture Explorer (Hotkey: M)">
+          <span class="btn-icon">📐</span>
+          <span class="btn-text">ARCH</span>
+        </button>
         <button class="hud-btn-toggle-controls" id="btnToggleTerminal" title="Toggle Interactive Cyber Terminal (Hotkey: ~)">
           <span class="btn-icon">&gt;_</span>
           <span class="btn-text">TERMINAL</span>
@@ -504,6 +508,7 @@
           <button class="term-pill" data-cmd="theme">theme</button>
           <button class="term-pill" data-cmd="shockwave">shockwave</button>
           <button class="term-pill" data-cmd="storyline">storyline</button>
+          <button class="term-pill" data-cmd="architecture">arch</button>
           <button class="term-pill" data-cmd="whoami">whoami</button>
         </div>
       </div>
@@ -579,6 +584,86 @@
       </div>
     </div>
 
+    <!-- Interactive Systems Architecture Explorer Modal -->
+    <div class="architecture-modal-overlay" id="architectureModal" aria-hidden="true">
+      <div class="architecture-theater-card" id="architectureTheaterCard">
+        <!-- Header -->
+        <div class="architecture-header">
+          <div class="architecture-brand">
+            <span class="architecture-glyph" aria-hidden="true">📐</span>
+            <div>
+              <div class="architecture-title">DISTRIBUTED CONTROL PLANE // 6-LAYER ARCHITECTURE EXPLORER</div>
+              <div class="architecture-subtitle">SYSTEM ARCHITECTURE MATRIX · RAVI RANJAN SINGH (RR-0808)</div>
+            </div>
+          </div>
+          <div class="architecture-controls">
+            <button class="btn-arch-action" id="btnArchPrev" title="Previous Layer">◀ PREV</button>
+            <button class="btn-arch-action" id="btnArchNext" title="Next Layer">NEXT ▶</button>
+            <button class="drawer-close" id="btnCloseArchitecture" aria-label="Close Architecture Modal">&times;</button>
+          </div>
+        </div>
+
+        <!-- Layer Selection Bar (6 Layers) -->
+        <div class="arch-layer-track">
+          <button class="arch-layer-btn active" id="archLayer0" data-layer="0">
+            <span class="arch-layer-idx">L1</span>
+            <span class="arch-layer-tag">EXPERIENCE</span>
+          </button>
+          <button class="arch-layer-btn" id="archLayer1" data-layer="1">
+            <span class="arch-layer-idx">L2</span>
+            <span class="arch-layer-tag">GATEWAY</span>
+          </button>
+          <button class="arch-layer-btn" id="archLayer2" data-layer="2">
+            <span class="arch-layer-idx">L3</span>
+            <span class="arch-layer-tag">SERVICES</span>
+          </button>
+          <button class="arch-layer-btn" id="archLayer3" data-layer="3">
+            <span class="arch-layer-idx">L4</span>
+            <span class="arch-layer-tag">SWARMS</span>
+          </button>
+          <button class="arch-layer-btn" id="archLayer4" data-layer="4">
+            <span class="arch-layer-idx">L5</span>
+            <span class="arch-layer-tag">STORAGE</span>
+          </button>
+          <button class="arch-layer-btn" id="archLayer5" data-layer="5">
+            <span class="arch-layer-idx">L6</span>
+            <span class="arch-layer-tag">DEVOPS</span>
+          </button>
+        </div>
+
+        <!-- Body Content -->
+        <div class="architecture-body">
+          <div class="arch-meta-row">
+            <span class="arch-badge" id="archLayerBadge">LAYER 01 // EXPERIENCE LAYER</span>
+            <span class="arch-stat-pill" id="archLatencyPill">RENDER LATENCY: &lt;50ms</span>
+            <span class="arch-stat-pill text-cyan" id="archProtocolPill">PROTOCOL: SSE / RSC</span>
+          </div>
+          <h2 class="arch-heading" id="archLayerTitle">Next.js 15 App Router &amp; React Server Components</h2>
+          <p class="arch-desc" id="archLayerDesc">Loading architecture telemetry...</p>
+          <div class="arch-spec-grid">
+            <div class="arch-spec-card">
+              <div class="spec-label">CORE TECHNOLOGIES</div>
+              <div class="spec-value" id="archSpecTech">React 19, Next.js 15, TypeScript 5, Tailwind CSS, Zod</div>
+            </div>
+            <div class="arch-spec-card">
+              <div class="spec-label">SECURITY &amp; INTEGRITY</div>
+              <div class="spec-value text-emerald" id="archSpecSec">Strict Boundary Schema Validation &amp; CSP Nonces</div>
+            </div>
+            <div class="arch-spec-card">
+              <div class="spec-label">HIGH-ASSURANCE GUARANTEE</div>
+              <div class="spec-value text-cyan" id="archSpecGuar">Zero-Drift End-to-End Type Safety Across Network</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="architecture-footer">
+          <span class="arch-foot-tag">// VERIFIED ARCHITECTURE MATRIX · 471 PASSING VITEST ASSERTIONS</span>
+          <span class="arch-foot-key">Press <kbd class="key-badge">M</kbd> to toggle, <kbd class="key-badge">←</kbd> <kbd class="key-badge">→</kbd> to navigate</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Keyboard Shortcuts Cheatsheet Modal -->
     <div class="shortcuts-modal-overlay" id="shortcutsModal" aria-hidden="true">
       <div class="shortcuts-modal-card">
@@ -602,6 +687,10 @@
             <div class="shortcut-row">
               <kbd class="key-badge">S</kbd>
               <span class="shortcut-desc">Launch Interactive Cybernetic Storyline Theater</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">M</kbd>
+              <span class="shortcut-desc">Launch Interactive Systems Architecture Explorer</span>
             </div>
             <div class="shortcut-row">
               <kbd class="key-badge">A</kbd>

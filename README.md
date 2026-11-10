@@ -193,7 +193,8 @@ My engineering practice is grounded in four foundational disciplines:
     <sub>
       <a href="./assets/motion/architecture-motion.svg">SVG Motion Source</a> · 
       <a href="./assets/architecture.svg">Vector Schematic</a> · 
-      <a href="./assets/static/architecture.png">Static Fallback</a>
+      <a href="./assets/static/architecture.png">Static Fallback</a> · 
+      <a href="./motion-preview/index.html">Interactive Architecture Explorer</a>
     </sub>
   </p>
 </div>
@@ -592,6 +593,23 @@ TOOLING       ::  Git  •  Vitest  •  Jest  •  VS Code  •  Postman  •  
 | **Data &amp; Multi-Tier Storage** | PostgreSQL, Redis (L1 Bounded LRU + L2 Cluster), Supabase, SQLite | Cache stampede single-flight deduplication, ACID compliance, PII masking |
 | **Cloud &amp; Infrastructure** | AWS, Multi-Stage Docker, GitHub Actions CI/CD, Nginx | Automated regression test gates, reproducible container builds |
 | **Testing &amp; QA Engineering** | Vitest (471 passing assertions), Jest, Playwright | Comprehensive unit, property-based, and end-to-end integration gates |
+
+<br />
+
+### Systems Capability &amp; Benchmark Radar
+
+```text
++----------------------------------------------------------------------------------------------------+
+| DOMAIN CAPABILITY SPECTRUM                                         CONFIDENCE & BENCHMARK RADAR   |
++----------------------------------------------------------------------------------------------------+
+| 01. AI Agent Swarms & Tool Mesh (MCP / LangGraph)   [████████████████████░░] 94% · 38 Micro-Agents |
+| 02. Asynchronous Backend Systems (FastAPI / Node)   [███████████████████░░░] 92% · <25ms p99 Core  |
+| 03. High-Assurance Type Systems (TypeScript / Zod)  [████████████████████░░] 95% · Zero-Drift E2E  |
+| 04. Multi-Tier Cache & Vector DB (Postgres / Redis) [██████████████████░░░░] 90% · HNSW / LRU Cache |
+| 05. Carrier Telecom & Physical Layers (GPON / OTDR) [█████████████████░░░░░] 86% · BSNL Optical Eng|
+| 06. Military Operational Rigor & Systems Discipline [█████████████████████░] 98% · SGT 19 JHK Bn    |
++----------------------------------------------------------------------------------------------------+
+```
 
 <div align="center">
   <h4>Languages &amp; Core Runtimes</h4>

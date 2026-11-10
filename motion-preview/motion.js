@@ -1158,8 +1158,73 @@ class CyberAudio {
 
   toggle() {
     this.enabled = !this.enabled;
-    if (this.enabled) this.init();
+    if (this.enabled) {
+      this.init();
+      this.startDrone();
+    } else {
+      this.stopDrone();
+    }
     return this.enabled;
+  }
+
+  startDrone() {
+    if (!this.enabled || !this.ctx) return;
+    if (this._droneOsc) return;
+    try {
+      this._droneOsc = this.ctx.createOscillator();
+      this._droneGain = this.ctx.createGain();
+      this._droneFilter = this.ctx.createBiquadFilter();
+
+      this._droneOsc.type = 'sawtooth';
+      this._droneOsc.frequency.setValueAtTime(55, this.ctx.currentTime);
+
+      this._droneFilter.type = 'lowpass';
+      this._droneFilter.frequency.setValueAtTime(140, this.ctx.currentTime);
+      this._droneFilter.Q.setValueAtTime(3, this.ctx.currentTime);
+
+      this._droneGain.gain.setValueAtTime(0.0001, this.ctx.currentTime);
+      this._droneGain.gain.exponentialRampToValueAtTime(0.012, this.ctx.currentTime + 1.5);
+
+      this._droneOsc.connect(this._droneFilter);
+      this._droneFilter.connect(this._droneGain);
+      this._droneGain.connect(this.ctx.destination);
+      this._droneOsc.start();
+    } catch (e) {}
+  }
+
+  stopDrone() {
+    if (this._droneGain && this.ctx) {
+      try {
+        this._droneGain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.8);
+        setTimeout(() => {
+          if (this._droneOsc) {
+            try {
+              this._droneOsc.stop();
+              this._droneOsc.disconnect();
+            } catch (err) {}
+            this._droneOsc = null;
+          }
+        }, 850);
+      } catch (e) {
+        this._droneOsc = null;
+      }
+    }
+  }
+
+  playArchLayerChord(layerIndex) {
+    if (!this.enabled || !this.ctx) return;
+    const chords = [
+      [261.63, 329.63, 392.00],
+      [293.66, 369.99, 440.00],
+      [329.63, 415.30, 493.88],
+      [349.23, 440.00, 523.25],
+      [392.00, 493.88, 587.33],
+      [440.00, 554.37, 659.25]
+    ];
+    const freqs = chords[layerIndex % chords.length] || chords[0];
+    freqs.forEach((f, i) => {
+      setTimeout(() => this.playTone(f, 'sine', 0.22, 0.035), i * 40);
+    });
   }
 
   playTone(freq = 440, type = 'sine', duration = 0.12, gainVal = 0.04) {
@@ -1669,17 +1734,245 @@ class StorylineTheaterManager {
 
 /**
  * ----------------------------------------------------------------------------
+ * 8.6 INTERACTIVE SYSTEMS ARCHITECTURE EXPLORER MODAL
+ * 6-layer distributed control plane explorer with real-time specs & audio feedback
+ * ----------------------------------------------------------------------------
+ */
+class ArchitectureExplorerManager {
+  constructor(engine, audio) {
+    this.engine = engine;
+    this.audio = audio;
+    this.modal = document.getElementById('architectureModal');
+    this.theaterCard = document.getElementById('architectureTheaterCard');
+    this.btnToggle = document.getElementById('btnToggleArchitecture');
+    this.btnClose = document.getElementById('btnCloseArchitecture');
+    this.btnPrev = document.getElementById('btnArchPrev');
+    this.btnNext = document.getElementById('btnArchNext');
+
+    this.layerBadge = document.getElementById('archLayerBadge');
+    this.latencyPill = document.getElementById('archLatencyPill');
+    this.protocolPill = document.getElementById('archProtocolPill');
+    this.layerTitle = document.getElementById('archLayerTitle');
+    this.layerDesc = document.getElementById('archLayerDesc');
+    this.specTech = document.getElementById('archSpecTech');
+    this.specSec = document.getElementById('archSpecSec');
+    this.specGuar = document.getElementById('archSpecGuar');
+
+    this.layerButtons = [
+      document.getElementById('archLayer0'),
+      document.getElementById('archLayer1'),
+      document.getElementById('archLayer2'),
+      document.getElementById('archLayer3'),
+      document.getElementById('archLayer4'),
+      document.getElementById('archLayer5')
+    ];
+
+    this.isOpen = false;
+    this.currentLayer = 0;
+
+    this.layers = [
+      {
+        badge: 'LAYER 01 // EXPERIENCE & PRESENTATION',
+        latency: 'RENDER: <50ms EDGE',
+        protocol: 'PROTOCOL: HTTP/3 · SSE · RSC',
+        title: 'Next.js 15 App Router & React 19 Concurrent Streaming',
+        desc: 'Zero-drift typed presentation layer utilizing Next.js 15 App Router, React 19 concurrent streams, and client-side web workers. High-frequency telemetry displays and interactive cybernetic controls render at 60 FPS with deterministic component boundary isolation.',
+        tech: 'React 19, Next.js 15, TypeScript 5, Tailwind CSS, Zod',
+        security: 'Strict Boundary Schema Validation & CSP Nonces',
+        guarantee: 'Zero-Drift End-to-End Type Safety Across Network',
+        color: '#00FF88'
+      },
+      {
+        badge: 'LAYER 02 // GATEWAY & PERIMETER GUARD',
+        latency: 'INGRESS: <12ms EDGE',
+        protocol: 'PROTOCOL: QUIC · TLS 1.3 · mTLS',
+        title: 'Cloudflare Edge Mesh & Cryptographic Reverse Proxy',
+        desc: 'Distributed ingress gateway enforcing edge rate-limiting, geo-distributed IP reputation scoring, HMAC request verification, and sub-second DDoS mitigation. Acts as the zero-trust perimeter isolating public clients from internal service topologies.',
+        tech: 'Cloudflare Workers, NGINX Reverse Proxy, Rust Ingress, JWT / JWKS',
+        security: 'Token Bucket Rate Limiting, OWASP Top 10 Ingress Rules, WAF Inspection',
+        guarantee: 'Zero-Trust Boundary with Cryptographic Ingress Attestation',
+        color: '#00D9FF'
+      },
+      {
+        badge: 'LAYER 03 // SERVICE CONTROL PLANE CORE',
+        latency: 'LATENCY: <25ms p99',
+        protocol: 'PROTOCOL: gRPC · Protobuf · REST',
+        title: 'Asynchronous FastAPI Microservices & SQLAlchemy Async Engine',
+        desc: 'Modular backend microservices managing asynchronous business workflows, lead enrichment pipelines, CRM synchronization, and multi-tenant telemetry. Powered by strict Pydantic v2 schemas and SQLAlchemy 2.0 async session pools.',
+        tech: 'FastAPI, Pydantic v2, Python 3.12+, SQLAlchemy 2.0 Async, Celery',
+        security: 'Role-Based Access Control (RBAC), Row-Level Tenant Security, Audit Logs',
+        guarantee: '100% Deterministic Schema Validation & Idempotent API Contracts',
+        color: '#FFB84D'
+      },
+      {
+        badge: 'LAYER 04 // AUTONOMOUS AGENT SWARM MESH',
+        latency: 'SWARM: <350ms TURN',
+        protocol: 'PROTOCOL: MCP · JSON-RPC 2.0 · WebSocket',
+        title: '38-Agent Autonomous Swarm Coordination & MCP Mesh',
+        desc: 'Hierarchical multi-agent network (PravRaha / ShiVi) featuring 38 specialized micro-agents coordinating across 100 domain engines. Equipped with Model Context Protocol (MCP) tool execution, pgvector semantic context retrieval, and reverse LIFO rollback state machines.',
+        tech: 'LangChain / LangGraph, Model Context Protocol (MCP), pgvector, Ollama / Groq',
+        security: 'Self-Reflective Guardrails, Tool Execution Whitelisting, Anti-Hallucination Asserts',
+        guarantee: 'Formal Contract Enforcement via 471 Passing Vitest Assertions',
+        color: '#8B5CF6'
+      },
+      {
+        badge: 'LAYER 05 // PERSISTENT STATE & VECTOR STORAGE',
+        latency: 'CACHE: <2ms / VECTOR: <15ms',
+        protocol: 'PROTOCOL: TCP Native · RESP · libpq',
+        title: 'Dual-Engine PostgreSQL 16 (pgvector) & Redis 7 Cluster',
+        desc: 'High-assurance persistence layer combining PostgreSQL 16 with pgvector for high-dimensional semantic search and Redis 7 cluster for sub-millisecond session caching and distributed lock arbitration. Zero data loss guaranteed by write-ahead logging (WAL).',
+        tech: 'PostgreSQL 16, pgvector (HNSW Indexing), Redis 7, Prisma / Alembic',
+        security: 'Transparent Data Encryption (TDE), Automated Point-in-Time Recovery (PITR)',
+        guarantee: 'ACID Compliance with <2ms Hot Cache Hit & Zero Vector Drift',
+        color: '#EC4899'
+      },
+      {
+        badge: 'LAYER 06 // DEVOPS & CONTINUOUS INTEGRITY',
+        latency: 'CI LOOP: <4min E2E',
+        protocol: 'PROTOCOL: SSH · Git HTTPS · OCI',
+        title: 'GitOps Pipeline, Multi-Stage Docker & 4-Tier Automated Verification',
+        desc: 'Autonomous deployment mesh featuring Docker multi-stage builds, GitHub Actions matrix CI, and the custom 4-Tier Automated Verification Engine. Enforces 100% test pass rate across syntactic, boundary, integration, and rendering tiers prior to production rollout.',
+        tech: 'GitHub Actions, Docker, Linux / Alpine, Shell, Python 3.14 Harness',
+        security: 'Signed Commits, Minimal Distroless Containers, Secretless OIDC Auth',
+        guarantee: 'Zero-Pollution Clean Root Contract & 100% Regression-Free Deployments',
+        color: '#00DFA5'
+      }
+    ];
+
+    this.init();
+  }
+
+  init() {
+    if (this.btnToggle) {
+      this.btnToggle.addEventListener('click', () => this.toggle());
+    }
+    if (this.btnClose) {
+      this.btnClose.addEventListener('click', () => this.close());
+    }
+    if (this.btnPrev) {
+      this.btnPrev.addEventListener('click', () => this.prev());
+    }
+    if (this.btnNext) {
+      this.btnNext.addEventListener('click', () => this.next());
+    }
+
+    this.layerButtons.forEach((btn, idx) => {
+      if (btn) {
+        btn.addEventListener('click', () => this.goToLayer(idx));
+      }
+    });
+
+    if (this.modal) {
+      this.modal.addEventListener('click', (e) => {
+        if (e.target === this.modal) this.close();
+      });
+    }
+
+    this.renderLayer(0, false);
+  }
+
+  open() {
+    if (!this.modal) return;
+    this.isOpen = true;
+    this.modal.classList.add('open');
+    this.modal.setAttribute('aria-hidden', 'false');
+    if (this.btnToggle) this.btnToggle.classList.add('active');
+    if (this.audio) {
+      this.audio.playChime();
+      this.audio.playArchLayerChord(this.currentLayer);
+    }
+  }
+
+  close() {
+    if (!this.modal) return;
+    this.isOpen = false;
+    this.modal.classList.remove('open');
+    this.modal.setAttribute('aria-hidden', 'true');
+    if (this.btnToggle) this.btnToggle.classList.remove('active');
+    if (this.audio) this.audio.playKeyClick();
+  }
+
+  toggle() {
+    if (this.isOpen) this.close();
+    else this.open();
+  }
+
+  prev() {
+    const nextIdx = (this.currentLayer - 1 + this.layers.length) % this.layers.length;
+    this.goToLayer(nextIdx);
+  }
+
+  next() {
+    const nextIdx = (this.currentLayer + 1) % this.layers.length;
+    this.goToLayer(nextIdx);
+  }
+
+  goToLayer(index) {
+    if (index < 0 || index >= this.layers.length) return;
+    this.currentLayer = index;
+    this.renderLayer(index, true);
+  }
+
+  renderLayer(index, playFeedback = false) {
+    const layer = this.layers[index];
+    if (!layer) return;
+
+    this.layerButtons.forEach((btn, idx) => {
+      if (!btn) return;
+      btn.classList.toggle('active', idx === index);
+      if (idx === index) {
+        btn.style.borderColor = layer.color;
+        btn.style.background = `${layer.color}22`;
+      } else {
+        btn.style.borderColor = '';
+        btn.style.background = '';
+      }
+    });
+
+    if (this.layerBadge) {
+      this.layerBadge.textContent = layer.badge;
+      this.layerBadge.style.color = layer.color;
+      this.layerBadge.style.borderColor = layer.color;
+    }
+    if (this.latencyPill) this.latencyPill.textContent = layer.latency;
+    if (this.protocolPill) this.protocolPill.textContent = layer.protocol;
+    if (this.layerTitle) this.layerTitle.textContent = layer.title;
+    if (this.layerDesc) {
+      this.layerDesc.textContent = layer.desc;
+      this.layerDesc.style.borderLeftColor = layer.color;
+    }
+    if (this.specTech) this.specTech.textContent = layer.tech;
+    if (this.specSec) this.specSec.textContent = layer.security;
+    if (this.specGuar) this.specGuar.textContent = layer.guarantee;
+
+    if (playFeedback) {
+      if (this.audio) {
+        this.audio.playKeyClick();
+        this.audio.playArchLayerChord(index);
+      }
+      if (this.engine) {
+        this.engine.retheme([layer.color, '#00D9FF', '#8B5CF6']);
+        this.engine.emitShockwave(window.innerWidth / 2, window.innerHeight / 2);
+      }
+      HUDTelemetry.showToast(`Architecture: ${layer.badge}`);
+    }
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
  * 9. INTERACTIVE CYBER TELEMETRY TERMINAL CONSOLE
  * Standalone client-side command interpreter with tactile sound & quick pills
  * ----------------------------------------------------------------------------
  */
 class CyberTerminal {
-  constructor(engine, themeManager, audio, inspector, storylineTheater) {
+  constructor(engine, themeManager, audio, inspector, storylineTheater, architectureExplorer) {
     this.engine = engine;
     this.themeManager = themeManager;
     this.audio = audio;
     this.inspector = inspector;
     this.storylineTheater = storylineTheater;
+    this.architectureExplorer = architectureExplorer;
 
     this.drawer = document.getElementById('terminalDrawer');
     this.output = document.getElementById('terminalOutput');
@@ -1816,6 +2109,8 @@ class CyberTerminal {
           '  <span class="term-line-success">skills</span>      - Print enterprise technology stack and capability matrix',
           '  <span class="term-line-success">storyline</span>   - Launch 5-act interactive mission narrative theater',
           '  <span class="term-line-success">act [1-5]</span>    - Jump directly to specific mission chronology act',
+          '  <span class="term-line-success">architecture</span>- Launch 6-layer distributed systems architecture explorer',
+          '  <span class="term-line-success">layer [1-6]</span>  - Jump directly to specific architectural control plane layer',
           '  <span class="term-line-success">theme [key]</span> - Set/cycle theme (matrix, synthwave, cyberpunk, abyssal)',
           '  <span class="term-line-success">audio [cmd]</span> - Synthesizer audio control (on, off, toggle)',
           '  <span class="term-line-success">shockwave</span>   - Trigger kinetic quantum impulse particle blast',
@@ -1954,6 +2249,29 @@ class CyberTerminal {
         }
         break;
 
+      case 'architecture':
+      case 'arch':
+        if (this.architectureExplorer) {
+          this.architectureExplorer.open();
+          this.print('<span class="term-line-success">Launching Distributed Control Plane Architecture Explorer...</span>');
+        } else {
+          this.print('<span class="term-line-warning">Architecture subsystem initializing...</span>');
+        }
+        break;
+
+      case 'layer':
+        if (this.architectureExplorer) {
+          const layerNum = parseInt(arg, 10);
+          if (layerNum >= 1 && layerNum <= 6) {
+            this.architectureExplorer.open();
+            this.architectureExplorer.goToLayer(layerNum - 1);
+            this.print(`<span class="term-line-success">Navigated to Layer ${layerNum} in Architecture Explorer.</span>`);
+          } else {
+            this.print('<span class="term-line-warning">Usage: layer [1-6] (e.g. "layer 4")</span>');
+          }
+        }
+        break;
+
       case 'clear':
         this.clear();
         break;
@@ -2026,7 +2344,7 @@ class ShortcutsModalManager {
  * ----------------------------------------------------------------------------
  */
 class GlobalKeyboardManager {
-  constructor(engine, themeManager, audio, terminal, shortcutsModal, controls, inspector, storylineTheater) {
+  constructor(engine, themeManager, audio, terminal, shortcutsModal, controls, inspector, storylineTheater, architectureExplorer) {
     this.engine = engine;
     this.themeManager = themeManager;
     this.audio = audio;
@@ -2035,6 +2353,7 @@ class GlobalKeyboardManager {
     this.controls = controls;
     this.inspector = inspector;
     this.storylineTheater = storylineTheater;
+    this.architectureExplorer = architectureExplorer;
 
     this.init();
   }
@@ -2076,10 +2395,19 @@ class GlobalKeyboardManager {
           if (this.storylineTheater) this.storylineTheater.toggle();
           break;
 
+        case 'm':
+        case 'M':
+          e.preventDefault();
+          if (this.architectureExplorer) this.architectureExplorer.toggle();
+          break;
+
         case 'ArrowLeft':
           if (this.storylineTheater && this.storylineTheater.isOpen) {
             e.preventDefault();
             this.storylineTheater.prev();
+          } else if (this.architectureExplorer && this.architectureExplorer.isOpen) {
+            e.preventDefault();
+            this.architectureExplorer.prev();
           }
           break;
 
@@ -2087,6 +2415,9 @@ class GlobalKeyboardManager {
           if (this.storylineTheater && this.storylineTheater.isOpen) {
             e.preventDefault();
             this.storylineTheater.next();
+          } else if (this.architectureExplorer && this.architectureExplorer.isOpen) {
+            e.preventDefault();
+            this.architectureExplorer.next();
           }
           break;
 
@@ -2154,6 +2485,7 @@ class GlobalKeyboardManager {
 
         case 'Escape':
           if (this.storylineTheater && this.storylineTheater.isOpen) this.storylineTheater.close();
+          if (this.architectureExplorer && this.architectureExplorer.isOpen) this.architectureExplorer.close();
           if (this.terminal && this.terminal.isOpen) this.terminal.close();
           if (this.shortcutsModal && this.shortcutsModal.isOpen) this.shortcutsModal.close();
           const ctrlDrawer = document.getElementById('controlsDrawer');
@@ -2209,8 +2541,11 @@ class MotionApp {
     // Storyline Theater Integration
     const storylineTheater = new StorylineTheaterManager(engine, audio, inspector);
 
+    // Systems Architecture Explorer Integration
+    const architectureExplorer = new ArchitectureExplorerManager(engine, audio);
+
     // Cyber CLI Terminal Console
-    const terminal = new CyberTerminal(engine, themeManager, audio, inspector, storylineTheater);
+    const terminal = new CyberTerminal(engine, themeManager, audio, inspector, storylineTheater, architectureExplorer);
 
     // Shortcuts Cheatsheet Modal
     const shortcutsModal = new ShortcutsModalManager();
@@ -2224,7 +2559,8 @@ class MotionApp {
       shortcutsModal,
       controls,
       inspector,
-      storylineTheater
+      storylineTheater,
+      architectureExplorer
     );
 
     // Master Animation Loop with Tab Visibility Optimization
