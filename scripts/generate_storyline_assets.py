@@ -1,0 +1,495 @@
+#!/usr/bin/env python3
+"""
+Generate Storyline Visual Assets (SVG, Motion SVG, Static PNG, Animated GIF)
+for Ravi Ranjan Singh's Cybernetic Mission Chronology.
+"""
+
+import os
+import sys
+import xml.etree.ElementTree as ET
+from pathlib import Path
+from PIL import Image, ImageDraw, ImageFont
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+ASSETS_DIR = ROOT_DIR / "assets"
+MOTION_DIR = ASSETS_DIR / "motion"
+STATIC_DIR = ASSETS_DIR / "static"
+ANIM_DIR = ASSETS_DIR / "animated"
+
+for d in [ASSETS_DIR, MOTION_DIR, STATIC_DIR, ANIM_DIR]:
+    d.mkdir(parents=True, exist_ok=True)
+
+
+def build_storyline_svg(animated: bool = False) -> str:
+    """Builds the 1200x520 Storyline SVG vector graphic."""
+    # Motion animations
+    anim_pulse_1 = '<animate attributeName="r" values="3.5;5;3.5" dur="3s" repeatCount="indefinite" />' if animated else ''
+    anim_glow_1 = '<animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite" />' if animated else ''
+    anim_conduit = '<animate attributeName="stroke-dashoffset" values="0;-40" dur="2s" repeatCount="indefinite" />' if animated else ''
+    anim_packet = '''
+      <circle cx="160" cy="210" r="3.5" fill="#00FF88">
+        <animate attributeName="cx" values="160;385;610;835;1030;160" dur="6s" repeatCount="indefinite" />
+        <animate attributeName="fill" values="#00FF88;#00D9FF;#FFB84D;#8B5CF6;#00DFA5;#00FF88" dur="6s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="160" cy="210" r="7" fill="none" stroke="#00FF88" stroke-width="1.5" opacity="0.6">
+        <animate attributeName="cx" values="160;385;610;835;1030;160" dur="6s" repeatCount="indefinite" />
+        <animate attributeName="stroke" values="#00FF88;#00D9FF;#FFB84D;#8B5CF6;#00DFA5;#00FF88" dur="6s" repeatCount="indefinite" />
+        <animate attributeName="r" values="5;11;5" dur="1.2s" repeatCount="indefinite" />
+      </circle>
+    ''' if animated else ''
+
+    anim_sweep = '''
+      <animate attributeName="x1" values="-100%; 100%; 100%" keyTimes="0; 0.6; 1" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="0%; 200%; 200%" keyTimes="0; 0.6; 1" dur="5s" repeatCount="indefinite" />
+    ''' if animated else ''
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="storyTitle storyDesc">
+  <title id="storyTitle">Ravi Ranjan Singh — Cybernetic Mission Chronology (5-Act Narrative Arc)</title>
+  <desc id="storyDesc">Visual 5-act mission progression tracking the engineering journey from military command discipline and BSNL carrier telemetry to NIT Delhi national hackathon crucible, 38-agent autonomous swarms, and sovereign edge AI architectures.</desc>
+
+  <defs>
+    <!-- Deep Obsidian Void Background -->
+    <linearGradient id="obsidianVoid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05080B" />
+      <stop offset="50%" stop-color="#071015" />
+      <stop offset="100%" stop-color="#05080B" />
+    </linearGradient>
+
+    <!-- Ambient Radial Aurora Glow -->
+    <radialGradient id="auroraGlow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.10" />
+      <stop offset="35%" stop-color="#00D9FF" stop-opacity="0.06" />
+      <stop offset="70%" stop-color="#8B5CF6" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#05080B" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Precision Cyber Grid Pattern -->
+    <pattern id="cyberGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00FF88" stroke-width="0.5" stroke-opacity="0.04" />
+      <circle cx="0" cy="0" r="0.75" fill="#00FF88" fill-opacity="0.15" />
+    </pattern>
+
+    <!-- Top Hairline Divider Gradient -->
+    <linearGradient id="topHairline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.9" />
+      <stop offset="25%" stop-color="#00D9FF" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#FFB84D" stop-opacity="0.8" />
+      <stop offset="75%" stop-color="#8B5CF6" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00DFA5" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Card Background Gradient -->
+    <linearGradient id="actCardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A161C" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#060E13" stop-opacity="0.92" />
+    </linearGradient>
+
+    <!-- Specular Light Sweep for Title -->
+    <linearGradient id="titleLightSweep" x1="-100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F5F7FA" />
+      <stop offset="35%" stop-color="#F5F7FA" />
+      <stop offset="48%" stop-color="#00FF88" />
+      <stop offset="52%" stop-color="#00D9FF" />
+      <stop offset="65%" stop-color="#F5F7FA" />
+      <stop offset="100%" stop-color="#F5F7FA" />
+      {anim_sweep}
+    </linearGradient>
+
+    <!-- Card Accent Glow Filters -->
+    <filter id="emeraldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base Canvas -->
+  <rect width="1200" height="520" rx="8" fill="url(#obsidianVoid)" />
+  <rect width="1200" height="520" rx="8" fill="url(#cyberGrid)" />
+  <rect width="1200" height="520" rx="8" fill="url(#auroraGlow)" />
+
+  <!-- Outer Border Frame with Reticles -->
+  <rect x="1" y="1" width="1198" height="518" rx="7" fill="none" stroke="#30363D" stroke-width="1" stroke-opacity="0.6" />
+  <line x1="0" y1="0" x2="1200" y2="0" stroke="url(#topHairline)" stroke-width="2.5" />
+
+  <!-- Corner Reticle HUD Brackets -->
+  <path d="M 12 28 L 12 12 L 28 12" fill="none" stroke="#00FF88" stroke-width="1.8" />
+  <path d="M 1188 28 L 1188 12 L 1172 12" fill="none" stroke="#00FF88" stroke-width="1.8" />
+  <path d="M 12 492 L 12 508 L 28 508" fill="none" stroke="#00FF88" stroke-width="1.8" />
+  <path d="M 1188 492 L 1188 508 L 1172 508" fill="none" stroke="#00FF88" stroke-width="1.8" />
+
+  <!-- HUD Telemetry Header Bar -->
+  <g transform="translate(30, 24)">
+    <!-- Brand Glyph -->
+    <polygon points="12,2 2,7 12,12 22,7" fill="none" stroke="#00FF88" stroke-width="1.8" />
+    <polyline points="2,12 12,17 22,12" fill="none" stroke="#00D9FF" stroke-width="1.8" />
+    <polyline points="2,17 12,22 22,17" fill="none" stroke="#8B5CF6" stroke-width="1.8" />
+
+    <!-- Header Text -->
+    <text x="36" y="13" font-family="'JetBrains Mono', 'SF Mono', Consolas, monospace" font-size="11" font-weight="700" fill="#00FF88" letter-spacing="2">MISSION CHRONOLOGY // 5-ACT NARRATIVE ARC</text>
+    <text x="36" y="28" font-family="'JetBrains Mono', 'SF Mono', Consolas, monospace" font-size="9" fill="#7E92A2" letter-spacing="1">SYSTEM TIMELINE ID: RR-CHRONO-0808 :: HIGH-ASSURANCE PROGRESSION</text>
+
+    <!-- Right-Aligned Telemetry Badges -->
+    <g transform="translate(860, 2)">
+      <rect x="0" y="0" width="130" height="22" rx="4" fill="#0A1614" stroke="#00FF88" stroke-width="0.8" />
+      <circle cx="12" cy="11" r="3.5" fill="#00FF88" />
+      <text x="24" y="14" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#00FF88" letter-spacing="1">5 ACTS ACTIVE</text>
+
+      <rect x="140" y="0" width="140" height="22" rx="4" fill="#061D24" stroke="#00D9FF" stroke-width="0.8" />
+      <circle cx="152" cy="11" r="3.5" fill="#00D9FF" />
+      <text x="164" y="14" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#00D9FF" letter-spacing="1">VERIFIED EVIDENCE</text>
+    </g>
+  </g>
+
+  <!-- Central Section Title and Subtitle -->
+  <g transform="translate(60, 88)">
+    <text x="0" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" fill="url(#titleLightSweep)" letter-spacing="-0.5">The Engineering Odyssey: From Cadence to Multi-Agent Swarms</text>
+    <text x="0" y="44" font-family="'JetBrains Mono', monospace" font-size="11" fill="#AAB7C4">A chronological evolution through physical discipline, carrier diagnostics, national crucibles, and autonomous control planes.</text>
+  </g>
+
+  <!-- Horizontal High-Speed Quantum Conduit -->
+  <g transform="translate(0, 0)">
+    <!-- Base Conduit Glow Track -->
+    <line x1="160" y1="210" x2="1040" y2="210" stroke="#30363D" stroke-width="3" stroke-linecap="round" />
+    <line x1="160" y1="210" x2="1040" y2="210" stroke="url(#topHairline)" stroke-width="1.5" stroke-dasharray="8 6" stroke-linecap="round">
+      {anim_conduit}
+    </line>
+    {anim_packet}
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 01 // DISCIPLINE -->
+  <!-- ===================================================================== -->
+  <g transform="translate(50, 160)">
+    <!-- Connecting Stem to Conduit -->
+    <line x1="110" y1="50" x2="110" y2="50" stroke="#00FF88" stroke-width="2" />
+    <circle cx="110" cy="50" r="8" fill="#05080B" stroke="#00FF88" stroke-width="2">
+      {anim_glow_1}
+    </circle>
+    <circle cx="110" cy="50" r="3.5" fill="#00FF88">
+      {anim_pulse_1}
+    </circle>
+
+    <!-- Card Body -->
+    <rect x="0" y="68" width="220" height="240" rx="6" fill="url(#actCardBg)" stroke="#00FF88" stroke-width="1.2" stroke-opacity="0.8" />
+    <rect x="0" y="68" width="220" height="4" rx="2" fill="#00FF88" />
+
+    <!-- Reticle Brackets -->
+    <path d="M 6 80 L 6 74 L 12 74" fill="none" stroke="#00FF88" stroke-width="1.2" />
+    <path d="M 214 80 L 214 74 L 208 74" fill="none" stroke="#00FF88" stroke-width="1.2" />
+
+    <!-- Card Content -->
+    <text x="14" y="96" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#00FF88" letter-spacing="1.5">ACT 01 // DISCIPLINE</text>
+    <text x="14" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Military Forge</text>
+    <text x="14" y="134" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00FF88">19 Jharkhand Bn NCC</text>
+
+    <!-- Narrative Paragraph -->
+    <text x="14" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">Cadet to Sergeant rank.</text>
+    <text x="14" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">Forged unbreakable mental</text>
+    <text x="14" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">grit, physical cadence,</text>
+    <text x="14" y="204" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">and operational poise.</text>
+
+    <!-- Verified Badges -->
+    <g transform="translate(14, 222)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#071E15" stroke="#00FF88" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#00FF88">★ Best Cadet (2019)</text>
+    </g>
+    <g transform="translate(14, 248)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#071E15" stroke="#00FF88" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#00FF88">🥋 Black Belt (1st Dan)</text>
+    </g>
+    <g transform="translate(14, 274)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#071E15" stroke="#00FF88" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#00FF88">🎖️ NCC Sergeant (SGT)</text>
+    </g>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 02 // PHYSICALITY -->
+  <!-- ===================================================================== -->
+  <g transform="translate(275, 160)">
+    <!-- Connecting Stem to Conduit -->
+    <line x1="110" y1="50" x2="110" y2="50" stroke="#00D9FF" stroke-width="2" />
+    <circle cx="110" cy="50" r="8" fill="#05080B" stroke="#00D9FF" stroke-width="2" />
+    <circle cx="110" cy="50" r="3.5" fill="#00D9FF" />
+
+    <!-- Card Body -->
+    <rect x="0" y="68" width="220" height="240" rx="6" fill="url(#actCardBg)" stroke="#00D9FF" stroke-width="1.2" stroke-opacity="0.8" />
+    <rect x="0" y="68" width="220" height="4" rx="2" fill="#00D9FF" />
+
+    <!-- Reticle Brackets -->
+    <path d="M 6 80 L 6 74 L 12 74" fill="none" stroke="#00D9FF" stroke-width="1.2" />
+    <path d="M 214 80 L 214 74 L 208 74" fill="none" stroke="#00D9FF" stroke-width="1.2" />
+
+    <!-- Card Content -->
+    <text x="14" y="96" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#00D9FF" letter-spacing="1.5">ACT 02 // CARRIER</text>
+    <text x="14" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Physical Telephony</text>
+    <text x="14" y="134" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D9FF">BSNL Telecom Exchange</text>
+
+    <!-- Narrative Paragraph -->
+    <text x="14" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">Underground fiber conduits.</text>
+    <text x="14" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">Learned network packet</text>
+    <text x="14" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">fundamentals directly at</text>
+    <text x="14" y="204" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">the physical carrier layer.</text>
+
+    <!-- Verified Badges -->
+    <g transform="translate(14, 222)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#052129" stroke="#00D9FF" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#00D9FF">🔬 GPON &amp; Optical Fiber</text>
+    </g>
+    <g transform="translate(14, 248)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#052129" stroke="#00D9FF" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#00D9FF">📡 OTDR Signal Diagnostics</text>
+    </g>
+    <g transform="translate(14, 274)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#052129" stroke="#00D9FF" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#00D9FF">⚡ Broadband MDF Topology</text>
+    </g>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 03 // CRUCIBLE -->
+  <!-- ===================================================================== -->
+  <g transform="translate(500, 160)">
+    <!-- Connecting Stem to Conduit -->
+    <line x1="110" y1="50" x2="110" y2="50" stroke="#FFB84D" stroke-width="2" />
+    <circle cx="110" cy="50" r="8" fill="#05080B" stroke="#FFB84D" stroke-width="2" />
+    <circle cx="110" cy="50" r="3.5" fill="#FFB84D" />
+
+    <!-- Card Body -->
+    <rect x="0" y="68" width="220" height="240" rx="6" fill="url(#actCardBg)" stroke="#FFB84D" stroke-width="1.2" stroke-opacity="0.8" />
+    <rect x="0" y="68" width="220" height="4" rx="2" fill="#FFB84D" />
+
+    <!-- Reticle Brackets -->
+    <path d="M 6 80 L 6 74 L 12 74" fill="none" stroke="#FFB84D" stroke-width="1.2" />
+    <path d="M 214 80 L 214 74 L 208 74" fill="none" stroke="#FFB84D" stroke-width="1.2" />
+
+    <!-- Card Content -->
+    <text x="14" y="96" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#FFB84D" letter-spacing="1.5">ACT 03 // CRUCIBLE</text>
+    <text x="14" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">National Arena</text>
+    <text x="14" y="134" font-family="'JetBrains Mono', monospace" font-size="9" fill="#FFB84D">NIT Delhi · Build with Bharat</text>
+
+    <!-- Narrative Paragraph -->
+    <text x="14" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">Lead of Team SHIVI@808.</text>
+    <text x="14" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">Architected dynamic traffic</text>
+    <text x="14" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">clearing for ambulances</text>
+    <text x="14" y="204" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">under 36-hr crunch.</text>
+
+    <!-- Verified Badges -->
+    <g transform="translate(14, 222)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#241907" stroke="#FFB84D" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#FFB84D">🏆 Top 471 / 5000 Teams</text>
+    </g>
+    <g transform="translate(14, 248)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#241907" stroke="#FFB84D" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#FFB84D">⚡ Lead: Team SHIVI@808</text>
+    </g>
+    <g transform="translate(14, 274)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#241907" stroke="#FFB84D" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#FFB84D">🚦 Sub-Second Geo-Routing</text>
+    </g>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 04 // SWARMS -->
+  <!-- ===================================================================== -->
+  <g transform="translate(725, 160)">
+    <!-- Connecting Stem to Conduit -->
+    <line x1="110" y1="50" x2="110" y2="50" stroke="#8B5CF6" stroke-width="2" />
+    <circle cx="110" cy="50" r="8" fill="#05080B" stroke="#8B5CF6" stroke-width="2" />
+    <circle cx="110" cy="50" r="3.5" fill="#8B5CF6" />
+
+    <!-- Card Body -->
+    <rect x="0" y="68" width="220" height="240" rx="6" fill="url(#actCardBg)" stroke="#8B5CF6" stroke-width="1.2" stroke-opacity="0.8" />
+    <rect x="0" y="68" width="220" height="4" rx="2" fill="#8B5CF6" />
+
+    <!-- Reticle Brackets -->
+    <path d="M 6 80 L 6 74 L 12 74" fill="none" stroke="#8B5CF6" stroke-width="1.2" />
+    <path d="M 214 80 L 214 74 L 208 74" fill="none" stroke="#8B5CF6" stroke-width="1.2" />
+
+    <!-- Card Content -->
+    <text x="14" y="96" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#8B5CF6" letter-spacing="1.5">ACT 04 // SWARMS</text>
+    <text x="14" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Distributed AI</text>
+    <text x="14" y="134" font-family="'JetBrains Mono', monospace" font-size="9" fill="#8B5CF6">PravRaha / ShiVi Control Plane</text>
+
+    <!-- Narrative Paragraph -->
+    <text x="14" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">38 micro-agents across 100</text>
+    <text x="14" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">domain engines, pgvector</text>
+    <text x="14" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">RAG, MCP execution,</text>
+    <text x="14" y="204" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">and zero-hallucination.</text>
+
+    <!-- Verified Badges -->
+    <g transform="translate(14, 222)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#18112E" stroke="#8B5CF6" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#8B5CF6">🤖 38 Specialized Agents</text>
+    </g>
+    <g transform="translate(14, 248)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#18112E" stroke="#8B5CF6" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#8B5CF6">🧪 471 Passing Assertions</text>
+    </g>
+    <g transform="translate(14, 274)">
+      <rect x="0" y="0" width="192" height="20" rx="3" fill="#18112E" stroke="#8B5CF6" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#8B5CF6">🛡️ Zero-Hallucination Gate</text>
+    </g>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- ACT 05 // HORIZONS -->
+  <!-- ===================================================================== -->
+  <g transform="translate(950, 160)">
+    <!-- Connecting Stem to Conduit -->
+    <line x1="80" y1="50" x2="80" y2="50" stroke="#00DFA5" stroke-width="2" />
+    <circle cx="80" cy="50" r="8" fill="#05080B" stroke="#00DFA5" stroke-width="2" />
+    <circle cx="80" cy="50" r="3.5" fill="#00DFA5" />
+
+    <!-- Card Body -->
+    <rect x="0" y="68" width="200" height="240" rx="6" fill="url(#actCardBg)" stroke="#00DFA5" stroke-width="1.2" stroke-opacity="0.8" />
+    <rect x="0" y="68" width="200" height="4" rx="2" fill="#00DFA5" />
+
+    <!-- Reticle Brackets -->
+    <path d="M 6 80 L 6 74 L 12 74" fill="none" stroke="#00DFA5" stroke-width="1.2" />
+    <path d="M 194 80 L 194 74 L 188 74" fill="none" stroke="#00DFA5" stroke-width="1.2" />
+
+    <!-- Card Content -->
+    <text x="14" y="96" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#00DFA5" letter-spacing="1.5">ACT 05 // HORIZONS</text>
+    <text x="14" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Sovereign Edge</text>
+    <text x="14" y="134" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00DFA5">BhashaSetu &amp; ANTARES</text>
+
+    <!-- Narrative Paragraph -->
+    <text x="14" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">Offline tribal language</text>
+    <text x="14" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">RAG (Santhali, Ho, Mundari),</text>
+    <text x="14" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">high-assurance Rust runtimes,</text>
+    <text x="14" y="204" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#AAB7C4">and zero-trust edge swarms.</text>
+
+    <!-- Verified Badges -->
+    <g transform="translate(14, 222)">
+      <rect x="0" y="0" width="172" height="20" rx="3" fill="#05211B" stroke="#00DFA5" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#00DFA5">🌍 Tribal Language RAG</text>
+    </g>
+    <g transform="translate(14, 248)">
+      <rect x="0" y="0" width="172" height="20" rx="3" fill="#05211B" stroke="#00DFA5" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#00DFA5">🦀 Rust Engine Systems</text>
+    </g>
+    <g transform="translate(14, 274)">
+      <rect x="0" y="0" width="172" height="20" rx="3" fill="#05211B" stroke="#00DFA5" stroke-width="0.7" />
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#00DFA5">🛰️ Sovereign Air-Gap AI</text>
+    </g>
+  </g>
+
+  <!-- Bottom Telemetry Status Bar -->
+  <g transform="translate(40, 480)">
+    <line x1="0" y1="0" x2="1120" y2="0" stroke="#30363D" stroke-width="1" stroke-opacity="0.5" />
+    <text x="0" y="20" font-family="'JetBrains Mono', monospace" font-size="9" fill="#7E92A2">METRICS: <tspan fill="#00FF88">471 VITEST ASSERTIONS</tspan> | <tspan fill="#00D9FF">60 VERIFY.PY GATES</tspan> | <tspan fill="#FFB84D">TOP 471/5000 SIH</tspan> | <tspan fill="#8B5CF6">38 AGENTS</tspan> | <tspan fill="#00DFA5">41+ VERIFIED REPOS</tspan></text>
+    <text x="1120" y="20" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00FF88">HASH: 636DA4F :: CSP COMPLIANT :: ZERO DEPENDENCIES</text>
+  </g>
+</svg>'''
+
+
+def main():
+    print("[1/4] Generating standalone SVG: assets/storyline.svg")
+    static_svg = build_storyline_svg(animated=False)
+    # Test XML well-formedness
+    ET.fromstring(static_svg)
+    (ASSETS_DIR / "storyline.svg").write_text(static_svg, encoding="utf-8")
+
+    print("[2/4] Generating motion SVG: assets/motion/storyline-motion.svg")
+    motion_svg = build_storyline_svg(animated=True)
+    ET.fromstring(motion_svg)
+    (MOTION_DIR / "storyline-motion.svg").write_text(motion_svg, encoding="utf-8")
+
+    print("[3/4] Generating high-resolution static PNG fallback: assets/static/storyline.png")
+    # Generate high quality PIL image representation
+    img = Image.new("RGBA", (1200, 520), color=(5, 8, 11, 255))
+    draw = ImageDraw.Draw(img)
+
+    # Grid dots
+    for x in range(0, 1200, 40):
+        for y in range(0, 520, 40):
+            draw.point((x, y), fill=(0, 255, 136, 40))
+
+    # Frame
+    draw.rectangle([1, 1, 1198, 518], outline=(48, 54, 61, 160), width=1)
+    draw.line([(0, 0), (1200, 0)], fill=(0, 255, 136, 255), width=3)
+
+    # Conduit
+    draw.line([(160, 210), (1040, 210)], fill=(48, 54, 61, 255), width=3)
+
+    # 5 Act cards outline
+    acts = [
+        (50, 220, (0, 255, 136), "ACT 01 // DISCIPLINE", "Military Forge", "19 Jharkhand Bn NCC"),
+        (275, 220, (0, 217, 255), "ACT 02 // CARRIER", "Physical Telephony", "BSNL Exchange"),
+        (500, 220, (255, 184, 77), "ACT 03 // CRUCIBLE", "National Arena", "NIT Delhi SIH"),
+        (725, 220, (139, 92, 246), "ACT 04 // SWARMS", "Distributed AI", "PravRaha ShiVi"),
+        (950, 200, (0, 223, 165), "ACT 05 // HORIZONS", "Sovereign Edge", "BhashaSetu & ANTARES"),
+    ]
+
+    for x, w, color, tag, title, sub in acts:
+        # Card
+        draw.rectangle([x, 228, x + w, 468], fill=(10, 22, 28, 230), outline=color, width=1)
+        draw.rectangle([x, 228, x + w, 232], fill=color)
+        # Node on conduit
+        cx = x + w // 2
+        draw.line([(cx, 210), (cx, 228)], fill=color, width=2)
+        draw.ellipse([cx - 7, 210 - 7, cx + 7, 210 + 7], fill=(5, 8, 11), outline=color, width=2)
+        draw.ellipse([cx - 3, 210 - 3, cx + 3, 210 + 3], fill=color)
+
+    # Telemetry bar
+    draw.line([(40, 480), (1160, 480)], fill=(48, 54, 61, 120), width=1)
+    img.save(STATIC_DIR / "storyline.png", "PNG")
+
+    print("[4/4] Generating optimized animated GIF loop: assets/animated/storyline-motion.gif")
+    frames = []
+    num_frames = 24
+    for frame_idx in range(num_frames):
+        f = img.copy()
+        f_draw = ImageDraw.Draw(f)
+
+        # Animate traveling packet across conduit
+        prog = frame_idx / num_frames
+        px = int(160 + (1040 - 160) * prog)
+        py = 210
+
+        # Determine packet color based on progress
+        if prog < 0.25:
+            pcol = (0, 255, 136)
+        elif prog < 0.5:
+            pcol = (0, 217, 255)
+        elif prog < 0.75:
+            pcol = (255, 184, 77)
+        else:
+            pcol = (139, 92, 246)
+
+        # Pulse halo
+        r_halo = int(6 + 4 * (frame_idx % 6) / 5)
+        f_draw.ellipse([px - r_halo, py - r_halo, px + r_halo, py + r_halo], outline=pcol, width=1)
+        f_draw.ellipse([px - 4, py - 4, px + 4, py + 4], fill=pcol)
+
+        # Pulse active node
+        active_act_idx = min(int(prog * 5), 4)
+        ax, aw, acol, _, _, _ = acts[active_act_idx]
+        acx = ax + aw // 2
+        f_draw.ellipse([acx - 10, 210 - 10, acx + 10, 210 + 10], outline=acol, width=2)
+
+        frames.append(f.convert("P", palette=Image.ADAPTIVE))
+
+    # Save animated GIF loop
+    gif_path = ANIM_DIR / "storyline-motion.gif"
+    frames[0].save(
+        gif_path,
+        save_all=True,
+        append_images=frames[1:],
+        duration=65,  # ~15 FPS
+        loop=0,
+        optimize=True
+    )
+
+    print(f"  [OK] Created {ASSETS_DIR / 'storyline.svg'} ({len(static_svg)} bytes)")
+    print(f"  [OK] Created {MOTION_DIR / 'storyline-motion.svg'} ({len(motion_svg)} bytes)")
+    print(f"  [OK] Created {STATIC_DIR / 'storyline.png'} ({os.path.getsize(STATIC_DIR / 'storyline.png')} bytes)")
+    print(f"  [OK] Created {gif_path} ({os.path.getsize(gif_path)} bytes)")
+
+
+if __name__ == "__main__":
+    main()

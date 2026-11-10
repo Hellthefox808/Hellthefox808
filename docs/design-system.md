@@ -150,6 +150,7 @@ Every vector visual asset maintains a standardized 1200px width coordinate syste
 |---|---|---|---|---|---|
 | **Hero Banner** | `assets/hero.svg` | 1200 | 380 | **3.158** | `viewBox="0 0 1200 380"` |
 | **Areas of Expertise** | `assets/expertise.svg` | 1200 | 540 | **2.222** | `viewBox="0 0 1200 540"` |
+| **Mission Storyline** | `assets/storyline.svg` | 1200 | 520 | **2.308** | `viewBox="0 0 1200 520"` |
 | **Systems Architecture** | `assets/architecture.svg` | 1200 | 480 | **2.500** | `viewBox="0 0 1200 480"` |
 | **Featured Projects** | `assets/projects.svg` | 1200 | 580 | **2.069** | `viewBox="0 0 1200 580"` |
 | **Engineering Footer** | `assets/footer.svg` | 1200 | 220 | **5.455** | `viewBox="0 0 1200 220"` |
@@ -196,6 +197,7 @@ The interactive preview engine in `motion-preview/` (`index.html`, `styles.css`,
 3. **Interactive Parallax & Camera Zoom**: Smooth linear interpolation (`lerp = 0.08`) capturing cursor movement for dynamic 3D card tilt ($\theta_x, \theta_y \le 13^\circ$), combined with camera push-in and pull-out zoom controls ($0.7\times$ to $1.5\times$).
 4. **Reduced Motion & Accessibility**: Full compliance with `prefers-reduced-motion` media queries and an explicit interactive toggle to damp velocity, disable tilt, and ensure comfortable viewing.
 5. **Performance Target**: Continuous 60 FPS execution via `requestAnimationFrame` with automatic canvas resolution scaling matching `window.devicePixelRatio`.
+6. **Interactive 5-Act Storyline Theater**: An integrated cinematic narrative mode (`StorylineTheaterManager`) accessible via Hotkey `S`, CLI terminal command `storyline`, or header HUD action button, stepping through the 5 Acts of the engineering odyssey with synchronized procedural audio chords, typewriter narrative streams, and dynamic particle swarm reconfiguration.
 
 ---
 

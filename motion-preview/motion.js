@@ -573,6 +573,19 @@ class AssetInspector {
           'gif': '../assets/animated/footer-motion.gif',
           'png': '../assets/static/footer.png'
         }
+      },
+      storyline: {
+        id: 'CARD_06 // STORYLINE',
+        name: 'Mission Storyline',
+        title: 'Cybernetic Mission Chronology & 5-Act Narrative Arc',
+        dimensions: '1200 × 520',
+        aspectRatio: '1200 / 520',
+        paths: {
+          'svg': '../assets/storyline.svg',
+          'motion-svg': '../assets/motion/storyline-motion.svg',
+          'gif': '../assets/animated/storyline-motion.gif',
+          'png': '../assets/static/storyline.png'
+        }
       }
     };
 
@@ -1212,6 +1225,21 @@ class CyberAudio {
     });
   }
 
+  playStoryActChord(actIndex) {
+    if (!this.enabled || !this.ctx) return;
+    const chords = [
+      [220, 440, 554.37],     // Act 1: A major military clarion
+      [293.66, 440, 587.33],   // Act 2: D carrier frequency
+      [329.63, 493.88, 659.25],// Act 3: E hackathon crucible
+      [349.23, 523.25, 698.46],// Act 4: F neural swarm
+      [392, 587.33, 783.99]    // Act 5: G sovereign horizons
+    ];
+    const freqs = chords[actIndex % chords.length] || chords[0];
+    freqs.forEach((f, i) => {
+      setTimeout(() => this.playTone(f, 'sine', 0.20, 0.035), i * 45);
+    });
+  }
+
   playExecute() {
     this.playTone(587.33, 'triangle', 0.10, 0.04);
     setTimeout(() => this.playTone(880, 'sine', 0.15, 0.04), 45);
@@ -1316,16 +1344,331 @@ class CyberThemeManager {
 
 /**
  * ----------------------------------------------------------------------------
+ * 8.5 INTERACTIVE CYBERNETIC MISSION STORYLINE THEATER
+ * 5-Act Narrative Odyssey: Military Discipline -> Carrier Telephony -> 
+ * National Crucible -> Multi-Agent Swarms -> Sovereign Horizons
+ * ----------------------------------------------------------------------------
+ */
+class StorylineTheaterManager {
+  constructor(engine, audio, inspector) {
+    this.engine = engine;
+    this.audio = audio;
+    this.inspector = inspector;
+    this.modal = document.getElementById('storylineModal');
+    this.btnToggle = document.getElementById('btnToggleStoryline');
+    this.btnClose = document.getElementById('btnCloseStoryline');
+    this.btnPrev = document.getElementById('btnStoryPrev');
+    this.btnPlay = document.getElementById('btnStoryPlay');
+    this.btnNext = document.getElementById('btnStoryNext');
+    this.progressFill = document.getElementById('storylineProgressFill');
+    this.progressBar = document.getElementById('storylineProgressBar');
+    this.actBadge = document.getElementById('storylineActBadge');
+    this.actIndexLabel = document.getElementById('storylineActIndex');
+    this.actCountLabel = document.getElementById('storylineActCount');
+    this.actTitle = document.getElementById('storylineActTitle');
+    this.actSubtitle = document.getElementById('storylineActSubtitle');
+    this.actText = document.getElementById('storylineActText');
+    this.actMetrics = document.getElementById('storylineActMetrics');
+    this.theaterCard = document.getElementById('storylineTheaterCard');
+
+    this.actTabs = [
+      document.getElementById('actTab1'),
+      document.getElementById('actTab2'),
+      document.getElementById('actTab3'),
+      document.getElementById('actTab4'),
+      document.getElementById('actTab5')
+    ];
+
+    this.isOpen = false;
+    this.currentAct = 0;
+    this.isPlaying = false;
+    this.playTimer = null;
+    this.typewriterTimer = null;
+
+    this.acts = [
+      {
+        badge: 'ACT 01 // DISCIPLINE',
+        phase: 'PHASE 1 OF 5',
+        title: 'The Military Forge: Cadet to Sergeant',
+        subtitle: '19 Jharkhand Bn NCC · Best Cadet 2019 · Black Belt 1st Dan',
+        narrative: 'Before writing a single line of distributed software, I forged operational discipline under the cadence of the National Cadet Corps (19 Jharkhand Bn). Rising from Cadet to Sergeant rank, and earning Best Cadet in 2019 alongside a Taekwondo 1st Dan Black Belt, this crucible forged unbreakable physical stamina, mental poise under stress, and relentless execution standards.',
+        color: '#00FF88',
+        metrics: [
+          'Best Cadet 2019',
+          'Sergeant (SGT)',
+          'Black Belt 1st Dan',
+          'Mental Composure',
+          'Zero-Compromise Rigor'
+        ]
+      },
+      {
+        badge: 'ACT 02 // CARRIER',
+        phase: 'PHASE 2 OF 5',
+        title: 'Physical Carrier Systems: Telecom Exchange',
+        subtitle: 'BSNL Telecom Exchange Immersion · Optical Fiber & Routing',
+        narrative: 'At BSNL regional telecom exchanges, I ventured beneath software abstractions directly into physical layer telecommunications. Handled GPON optical distribution, main distribution frame (MDF) wiring, and OTDR signal attenuation diagnostics. Understanding signal propagation, physical packet collisions, and hardware topologies established an instinct for real-world reliability.',
+        color: '#00D9FF',
+        metrics: [
+          'GPON FTTH Networks',
+          'OTDR Waveform Diagnostics',
+          'MDF Wire Topologies',
+          'Carrier-Grade Reliability',
+          'Hardware-Level Protocols'
+        ]
+      },
+      {
+        badge: 'ACT 03 // CRUCIBLE',
+        phase: 'PHASE 3 OF 5',
+        title: 'The National Crucible: Build with Bharat @ NIT Delhi',
+        subtitle: 'National Semi-Finalist · Team Lead: Team SHIVI@808 (Top 471 / 5,000)',
+        narrative: 'Leading Team SHIVI@808 at NIT Delhi in a high-velocity 36-hour hackathon crucible, we competed against 5,000 national engineering teams. Architected dynamic emergency vehicle priority dispatching with sub-second Dijkstra corridor routing and real-time geofencing. Placing in the top 471 nationwide proved our ability to execute complex architectures under high pressure.',
+        color: '#FFB84D',
+        metrics: [
+          'Top 471 / 5,000 Teams',
+          'Lead: Team SHIVI@808',
+          'Sub-Second Geo-Routing',
+          'Dynamic Signal Priority',
+          '36-Hour Hackathon Sprint'
+        ]
+      },
+      {
+        badge: 'ACT 04 // SWARMS',
+        phase: 'PHASE 4 OF 5',
+        title: 'Distributed Agent Swarms: PravRaha / ShiVi Control Plane',
+        subtitle: '38 Specialized Micro-Agents · 100 Domain Engines · 471 Passing Tests',
+        narrative: 'Transformed engineering focus into autonomous multi-agent systems. Architected the PravRaha / ShiVi RevOps control plane: 38 specialized micro-agents coordinating across 100 domain engines, pgvector semantic embeddings, and Model Context Protocol (MCP) integrations. Backed by 471 passing Vitest assertions across 167 suites, proving that AI systems must be governed by deterministic engineering contracts.',
+        color: '#8B5CF6',
+        metrics: [
+          '38 Specialized Agents',
+          '471 Passing Assertions',
+          '167 Test Suites',
+          'pgvector Retrieval',
+          'Zero-Hallucination Guardrails'
+        ]
+      },
+      {
+        badge: 'ACT 05 // HORIZONS',
+        phase: 'PHASE 5 OF 5',
+        title: 'Sovereign Horizons: Offline Tribal RAG & ANTARES Swarms',
+        subtitle: 'BhashaSetu Offline RAG · High-Assurance Rust · Sovereign Edge',
+        narrative: 'Pushing systems engineering to sovereign and air-gapped frontiers. Architected BhashaSetu: offline-first RAG for indigenous tribal languages (Santhali, Ho, Mundari) with edge bidirectional synchronization. Pioneering high-throughput Rust control planes, zero-trust cryptographic verification, and ANTARES-10K swarm orchestration for the next era of high-assurance computing.',
+        color: '#00DFA5',
+        metrics: [
+          'Offline Tribal RAG',
+          'Santhali / Ho / Mundari',
+          'High-Assurance Rust',
+          'Bidirectional Sync',
+          'ANTARES Swarm Orchestration'
+        ]
+      }
+    ];
+
+    this.init();
+  }
+
+  init() {
+    if (this.btnToggle) {
+      this.btnToggle.addEventListener('click', () => this.toggle());
+    }
+    if (this.btnClose) {
+      this.btnClose.addEventListener('click', () => this.close());
+    }
+    if (this.btnPrev) {
+      this.btnPrev.addEventListener('click', () => this.prev());
+    }
+    if (this.btnNext) {
+      this.btnNext.addEventListener('click', () => this.next());
+    }
+    if (this.btnPlay) {
+      this.btnPlay.addEventListener('click', () => this.toggleAutoPlay());
+    }
+
+    this.actTabs.forEach((tab, idx) => {
+      if (tab) {
+        tab.addEventListener('click', () => this.goToAct(idx));
+      }
+    });
+
+    if (this.modal) {
+      this.modal.addEventListener('click', (e) => {
+        if (e.target === this.modal) this.close();
+      });
+    }
+
+    this.renderAct(0, false);
+  }
+
+  toggle() {
+    if (this.isOpen) this.close();
+    else this.open();
+  }
+
+  open() {
+    if (!this.modal) return;
+    this.modal.classList.add('open');
+    this.modal.setAttribute('aria-hidden', 'false');
+    this.isOpen = true;
+    if (this.btnToggle) this.btnToggle.classList.add('active');
+    if (this.audio) this.audio.playChime();
+    this.renderAct(this.currentAct, true);
+  }
+
+  close() {
+    if (!this.modal) return;
+    this.modal.classList.remove('open');
+    this.modal.setAttribute('aria-hidden', 'true');
+    this.isOpen = false;
+    if (this.btnToggle) this.btnToggle.classList.remove('active');
+    this.stopAutoPlay();
+  }
+
+  next() {
+    const nextIdx = (this.currentAct + 1) % this.acts.length;
+    this.goToAct(nextIdx);
+  }
+
+  prev() {
+    const prevIdx = (this.currentAct - 1 + this.acts.length) % this.acts.length;
+    this.goToAct(prevIdx);
+  }
+
+  goToAct(index) {
+    if (index < 0 || index >= this.acts.length) return;
+    this.currentAct = index;
+    this.renderAct(index, true);
+  }
+
+  toggleAutoPlay() {
+    if (this.isPlaying) {
+      this.stopAutoPlay();
+    } else {
+      this.startAutoPlay();
+    }
+  }
+
+  startAutoPlay() {
+    this.isPlaying = true;
+    if (this.btnPlay) {
+      this.btnPlay.textContent = '⏸ PAUSE';
+      this.btnPlay.classList.add('active');
+    }
+    this.playTimer = setInterval(() => {
+      this.next();
+    }, 6000);
+  }
+
+  stopAutoPlay() {
+    this.isPlaying = false;
+    if (this.playTimer) {
+      clearInterval(this.playTimer);
+      this.playTimer = null;
+    }
+    if (this.btnPlay) {
+      this.btnPlay.textContent = '▶ AUTO';
+      this.btnPlay.classList.remove('active');
+    }
+  }
+
+  renderAct(index, playFeedback = true) {
+    const act = this.acts[index];
+    if (!act) return;
+
+    if (this.actBadge) {
+      this.actBadge.textContent = act.badge;
+      this.actBadge.style.borderColor = act.color;
+      this.actBadge.style.color = act.color;
+      this.actBadge.style.background = `${act.color}18`;
+    }
+    if (this.actIndexLabel) this.actIndexLabel.textContent = act.phase;
+    if (this.actTitle) this.actTitle.textContent = act.title;
+    if (this.actSubtitle) {
+      this.actSubtitle.textContent = act.subtitle;
+      this.actSubtitle.style.color = act.color;
+    }
+
+    // Typewriter narrative effect
+    if (this.actText) {
+      if (this.typewriterTimer) clearInterval(this.typewriterTimer);
+      this.actText.style.borderLeftColor = act.color;
+      const fullText = act.narrative;
+      if (playFeedback) {
+        this.actText.textContent = '';
+        let charIdx = 0;
+        this.typewriterTimer = setInterval(() => {
+          if (charIdx < fullText.length) {
+            this.actText.textContent += fullText[charIdx];
+            charIdx++;
+          } else {
+            clearInterval(this.typewriterTimer);
+            this.typewriterTimer = null;
+          }
+        }, 12);
+      } else {
+        this.actText.textContent = fullText;
+      }
+    }
+
+    // Metrics pills
+    if (this.actMetrics) {
+      this.actMetrics.innerHTML = '';
+      act.metrics.forEach((m) => {
+        const pill = document.createElement('span');
+        pill.className = 'story-metric-pill';
+        pill.style.borderColor = `${act.color}55`;
+        pill.style.color = act.color;
+        pill.innerHTML = `<span class="dot" style="background: ${act.color}"></span>${m}`;
+        this.actMetrics.appendChild(pill);
+      });
+    }
+
+    // Progress bar fill
+    if (this.progressFill) {
+      const pct = ((index + 1) / this.acts.length) * 100;
+      this.progressFill.style.width = `${pct}%`;
+      this.progressFill.style.background = `linear-gradient(90deg, #00FF88, ${act.color})`;
+      this.progressFill.style.boxShadow = `0 0 10px ${act.color}`;
+    }
+
+    // Update active tab buttons
+    this.actTabs.forEach((tab, i) => {
+      if (tab) {
+        tab.classList.toggle('active', i === index);
+        if (i === index) {
+          tab.style.borderColor = act.color;
+          tab.style.background = `${act.color}22`;
+        } else {
+          tab.style.borderColor = '';
+          tab.style.background = '';
+        }
+      }
+    });
+
+    if (playFeedback) {
+      if (this.audio) {
+        this.audio.playStoryActChord(index);
+      }
+      if (this.engine) {
+        this.engine.retheme([act.color, '#00D9FF', '#8B5CF6']);
+        this.engine.emitShockwave(window.innerWidth / 2, window.innerHeight / 2);
+      }
+      HUDTelemetry.showToast(`Storyline: ${act.badge}`);
+    }
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
  * 9. INTERACTIVE CYBER TELEMETRY TERMINAL CONSOLE
  * Standalone client-side command interpreter with tactile sound & quick pills
  * ----------------------------------------------------------------------------
  */
 class CyberTerminal {
-  constructor(engine, themeManager, audio, inspector) {
+  constructor(engine, themeManager, audio, inspector, storylineTheater) {
     this.engine = engine;
     this.themeManager = themeManager;
     this.audio = audio;
     this.inspector = inspector;
+    this.storylineTheater = storylineTheater;
 
     this.drawer = document.getElementById('terminalDrawer');
     this.output = document.getElementById('terminalOutput');
@@ -1460,6 +1803,8 @@ class CyberTerminal {
           '  <span class="term-line-success">projects</span>    - Query 6 featured AI/Agent systems and live telemetry',
           '  <span class="term-line-success">experience</span>  - Display professional engineering apprenticeships',
           '  <span class="term-line-success">skills</span>      - Print enterprise technology stack and capability matrix',
+          '  <span class="term-line-success">storyline</span>   - Launch 5-act interactive mission narrative theater',
+          '  <span class="term-line-success">act [1-5]</span>    - Jump directly to specific mission chronology act',
           '  <span class="term-line-success">theme [key]</span> - Set/cycle theme (matrix, synthwave, cyberpunk, abyssal)',
           '  <span class="term-line-success">audio [cmd]</span> - Synthesizer audio control (on, off, toggle)',
           '  <span class="term-line-success">shockwave</span>   - Trigger kinetic quantum impulse particle blast',
@@ -1576,6 +1921,28 @@ class CyberTerminal {
         ].join('\n'));
         break;
 
+      case 'storyline':
+        if (this.storylineTheater) {
+          this.storylineTheater.open();
+          this.print('<span class="term-line-success">Launching Cybernetic Mission Storyline Theater...</span>');
+        } else {
+          this.print('<span class="term-line-warning">Storyline subsystem initializing...</span>');
+        }
+        break;
+
+      case 'act':
+        if (this.storylineTheater) {
+          const actNum = parseInt(arg, 10);
+          if (actNum >= 1 && actNum <= 5) {
+            this.storylineTheater.open();
+            this.storylineTheater.goToAct(actNum - 1);
+            this.print(`<span class="term-line-success">Navigated to Act ${actNum} in Storyline Theater.</span>`);
+          } else {
+            this.print('<span class="term-line-warning">Usage: act [1-5] (e.g. "act 3")</span>');
+          }
+        }
+        break;
+
       case 'clear':
         this.clear();
         break;
@@ -1648,7 +2015,7 @@ class ShortcutsModalManager {
  * ----------------------------------------------------------------------------
  */
 class GlobalKeyboardManager {
-  constructor(engine, themeManager, audio, terminal, shortcutsModal, controls, inspector) {
+  constructor(engine, themeManager, audio, terminal, shortcutsModal, controls, inspector, storylineTheater) {
     this.engine = engine;
     this.themeManager = themeManager;
     this.audio = audio;
@@ -1656,6 +2023,7 @@ class GlobalKeyboardManager {
     this.shortcutsModal = shortcutsModal;
     this.controls = controls;
     this.inspector = inspector;
+    this.storylineTheater = storylineTheater;
 
     this.init();
   }
@@ -1689,6 +2057,26 @@ class GlobalKeyboardManager {
         case 'T':
           e.preventDefault();
           if (this.themeManager) this.themeManager.cycle();
+          break;
+
+        case 's':
+        case 'S':
+          e.preventDefault();
+          if (this.storylineTheater) this.storylineTheater.toggle();
+          break;
+
+        case 'ArrowLeft':
+          if (this.storylineTheater && this.storylineTheater.isOpen) {
+            e.preventDefault();
+            this.storylineTheater.prev();
+          }
+          break;
+
+        case 'ArrowRight':
+          if (this.storylineTheater && this.storylineTheater.isOpen) {
+            e.preventDefault();
+            this.storylineTheater.next();
+          }
           break;
 
         case 'a':
@@ -1743,8 +2131,9 @@ class GlobalKeyboardManager {
         case '3':
         case '4':
         case '5':
+        case '6':
           e.preventDefault();
-          const assetKeys = ['hero', 'expertise', 'architecture', 'projects', 'footer'];
+          const assetKeys = ['hero', 'expertise', 'architecture', 'projects', 'footer', 'storyline'];
           const idx = parseInt(e.key, 10) - 1;
           if (idx >= 0 && idx < assetKeys.length && this.inspector) {
             this.inspector.setAsset(assetKeys[idx]);
@@ -1753,6 +2142,7 @@ class GlobalKeyboardManager {
           break;
 
         case 'Escape':
+          if (this.storylineTheater && this.storylineTheater.isOpen) this.storylineTheater.close();
           if (this.terminal && this.terminal.isOpen) this.terminal.close();
           if (this.shortcutsModal && this.shortcutsModal.isOpen) this.shortcutsModal.close();
           const ctrlDrawer = document.getElementById('controlsDrawer');
@@ -1805,8 +2195,11 @@ class MotionApp {
     // Cyber Theme Manager
     const themeManager = new CyberThemeManager(engine, audio);
 
+    // Storyline Theater Integration
+    const storylineTheater = new StorylineTheaterManager(engine, audio, inspector);
+
     // Cyber CLI Terminal Console
-    const terminal = new CyberTerminal(engine, themeManager, audio, inspector);
+    const terminal = new CyberTerminal(engine, themeManager, audio, inspector, storylineTheater);
 
     // Shortcuts Cheatsheet Modal
     const shortcutsModal = new ShortcutsModalManager();
@@ -1819,7 +2212,8 @@ class MotionApp {
       terminal,
       shortcutsModal,
       controls,
-      inspector
+      inspector,
+      storylineTheater
     );
 
     // Master Animation Loop with Tab Visibility Optimization

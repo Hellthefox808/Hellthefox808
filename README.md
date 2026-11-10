@@ -84,6 +84,38 @@ Rather than building superficial demos, I am dedicated to engineering software t
 
 <br />
 
+### Cybernetic Mission Chronology // 5-Act Narrative Arc
+
+<div align="center">
+  <img src="./assets/animated/storyline-motion.gif" alt="Cybernetic Mission Chronology 5-Act Storyline Motion Graphic" width="100%" />
+  <p align="center">
+    <sub>
+      <a href="./assets/motion/storyline-motion.svg">SVG Motion Source</a> · 
+      <a href="./assets/storyline.svg">Vector Schematic</a> · 
+      <a href="./assets/static/storyline.png">Static Fallback</a> · 
+      <a href="./motion-preview/index.html">Interactive Storyline Theater</a>
+    </sub>
+  </p>
+</div>
+
+<br />
+
+```mermaid
+flowchart LR
+    A["<b>ACT 01 // DISCIPLINE</b><br/>🎖️ NCC Sergeant (19 Jharkhand)<br/>🥋 Black Belt 1st Dan (2019 Best Cadet)<br/><i>Operational Composure</i>"] --> B["<b>ACT 02 // PHYSICALITY</b><br/>🌐 BSNL Telecom Exchange<br/>🔬 GPON &amp; OTDR Diagnostics<br/><i>Physical Carrier Networks</i>"]
+    B --> C["<b>ACT 03 // NATIONAL ARENA</b><br/>🏆 Build with Bharat 2.0 @ NIT Delhi<br/>⚡ Lead: Team SHIVI@808<br/><i>High-Stakes Systems Crucible</i>"]
+    C --> D["<b>ACT 04 // AGENT SWARMS</b><br/>🤖 PravRaha / ShiVi Control Plane<br/>⚙️ 38 Agents · 471 Passing Tests<br/><i>Zero-Hallucination Governance</i>"]
+    D --> E["<b>ACT 05 // EDGE &amp; HORIZONS</b><br/>🌍 BhashaSetu Offline Tribal RAG<br/>🦀 Rust Engines &amp; MCP Protocols<br/><i>High-Assurance Architectures</i>"]
+
+    style A fill:#071015,stroke:#00FF88,stroke-width:2px,color:#F5F7FA
+    style B fill:#071015,stroke:#00D9FF,stroke-width:2px,color:#F5F7FA
+    style C fill:#071015,stroke:#FFB84D,stroke-width:2px,color:#F5F7FA
+    style D fill:#071015,stroke:#8B5CF6,stroke-width:2px,color:#F5F7FA
+    style E fill:#071015,stroke:#00DFA5,stroke-width:2px,color:#F5F7FA
+```
+
+<br />
+
 ## 02 // Engineering Focus
 
 <div align="center">

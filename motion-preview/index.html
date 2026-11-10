@@ -67,6 +67,10 @@
           <span class="btn-icon">🎨</span>
           <span class="btn-text" id="lblThemeName">MATRIX</span>
         </button>
+        <button class="hud-btn-toggle-controls" id="btnToggleStoryline" title="Launch Interactive Cybernetic Mission Storyline (Hotkey: S)">
+          <span class="btn-icon">📜</span>
+          <span class="btn-text">STORYLINE</span>
+        </button>
         <button class="hud-btn-toggle-controls" id="btnToggleTerminal" title="Toggle Interactive Cyber Terminal (Hotkey: ~)">
           <span class="btn-icon">&gt;_</span>
           <span class="btn-text">TERMINAL</span>
@@ -200,6 +204,11 @@
             <span class="tab-index">05</span>
             <span class="tab-name">Telemetry Footer</span>
             <span class="tab-size">1200×220</span>
+          </button>
+          <button class="tab-btn" data-asset="storyline" role="tab" aria-selected="false">
+            <span class="tab-index">06</span>
+            <span class="tab-name">Mission Storyline</span>
+            <span class="tab-size">1200×520</span>
           </button>
         </div>
       </div>
@@ -487,10 +496,81 @@
           <button class="term-pill" data-cmd="skills">skills</button>
           <button class="term-pill" data-cmd="theme">theme</button>
           <button class="term-pill" data-cmd="shockwave">shockwave</button>
+          <button class="term-pill" data-cmd="storyline">storyline</button>
           <button class="term-pill" data-cmd="whoami">whoami</button>
         </div>
       </div>
     </aside>
+
+    <!-- Interactive Cybernetic Storyline Theater Modal -->
+    <div class="storyline-modal-overlay" id="storylineModal" aria-hidden="true">
+      <div class="storyline-theater-card" id="storylineTheaterCard">
+        <!-- Storyline Header -->
+        <div class="storyline-header">
+          <div class="storyline-brand">
+            <span class="storyline-glyph" aria-hidden="true">⚡</span>
+            <div>
+              <div class="storyline-title">CYBERNETIC MISSION CHRONOLOGY // 5-ACT NARRATIVE</div>
+              <div class="storyline-subtitle">INTERACTIVE STORYLINE THEATER · RR-0808</div>
+            </div>
+          </div>
+          <div class="storyline-controls">
+            <button class="btn-story-action" id="btnStoryPrev" title="Previous Act">◀ PREV</button>
+            <button class="btn-story-action" id="btnStoryPlay" title="Auto-Play Storyline">▶ AUTO</button>
+            <button class="btn-story-action" id="btnStoryNext" title="Next Act">NEXT ▶</button>
+            <button class="drawer-close" id="btnCloseStoryline" aria-label="Close Storyline Modal">&times;</button>
+          </div>
+        </div>
+
+        <!-- Storyline Progress Track -->
+        <div class="storyline-track-container">
+          <div class="storyline-progress-bar" id="storylineProgressBar">
+            <div class="storyline-progress-fill" id="storylineProgressFill"></div>
+          </div>
+          <div class="storyline-act-tabs">
+            <button class="act-step-btn active" id="actTab1" data-act="0">
+              <span class="act-step-num">01</span>
+              <span class="act-step-label">DISCIPLINE</span>
+            </button>
+            <button class="act-step-btn" id="actTab2" data-act="1">
+              <span class="act-step-num">02</span>
+              <span class="act-step-label">CARRIER</span>
+            </button>
+            <button class="act-step-btn" id="actTab3" data-act="2">
+              <span class="act-step-num">03</span>
+              <span class="act-step-label">CRUCIBLE</span>
+            </button>
+            <button class="act-step-btn" id="actTab4" data-act="3">
+              <span class="act-step-num">04</span>
+              <span class="act-step-label">SWARMS</span>
+            </button>
+            <button class="act-step-btn" id="actTab5" data-act="4">
+              <span class="act-step-num">05</span>
+              <span class="act-step-label">HORIZONS</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Storyline Body Stage -->
+        <div class="storyline-body">
+          <div class="storyline-act-meta">
+            <span class="story-badge" id="storylineActBadge">ACT 01 // DISCIPLINE</span>
+            <span class="story-index" id="storylineActIndex">PHASE 1 OF 5</span>
+            <span class="story-count" id="storylineActCount" style="display: none;">5</span>
+          </div>
+          <h2 class="story-act-heading" id="storylineActTitle">The Military Forge: Cadet to Sergeant</h2>
+          <div class="story-act-sub" id="storylineActSubtitle">19 Jharkhand Bn NCC · Best Cadet 2019 · Black Belt 1st Dan</div>
+          <p class="story-act-narrative" id="storylineActText">Loading narrative chronicle...</p>
+          <div class="story-metrics-grid" id="storylineActMetrics"></div>
+        </div>
+
+        <!-- Storyline Footer Telemetry -->
+        <div class="storyline-footer">
+          <span class="story-foot-tag">// VERIFIED FORENSIC EVIDENCE · ZERO FABRICATION GUARANTEE</span>
+          <span class="story-foot-key">Press <kbd class="key-badge">S</kbd> to toggle, <kbd class="key-badge">←</kbd> <kbd class="key-badge">→</kbd> to navigate</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Keyboard Shortcuts Cheatsheet Modal -->
     <div class="shortcuts-modal-overlay" id="shortcutsModal" aria-hidden="true">
@@ -511,6 +591,10 @@
             <div class="shortcut-row">
               <kbd class="key-badge">T</kbd>
               <span class="shortcut-desc">Cycle Visual Theme (Matrix / Synthwave / Cyberpunk / Abyssal)</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd class="key-badge">S</kbd>
+              <span class="shortcut-desc">Launch Interactive Cybernetic Storyline Theater</span>
             </div>
             <div class="shortcut-row">
               <kbd class="key-badge">A</kbd>

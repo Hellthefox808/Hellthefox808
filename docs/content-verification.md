@@ -190,6 +190,14 @@ To ensure complete adherence to truth in engineering:
 3. **Verified Military Battalion & Rank**: The **19 Jharkhand** Battalion NCC and **Sergeant** (SGT) rank are verified through official unit records and battalion award documentation (**2019** Best Cadet Award).
 4. **All Canonical URLs Synchronized**: Every project repository listed above is strictly synchronized between `README.md` and this verification ledger.
 
+### 8.5 Verified 5-Act Mission Chronology & Storyline Suite
+The 5-Act Mission Chronology (`assets/storyline.svg`, `assets/motion/storyline-motion.svg`, `assets/animated/storyline-motion.gif`, `assets/static/storyline.png`) traces the verified career progression across:
+- **Act 01 // Discipline**: 19 Jharkhand Bn NCC Sergeant (SGT), Best Cadet (2019), Taekwondo Black Belt (1st Dan).
+- **Act 02 // Carrier**: BSNL Telecom Exchange, GPON fiber-to-the-home and OTDR signal diagnostics.
+- **Act 03 // Crucible**: Build with Bharat 2.0 @ NIT Delhi, Team Lead: Team SHIVI@808 (Top 471 / 5000 national teams).
+- **Act 04 // Swarms**: PravRaha / ShiVi RevOps Control Plane (38 micro-agents, 471 passing Vitest assertions across 167 suites).
+- **Act 05 // Horizons**: BhashaSetu offline tribal language RAG (Santhali, Ho, Mundari) & ANTARES swarm orchestration.
+
 ---
 
 *Authored by AG-0-04-1 [Documentation Architect & Systems Governance Specialist] under ANTARES-10K Swarm Governance.*
