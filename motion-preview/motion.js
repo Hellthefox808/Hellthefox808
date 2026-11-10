@@ -1165,6 +1165,7 @@ class CyberAudio {
   playTone(freq = 440, type = 'sine', duration = 0.12, gainVal = 0.04) {
     if (!this.enabled || !this.ctx) return;
     try {
+      this.triggerSpectrum(Math.round(duration * 1000) + 60);
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
       osc.type = type;
@@ -1178,6 +1179,16 @@ class CyberAudio {
     } catch (e) {
       // AudioContext policy suppression safe-catch
     }
+  }
+
+  triggerSpectrum(duration = 200) {
+    const el = document.getElementById('audioSpectrum');
+    if (!el) return;
+    el.classList.add('playing');
+    if (this._spectrumTimer) clearTimeout(this._spectrumTimer);
+    this._spectrumTimer = setTimeout(() => {
+      el.classList.remove('playing');
+    }, duration);
   }
 
   playImpulse() {

@@ -209,6 +209,36 @@ My engineering practice is grounded in four foundational disciplines:
 | **05 // Data &amp; Multi-Tier Storage** | PostgreSQL with `pgvector`, Redis L2 clusters, bounded L1 in-memory LRU caches (`MAX_MEMORY_ITEMS = 5000`), and SQLite offline persistence. | Single-flight cache stampede deduplication, ACID compliance, PII data masking at rest. |
 | **06 // Cloud &amp; DevOps** | AWS infrastructure, multi-stage Docker containerization, automated GitHub Actions CI/CD workflows, Linux administration, and Cloudflare edge. | Automated regression test gates, reproducible builds, continuous zero-downtime delivery. |
 
+<br />
+
+### Distributed Swarm Orchestration &amp; LIFO Rollback Engine
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as User / Client Interface
+    participant Gateway as Nginx Edge · Scrypt Derivation
+    participant Core as API Gateway (FastAPI / SSE)
+    participant Orchestrator as Swarm Orchestrator (38 Agents)
+    participant VectorDB as PostgreSQL (pgvector)
+    participant Compensator as LIFO Rollback State Machine
+
+    Client->>Gateway: HTTPS Request (Zod Strict Schema)
+    Gateway->>Core: Authenticated Request (Constant-Time Token Check)
+    Core->>Orchestrator: Initialize Autonomous Swarm Context
+    Orchestrator->>VectorDB: Semantic Similarity Query (pgvector)
+    VectorDB-->>Orchestrator: Grounded Context Embeddings (<15ms)
+    Orchestrator->>Orchestrator: Parallel Fan-Out (MCP Protocol Sandboxes)
+    alt Happy Path: Invariants & Contracts Satisfied
+        Orchestrator-->>Core: Verified Swarm Execution Payload
+        Core-->>Client: Real-Time SSE Stream (<50ms Latency)
+    else Fault Path: Schema Violation or Tool Failure
+        Orchestrator--xCompensator: Trigger Compensation Intercept
+        Compensator->>VectorDB: Execute Reverse LIFO Rollback Steps
+        Compensator-->>Client: Deterministic Error State (Zero Orphaned Writes)
+    end
+```
+
 <div align="center">
   <img src="./assets/divider.svg" alt="Visual Telemetry Line Divider" role="separator" width="100%" />
 </div>
@@ -658,6 +688,22 @@ TOOLING       ::  Git  •  Vitest  •  Jest  •  VS Code  •  Postman  •  
 ## 08 // Leadership &amp; Community
 
 Beyond code, I cultivate structured leadership, high accountability, and the ability to execute under pressure through military and martial arts training.
+
+### Leadership Pipeline // Operational Discipline to Production Engineering
+
+```mermaid
+flowchart LR
+    A["<b>MILITARY CADENCE</b><br/>🎖️ 19 Jharkhand Bn NCC<br/><i>Sergeant (SGT) Command</i><br/>Operational Composure"] --> B["<b>MARTIAL CONDITIONING</b><br/>🥋 Black Belt (1st Dan)<br/><i>High-Stakes Crisis Response</i><br/>Reflex &amp; Endurance"]
+    B --> C["<b>NATIONAL CRUCIBLE</b><br/>🏆 Smart India Hackathon<br/><i>Lead: Team SHIVI@808</i><br/>36-Hr Engineering Sprint"]
+    C --> D["<b>HIGH-ASSURANCE SYSTEMS</b><br/>🛡️ Zero-Placeholder Law<br/><i>471 Passing Assertions</i><br/>Deterministic Production"]
+
+    style A fill:#071015,stroke:#00FF88,stroke-width:2px,color:#F5F7FA
+    style B fill:#071015,stroke:#00D9FF,stroke-width:2px,color:#F5F7FA
+    style C fill:#071015,stroke:#FFB84D,stroke-width:2px,color:#F5F7FA
+    style D fill:#071015,stroke:#8B5CF6,stroke-width:2px,color:#F5F7FA
+```
+
+<br />
 
 ### National Cadet Corps (NCC) — 19 Jharkhand Battalion
 
